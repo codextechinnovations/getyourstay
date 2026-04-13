@@ -94,143 +94,97 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="app">
-        <Routes>
-          {/* Main pages with header/footer */}
-          <Route path="/" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
+        <Suspense fallback={<PageLoader />}>
+
+          <Routes>
+            {/* Main pages with header/footer */}
+            <Route path="/" element={
+              <MainLayout>
                 <Home />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/hotels" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/hotels" element={
+              <MainLayout>
                 <Hotels />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/flats" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/flats" element={
+              <MainLayout>
                 <Flats />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/about" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/about" element={
+              <MainLayout>
                 <AboutUs />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/contact" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/contact" element={
+              <MainLayout>
                 <ContactUs />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/terms" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/terms" element={
+              <MainLayout>
                 <TermsAndConditions />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/privacy" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/privacy" element={
+              <MainLayout>
                 <PrivacyPolicy />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Suspense fallback={<PageLoader />}>
+              </MainLayout>
+            } />
             <Route path="/sitemap.xml" element={<Sitemap />} />
-          </Suspense>
-          <Route path="/list-your-pg" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+            <Route path="/list-your-pg" element={
+              <MainLayout>
                 <ListYourPG />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/list-property" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/list-property" element={
+              <MainLayout>
                 <ListYourPG />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/pg-management-app" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/pg-management-app" element={
+              <MainLayout>
                 <PGManagementApp />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/pg-owner-app" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/pg-owner-app" element={
+              <MainLayout>
                 <PGManagementApp />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/pg-management-software" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/pg-management-software" element={
+              <MainLayout>
                 <PGManagementApp />
-              </Suspense>
-            </MainLayout>
-          } />
-          <Route path="/pg-app" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </MainLayout>
+            } />
+            <Route path="/pg-app" element={
+              <MainLayout>
                 <PGManagementApp />
-              </Suspense>
-            </MainLayout>
-          } />
+              </MainLayout>
+            } />
 
-          {/* Tenant pages without header/footer */}
-          <Route path="/tenant-login" element={
-            <TenantLayout>
-              <Suspense fallback={<PageLoader />}>
-
+            {/* Tenant pages without header/footer */}
+            <Route path="/tenant-login" element={
+              <TenantLayout>
                 <TenantLogin />
-              </Suspense>
-            </TenantLayout>
-          } />
-          <Route path="/tenant-dashboard" element={
-            <TenantLayout>
-              <Suspense fallback={<PageLoader />}>
-
+              </TenantLayout>
+            } />
+            <Route path="/tenant-dashboard" element={
+              <TenantLayout>
                 <TenantDashboard />
-              </Suspense>
-            </TenantLayout>
-          } />
+              </TenantLayout>
+            } />
 
-          {/* 404 fallback */}
-          <Route path="*" element={
-            <MainLayout>
-              <Suspense fallback={<PageLoader />}>
-
+            {/* 404 fallback */}
+            <Route path="*" element={
+              <MainLayout>
                 <NotFound />
-              </Suspense>
-            </MainLayout>
-          } />
-        </Routes>
+              </MainLayout>
+            } />
+          </Routes>
+        </Suspense>
       </div>
     </Router>
   );
