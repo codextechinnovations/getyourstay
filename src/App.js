@@ -98,87 +98,136 @@ function App() {
           {/* Main pages with header/footer */}
           <Route path="/" element={
             <MainLayout>
-              <Home />
+              <Suspense fallback={<PageLoader />}>
+                <Home />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/hotels" element={
             <MainLayout>
-              <Hotels />
+              <Suspense fallback={<PageLoader />}>
+
+                <Hotels />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/flats" element={
             <MainLayout>
-              <Flats />
+              <Suspense fallback={<PageLoader />}>
+
+                <Flats />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/about" element={
             <MainLayout>
-              <AboutUs />
+              <Suspense fallback={<PageLoader />}>
+
+                <AboutUs />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/contact" element={
             <MainLayout>
-              <ContactUs />
+              <Suspense fallback={<PageLoader />}>
+
+                <ContactUs />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/terms" element={
             <MainLayout>
-              <TermsAndConditions />
+              <Suspense fallback={<PageLoader />}>
+
+                <TermsAndConditions />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/privacy" element={
             <MainLayout>
-              <PrivacyPolicy />
+              <Suspense fallback={<PageLoader />}>
+
+                <PrivacyPolicy />
+              </Suspense>
             </MainLayout>
           } />
-          <Route path="/sitemap.xml" element={<Sitemap />} />
+          <Suspense fallback={<PageLoader />}>
+            <Route path="/sitemap.xml" element={<Sitemap />} />
+          </Suspense>
           <Route path="/list-your-pg" element={
             <MainLayout>
-              <ListYourPG />
+              <Suspense fallback={<PageLoader />}>
+
+                <ListYourPG />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/list-property" element={
             <MainLayout>
-              <ListYourPG />
+              <Suspense fallback={<PageLoader />}>
+
+                <ListYourPG />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/pg-management-app" element={
             <MainLayout>
-              <PGManagementApp />
+              <Suspense fallback={<PageLoader />}>
+
+                <PGManagementApp />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/pg-owner-app" element={
             <MainLayout>
-              <PGManagementApp />
+              <Suspense fallback={<PageLoader />}>
+
+                <PGManagementApp />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/pg-management-software" element={
             <MainLayout>
-              <PGManagementApp />
+              <Suspense fallback={<PageLoader />}>
+
+                <PGManagementApp />
+              </Suspense>
             </MainLayout>
           } />
           <Route path="/pg-app" element={
             <MainLayout>
-              <PGManagementApp />
+              <Suspense fallback={<PageLoader />}>
+
+                <PGManagementApp />
+              </Suspense>
             </MainLayout>
           } />
 
           {/* Tenant pages without header/footer */}
           <Route path="/tenant-login" element={
             <TenantLayout>
-              <TenantLogin />
+              <Suspense fallback={<PageLoader />}>
+
+                <TenantLogin />
+              </Suspense>
             </TenantLayout>
           } />
           <Route path="/tenant-dashboard" element={
             <TenantLayout>
-              <TenantDashboard />
+              <Suspense fallback={<PageLoader />}>
+
+                <TenantDashboard />
+              </Suspense>
             </TenantLayout>
           } />
 
           {/* 404 fallback */}
           <Route path="*" element={
             <MainLayout>
-              <NotFound />
+              <Suspense fallback={<PageLoader />}>
+
+                <NotFound />
+              </Suspense>
             </MainLayout>
           } />
         </Routes>
