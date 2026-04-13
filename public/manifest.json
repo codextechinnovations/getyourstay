@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GetYourStay",
+  "name": "GetYourStay - Best PG in Bangalore",
+  "description": "Find verified PG accommodations in Bangalore. Male PG, Female PG, Co-living spaces with WiFi, food & modern amenities.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,10 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0f2744",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-IN",
+  "categories": ["lifestyle", "travel"]
 }

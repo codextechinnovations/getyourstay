@@ -1,3 +1,127 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt for GetYourStay
+# https://www.getyourstay.in
+# India's #1 Platform for PG Accommodation
+
+# -----------------------------------------------------------------------------
+# User Agents
+# -----------------------------------------------------------------------------
 User-agent: *
-Disallow:
+Allow: /
+
+# Specific allowances for major crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# -----------------------------------------------------------------------------
+# Crawl Directives
+# -----------------------------------------------------------------------------
+# Sitemap location
+Sitemap: https://www.getyourstay.in/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# -----------------------------------------------------------------------------
+# Disallow Admin and Private Areas
+# -----------------------------------------------------------------------------
+Disallow: /admin/
+Disallow: /api/
+Disallow: /api-docs/
+Disallow: /dashboard/
+Disallow: /tenant-dashboard/
+Disallow: /owner-dashboard/
+Disallow: /settings/
+
+# -----------------------------------------------------------------------------
+# Block Sensitive Data
+# -----------------------------------------------------------------------------
+Disallow: /api/v1/users
+Disallow: /api/v1/auth
+Disallow: /api/v1/payments
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /user/
+Disallow: /profile/
+Disallow: /*?password=*
+Disallow: /*?token=*
+Disallow: /*?key=*
+
+# -----------------------------------------------------------------------------
+# Block Duplicate/Bot Traps
+# -----------------------------------------------------------------------------
+Disallow: /*/compare/
+Disallow: /*/duplicate/
+Disallow: /*empty*/
+Disallow: /*null*/
+
+# -----------------------------------------------------------------------------
+# Allow Search Engines to Crawl Important Pages
+# -----------------------------------------------------------------------------
+Allow: /about
+Allow: /contact
+Allow: /terms
+Allow: /privacy
+Allow: /tenant-login
+Allow: /hotels
+Allow: /flats
+Allow: /list-your-pg
+Allow: /pg-management-app
+Allow: /sitemap.xml
+
+# -----------------------------------------------------------------------------
+# Crawl Priority Pages (Help crawlers understand site structure)
+# -----------------------------------------------------------------------------
+# Primary landing pages
+Allow: /
+
+# Area-specific landing pages (if implemented)
+Allow: /pg-in-bangalore
+Allow: /pg-in-hyderabad
+Allow: /pg-in-chennai
+Allow: /pg-in-pune
+
+# -----------------------------------------------------------------------------
+# Host
+# -----------------------------------------------------------------------------
+Host: https://www.getyourstay.in
+
+# -----------------------------------------------------------------------------
+# Clean Parameters (Help avoid duplicate content issues)
+# -----------------------------------------------------------------------------
+# Allow crawlers to crawl but suggest not to track these tracking parameters
+Allow: /*?utm_source=*
+Allow: /*?utm_medium=*
+Allow: /*?utm_campaign=*
+
+# Block session IDs and tracking parameters
+Disallow: /*;jsessionid=*
+Disallow: /*?sessionid=*
+Disallow: /*?ref=*
+
+# -----------------------------------------------------------------------------
+# Sitemap References
+# -----------------------------------------------------------------------------
+# Primary sitemap
+Sitemap: https://www.getyourstay.in/sitemap.xml
+
+# Mobile sitemap (if separate)
+# Sitemap: https://www.getyourstay.in/sitemap-mobile.xml
+
+# -----------------------------------------------------------------------------
+# End of robots.txt
+# -----------------------------------------------------------------------------
