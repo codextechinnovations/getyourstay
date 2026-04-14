@@ -151,10 +151,10 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="2.5"/>
-        <path d="M30 30L40 40" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-        <circle cx="20" cy="20" r="8" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4"/>
-        <circle cx="20" cy="20" r="3" fill="currentColor"/>
+        <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="2.5" />
+        <path d="M30 30L40 40" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="20" cy="20" r="8" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+        <circle cx="20" cy="20" r="3" fill="currentColor" />
       </svg>
     ),
     title: "Research Before You Visit",
@@ -163,11 +163,11 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="14" width="36" height="24" rx="4" stroke="currentColor" strokeWidth="2.5"/>
-        <path d="M6 22H42" stroke="currentColor" strokeWidth="2.5"/>
-        <circle cx="16" cy="30" r="3" stroke="currentColor" strokeWidth="2"/>
-        <path d="M26 30H38" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-        <path d="M34 10L38 14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+        <rect x="6" y="14" width="36" height="24" rx="4" stroke="currentColor" strokeWidth="2.5" />
+        <path d="M6 22H42" stroke="currentColor" strokeWidth="2.5" />
+        <circle cx="16" cy="30" r="3" stroke="currentColor" strokeWidth="2" />
+        <path d="M26 30H38" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M34 10L38 14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
     ),
     title: "Understand the Total Cost",
@@ -176,10 +176,10 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 42V20L24 8L40 20V42H30V30H18V42H8Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <rect x="20" y="34" width="8" height="8" stroke="currentColor" strokeWidth="2"/>
-        <circle cx="36" cy="14" r="8" stroke="currentColor" strokeWidth="2.5"/>
-        <path d="M36 10V18M32 14H40" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M8 42V20L24 8L40 20V42H30V30H18V42H8Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="20" y="34" width="8" height="8" stroke="currentColor" strokeWidth="2" />
+        <circle cx="36" cy="14" r="8" stroke="currentColor" strokeWidth="2.5" />
+        <path d="M36 10V18M32 14H40" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
     title: "Visit During Different Times",
@@ -188,10 +188,10 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="16" cy="16" r="8" stroke="currentColor" strokeWidth="2.5"/>
-        <circle cx="32" cy="16" r="8" stroke="currentColor" strokeWidth="2.5"/>
-        <circle cx="24" cy="32" r="8" stroke="currentColor" strokeWidth="2.5"/>
-        <path d="M16 16L24 32M32 16L24 32M16 16H32" stroke="currentColor" strokeWidth="2"/>
+        <circle cx="16" cy="16" r="8" stroke="currentColor" strokeWidth="2.5" />
+        <circle cx="32" cy="16" r="8" stroke="currentColor" strokeWidth="2.5" />
+        <circle cx="24" cy="32" r="8" stroke="currentColor" strokeWidth="2.5" />
+        <path d="M16 16L24 32M32 16L24 32M16 16H32" stroke="currentColor" strokeWidth="2" />
       </svg>
     ),
     title: "Talk to Current Tenants",
@@ -200,10 +200,10 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="8" y="6" width="32" height="36" rx="4" stroke="currentColor" strokeWidth="2.5"/>
-        <path d="M16 18H32M16 24H28M16 30H24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-        <circle cx="36" cy="36" r="8" fill="white" stroke="currentColor" strokeWidth="2.5"/>
-        <path d="M33 36L35 38L39 34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <rect x="8" y="6" width="32" height="36" rx="4" stroke="currentColor" strokeWidth="2.5" />
+        <path d="M16 18H32M16 24H28M16 30H24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="36" cy="36" r="8" fill="white" stroke="currentColor" strokeWidth="2.5" />
+        <path d="M33 36L35 38L39 34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     title: "Get Everything in Writing",
@@ -212,9 +212,9 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 6L28 14H36L30 20L32 28L24 24L16 28L18 20L12 14H20L24 6Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="24" cy="36" r="8" stroke="currentColor" strokeWidth="2.5"/>
-        <path d="M24 32V40M20 36H28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+        <path d="M24 6L28 14H36L30 20L32 28L24 24L16 28L18 20L12 14H20L24 6Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="24" cy="36" r="8" stroke="currentColor" strokeWidth="2.5" />
+        <path d="M24 32V40M20 36H28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
     ),
     title: "Check Safety Features",
@@ -261,7 +261,7 @@ const normalizePG = (pg) => ({
 const Home = () => {
   const [selectedPG, setSelectedPG] = useState(null);
   const [detailPG, setDetailPG] = useState(null);
-  const [priceRange, setPriceRange] = useState([3000, 20000]);
+  const [priceRange, setPriceRange] = useState([0, 20000]);
   const [selectedAreas, setSelectedAreas] = useState([]);
   const [selectedGender, setSelectedGender] = useState('all');
   const [selectedRentalType, setSelectedRentalType] = useState('all');
@@ -465,7 +465,7 @@ const Home = () => {
       if (scriptToRemove) scriptToRemove.remove();
     };
   }, []);
-
+  const verifiedCount = pgs.filter(pg => pg.isVerified).length;
   return (
     <div className="app">
       {/* Hero Section */}
@@ -527,15 +527,15 @@ const Home = () => {
 
           <div className="hero-stats">
             <div className="stat">
-              <span className="stat-number">{pgs.length}</span>
+              <span className="stat-number">{verifiedCount}</span>
               <span className="stat-label">Verified PGs</span>
             </div>
             <div className="stat">
-              <span className="stat-number">10K+</span>
+              <span className="stat-number">2K+</span>
               <span className="stat-label">Happy Tenants</span>
             </div>
             <div className="stat">
-              <span className="stat-number">50+</span>
+              <span className="stat-number">{availableAreas.length}</span>
               <span className="stat-label">Areas Covered</span>
             </div>
           </div>
@@ -583,8 +583,8 @@ const Home = () => {
               <div className="tc-feature">
                 <div className="tc-feature-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    <polyline points="9,12 11,14 15,10"/>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <polyline points="9,12 11,14 15,10" />
                   </svg>
                 </div>
                 <span>Verified Listings</span>
@@ -592,8 +592,8 @@ const Home = () => {
               <div className="tc-feature">
                 <div className="tc-feature-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                    <path d="M7 11V7a5 5 0 0110 0v4"/>
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
                   </svg>
                 </div>
                 <span>Secure Payments</span>
@@ -601,8 +601,8 @@ const Home = () => {
               <div className="tc-feature">
                 <div className="tc-feature-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12,6 12,12 16,14"/>
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12,6 12,12 16,14" />
                   </svg>
                 </div>
                 <span>24/7 Support</span>
@@ -610,8 +610,8 @@ const Home = () => {
               <div className="tc-feature">
                 <div className="tc-feature-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
                   </svg>
                 </div>
                 <span>Transparent Process</span>
@@ -629,7 +629,6 @@ const Home = () => {
               <h2>📍 PGs Near You</h2>
               <p>Based on your current location</p>
             </div>
-            <Link to="/" className="view-all-link">View All →</Link>
           </div>
           <div className="nearby-cards">
             {nearbyPGs.filter(Boolean).map((pg) => (
@@ -654,7 +653,7 @@ const Home = () => {
                     <h3>{pg.name || 'PG Accommodation'}</h3>
                     <div className="nearby-rating">
                       <span className="star">★</span>
-                      <span>{pg.rating?.toFixed(1) || '4.0'}</span>
+                      <span>{pg.rating?.toFixed(1) || '0'}</span>
                     </div>
                   </div>
                   <p className="nearby-location">{pg.area || 'Bangalore'}</p>
@@ -667,10 +666,13 @@ const Home = () => {
                     )}
                   </div>
                   <div className="nearby-price-row">
-                    <div className="nearby-price">
-                      <span className="price">₹{(pg.longTermRent?.single || pg.shortTermRent?.single || pg.price || 0).toLocaleString()}</span>
-                      <span className="period">{pg.rentalType === 'short_term' ? '/day' : '/month'}</span>
-                    </div>
+                    {pg.isVerified && (
+                      <div className="nearby-price">
+                        <span className="price">₹{(pg.longTermRent?.single || pg.shortTermRent?.single || pg.price || 0).toLocaleString()}</span>
+                        <span className="period">{pg.rentalType === 'short_term' ? '/day' : '/month'}</span>
+                      </div>
+                    )}
+
                     <div className="nearby-beds available">Available</div>
                   </div>
                   <div className="nearby-actions">
@@ -704,35 +706,8 @@ const Home = () => {
 
           <div className="header-controls">
 
-            <div className="sort-dropdown">
-              <label>Sort by:</label>
-              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                <option value="recommended">Recommended</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="rating">Highest Rated</option>
-                <option value="reviews">Most Reviews</option>
-                {userLocation && <option value="nearest">Nearest</option>}
-              </select>
-            </div>
-
-            <div className="view-toggle">
-              <button className={viewMode === 'split' ? 'active' : ''} onClick={() => setViewMode('split')}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <rect x="3" y="3" width="7" height="18" rx="1" stroke="currentColor" strokeWidth="2" />
-                  <rect x="14" y="3" width="7" height="18" rx="1" stroke="currentColor" strokeWidth="2" />
-                </svg>
-                <span className="btn-text">Split</span>
-              </button>
-              <button className={viewMode === 'list' ? 'active' : ''} onClick={() => setViewMode('list')}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <rect x="3" y="4" width="18" height="4" rx="1" stroke="currentColor" strokeWidth="2" />
-                  <rect x="3" y="10" width="18" height="4" rx="1" stroke="currentColor" strokeWidth="2" />
-                  <rect x="3" y="16" width="18" height="4" rx="1" stroke="currentColor" strokeWidth="2" />
-                </svg>
-                <span className="btn-text">List</span>
-              </button>
-            </div>
+           
+           
           </div>
         </div>
 
@@ -785,6 +760,45 @@ const Home = () => {
                     <button onClick={handleClearFilters}>Clear All Filters</button>
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Pagination */}
+            {pagination.pages > 1 && (
+              <div className="pagination">
+                <button
+                  className="pagination-btn"
+                  onClick={() => fetchPGs(pagination.page - 1)}
+                  disabled={pagination.page <= 1}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                  Previous
+                </button>
+                
+                <div className="pagination-pages">
+                  {Array.from({ length: pagination.pages }, (_, i) => i + 1).map((pageNum) => (
+                    <button
+                      key={pageNum}
+                      className={`pagination-page ${pagination.page === pageNum ? 'active' : ''}`}
+                      onClick={() => fetchPGs(pageNum)}
+                    >
+                      {pageNum}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  className="pagination-btn"
+                  onClick={() => fetchPGs(pagination.page + 1)}
+                  disabled={pagination.page >= pagination.pages}
+                >
+                  Next
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
               </div>
             )}
           </div>
@@ -894,7 +908,7 @@ const Home = () => {
 
             <div className="vp-stats-row">
               <div className="vp-stat">
-                <span className="vp-stat-number">10,000+</span>
+                <span className="vp-stat-number">2,000+</span>
                 <span className="vp-stat-label">Happy Tenants</span>
               </div>
               <div className="vp-stat">
@@ -1032,8 +1046,8 @@ const Home = () => {
                   <div className="area-card-inner">
                     <div className="area-icon-wrapper">
                       <svg className="area-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" fill="#FF6B2C"/>
-                        <circle cx="12" cy="10" r="3" fill="white"/>
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" fill="#FF6B2C" />
+                        <circle cx="12" cy="10" r="3" fill="white" />
                       </svg>
                     </div>
                     <div className="area-content">
@@ -1050,7 +1064,7 @@ const Home = () => {
                     </div>
                     <div className="area-arrow">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                        <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
                     </div>
                   </div>
@@ -1150,14 +1164,14 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="maleGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#3B82F6"/>
-                        <stop offset="100%" stopColor="#1D4ED8"/>
+                        <stop offset="0%" stopColor="#3B82F6" />
+                        <stop offset="100%" stopColor="#1D4ED8" />
                       </linearGradient>
                     </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#maleGrad)"/>
-                    <circle cx="32" cy="24" r="10" fill="white" fillOpacity="0.9"/>
-                    <path d="M16 52C16 40.954 24.954 32 32 32C39.046 32 48 40.954 48 52" stroke="white" strokeWidth="4" strokeLinecap="round"/>
-                    <circle cx="32" cy="24" r="5" fill="#1D4ED8"/>
+                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#maleGrad)" />
+                    <circle cx="32" cy="24" r="10" fill="white" fillOpacity="0.9" />
+                    <path d="M16 52C16 40.954 24.954 32 32 32C39.046 32 48 40.954 48 52" stroke="white" strokeWidth="4" strokeLinecap="round" />
+                    <circle cx="32" cy="24" r="5" fill="#1D4ED8" />
                   </svg>
                 </span>
                 <span className="type-name">Boys PG</span>
@@ -1168,15 +1182,15 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="femaleGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#EC4899"/>
-                        <stop offset="100%" stopColor="#BE185D"/>
+                        <stop offset="0%" stopColor="#EC4899" />
+                        <stop offset="100%" stopColor="#BE185D" />
                       </linearGradient>
                     </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#femaleGrad)"/>
-                    <circle cx="32" cy="22" r="10" fill="white" fillOpacity="0.9"/>
-                    <path d="M20 54C20 41.85 26.85 32 32 32C37.15 32 44 41.85 44 54" stroke="white" strokeWidth="4" strokeLinecap="round"/>
-                    <path d="M28 20C28 20 30 16 32 16C34 16 36 20 36 20" stroke="#BE185D" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="32" cy="22" r="4" fill="#BE185D"/>
+                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#femaleGrad)" />
+                    <circle cx="32" cy="22" r="10" fill="white" fillOpacity="0.9" />
+                    <path d="M20 54C20 41.85 26.85 32 32 32C37.15 32 44 41.85 44 54" stroke="white" strokeWidth="4" strokeLinecap="round" />
+                    <path d="M28 20C28 20 30 16 32 16C34 16 36 20 36 20" stroke="#BE185D" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="32" cy="22" r="4" fill="#BE185D" />
                   </svg>
                 </span>
                 <span className="type-name">Girls PG</span>
@@ -1187,15 +1201,15 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="coliveGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#8B5CF6"/>
-                        <stop offset="100%" stopColor="#6D28D9"/>
+                        <stop offset="0%" stopColor="#8B5CF6" />
+                        <stop offset="100%" stopColor="#6D28D9" />
                       </linearGradient>
                     </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#coliveGrad)"/>
-                    <circle cx="22" cy="26" r="6" fill="white" fillOpacity="0.9"/>
-                    <circle cx="42" cy="26" r="6" fill="white" fillOpacity="0.9"/>
-                    <circle cx="32" cy="42" r="6" fill="white" fillOpacity="0.9"/>
-                    <path d="M22 26L32 42M42 26L32 42M22 26H42" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#coliveGrad)" />
+                    <circle cx="22" cy="26" r="6" fill="white" fillOpacity="0.9" />
+                    <circle cx="42" cy="26" r="6" fill="white" fillOpacity="0.9" />
+                    <circle cx="32" cy="42" r="6" fill="white" fillOpacity="0.9" />
+                    <path d="M22 26L32 42M42 26L32 42M22 26H42" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
                   </svg>
                 </span>
                 <span className="type-name">Co-living</span>
@@ -1206,15 +1220,15 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="acGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#10B981"/>
-                        <stop offset="100%" stopColor="#059669"/>
+                        <stop offset="0%" stopColor="#10B981" />
+                        <stop offset="100%" stopColor="#059669" />
                       </linearGradient>
                     </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#acGrad)"/>
-                    <rect x="12" y="20" width="40" height="24" rx="4" fill="white" fillOpacity="0.9"/>
-                    <path d="M18 28H46M18 32H38M18 36H30" stroke="#059669" strokeWidth="3" strokeLinecap="round"/>
-                    <path d="M48 12L52 16M52 12L48 16" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
-                    <path d="M54 20L58 24M58 20L54 24" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#acGrad)" />
+                    <rect x="12" y="20" width="40" height="24" rx="4" fill="white" fillOpacity="0.9" />
+                    <path d="M18 28H46M18 32H38M18 36H30" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+                    <path d="M48 12L52 16M52 12L48 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M54 20L58 24M58 20L54 24" stroke="white" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </span>
                 <span className="type-name">AC PG</span>
@@ -1225,14 +1239,14 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="wifiGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#F97316"/>
-                        <stop offset="100%" stopColor="#EA580C"/>
+                        <stop offset="0%" stopColor="#F97316" />
+                        <stop offset="100%" stopColor="#EA580C" />
                       </linearGradient>
                     </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#wifiGrad)"/>
-                    <path d="M32 20C40.837 20 48 27.163 48 36H16C16 27.163 23.163 20 32 20Z" fill="white" fillOpacity="0.9"/>
-                    <path d="M22 36C22 42.627 27.373 48 32 48C36.627 48 42 42.627 42 36" stroke="white" strokeWidth="4" strokeLinecap="round"/>
-                    <circle cx="32" cy="54" r="4" fill="white"/>
+                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#wifiGrad)" />
+                    <path d="M32 20C40.837 20 48 27.163 48 36H16C16 27.163 23.163 20 32 20Z" fill="white" fillOpacity="0.9" />
+                    <path d="M22 36C22 42.627 27.373 48 32 48C36.627 48 42 42.627 42 36" stroke="white" strokeWidth="4" strokeLinecap="round" />
+                    <circle cx="32" cy="54" r="4" fill="white" />
                   </svg>
                 </span>
                 <span className="type-name">WiFi PG</span>
@@ -1243,16 +1257,16 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="foodGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#F59E0B"/>
-                        <stop offset="100%" stopColor="#D97706"/>
+                        <stop offset="0%" stopColor="#F59E0B" />
+                        <stop offset="100%" stopColor="#D97706" />
                       </linearGradient>
                     </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#foodGrad)"/>
-                    <ellipse cx="32" cy="42" rx="18" ry="8" fill="white" fillOpacity="0.9"/>
-                    <ellipse cx="32" cy="40" rx="18" ry="8" fill="white"/>
-                    <path d="M14 42V36C14 30.477 22.059 26 32 26C41.941 26 50 30.477 50 36V42" stroke="white" strokeWidth="3"/>
-                    <rect x="28" y="12" width="8" height="14" rx="2" fill="white"/>
-                    <path d="M24 12H40V16H24V12Z" fill="white" fillOpacity="0.8"/>
+                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#foodGrad)" />
+                    <ellipse cx="32" cy="42" rx="18" ry="8" fill="white" fillOpacity="0.9" />
+                    <ellipse cx="32" cy="40" rx="18" ry="8" fill="white" />
+                    <path d="M14 42V36C14 30.477 22.059 26 32 26C41.941 26 50 30.477 50 36V42" stroke="white" strokeWidth="3" />
+                    <rect x="28" y="12" width="8" height="14" rx="2" fill="white" />
+                    <path d="M24 12H40V16H24V12Z" fill="white" fillOpacity="0.8" />
                   </svg>
                 </span>
                 <span className="type-name">PG with Food</span>

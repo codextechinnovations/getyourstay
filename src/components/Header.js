@@ -225,7 +225,7 @@ const Header = ({ onLogin }) => {
           alignItems: 'center'
         }}>
           {/* Logo */}
-          <Link to="/" style={{ textDecoration: 'none' }}>
+          <Link to="/" style={{ textDecoration: 'none' }} className="header-logo">
             <Logo size="large" light />
           </Link>
 

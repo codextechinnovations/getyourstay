@@ -17,6 +17,8 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
   });
   const [submitted, setSubmitted] = useState(false);
 
+  const isVerified = pg.isVerified !== false;
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -119,10 +121,104 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
           boxShadow: '0 -10px 40px rgba(0,0,0,0.3)',
           animation: 'slideUp 0.3s ease',
           display: 'flex',
-          flexDirection: 'column'
+          flexDirection: 'column',
+          position: 'relative'
         }}
         onClick={e => e.stopPropagation()}
       >
+        {/* Unverified Overlay */}
+        {!isVerified && (
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(255,255,255,0.95)',
+            zIndex: 100,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '40px 20px',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              width: '80px',
+              height: '80px',
+              borderRadius: '50%',
+              background: '#fee2e2',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '20px'
+            }}>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+            </div>
+            <h2 style={{
+              fontSize: '22px',
+              fontWeight: '700',
+              color: '#dc2626',
+              marginBottom: '10px'
+            }}>
+              Not Verified Property
+            </h2>
+            <p style={{
+              fontSize: '14px',
+              color: '#64748b',
+              maxWidth: '300px',
+              lineHeight: '1.6'
+            }}>
+              This PG listing has not been verified by our team. Only basic information is shown below.
+            </p>
+            {pg.images && pg.images.length > 0 && (
+              <div style={{
+                marginTop: '25px',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                width: '100%',
+                maxWidth: '300px'
+              }}>
+                <img
+                  src={pg.images[0]}
+                  alt={pg.name}
+                  style={{
+                    width: '100%',
+                    height: '180px',
+                    objectFit: 'cover'
+                  }}
+                />
+              </div>
+            )}
+            <h3 style={{
+              marginTop: '20px',
+              fontSize: '18px',
+              fontWeight: '700',
+              color: '#0D1117'
+            }}>
+              {pg.name}
+            </h3>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              color: '#64748b',
+              fontSize: '13px',
+              marginTop: '8px'
+            }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              {pg.area}, {pg.city}
+            </div>
+          </div>
+        )}
+
         {/* Header with Close Button */}
         <div style={{
           position: 'absolute',
@@ -157,7 +253,8 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
         <div style={{
           position: 'relative',
           height: '220px',
-          flexShrink: 0
+          flexShrink: 0,
+          filter: isVerified ? 'none' : 'blur(8px)'
         }}>
           <img
             src={pg.images[currentImage]}
@@ -266,13 +363,13 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
         </div>
 
         {/* Content */}
-        <div style={{
+        <div className="pg-detail-content" style={{
           padding: '20px',
           overflowY: 'auto',
           flex: 1
         }}>
           {/* Title and Price Row */}
-          <div style={{
+          <div className="title-price-row" style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-start',
@@ -280,7 +377,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
             gap: '10px'
           }}>
             <div style={{ flex: 1 }}>
-              <h2 style={{
+              <h2 className="pg-detail-title" style={{
                 margin: '0 0 6px',
                 fontSize: '20px',
                 fontWeight: '700',
@@ -312,7 +409,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
                 marginBottom: '4px'
               }}>
                 <span style={{ color: '#f59e0b', fontSize: '14px' }}>★</span>
-                <span style={{ fontSize: '16px', fontWeight: '700', color: PRIMARY_GRADIENT[0] }}>{pg.rating}</span>
+                <span className="pg-detail-price" style={{ fontSize: '16px', fontWeight: '700', color: PRIMARY_GRADIENT[0] }}>{pg.rating}</span>
                 <span style={{ color: '#999', fontSize: '11px' }}>({pg.reviews})</span>
               </div>
               {(rentalType === 'long_term' || rentalType === 'both') && (
@@ -321,7 +418,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
                 </div>
               )}
               {(rentalType === 'long_term' || rentalType === 'both') && (
-                <div style={{
+                <div className="pg-detail-price" style={{
                   fontSize: '18px',
                   fontWeight: '700',
                   color: PRIMARY_GRADIENT[1]
@@ -442,13 +539,14 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
             }}>
               Amenities & Facilities
             </h3>
-            <div style={{
+            <div className="amenities-grid" style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
               gap: '8px'
             }}>
               {pg.amenities.map((amenity, idx) => (
                 <div
+                  className="amenity-item"
                   key={idx}
                   style={{
                     display: 'flex',
@@ -576,7 +674,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
         }}>
 
 
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div className="cta-buttons" style={{ display: 'flex', gap: '10px' }}>
             <a
               href={`tel:${pg.phone || pg.ownerPhone || '+919876543210'}`}
               style={{
@@ -828,47 +926,101 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
         )}
       </div>
 
-      <style>{`
-        @keyframes slideUp {
-          from {
-            opacity: 0;
-            transform: translateY(100%);
+        <style>{`
+          @keyframes slideUp {
+            from {
+              opacity: 0;
+              transform: translateY(100%);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
-          to {
-            opacity: 1;
-            transform: translateY(0);
+          @keyframes modalSlideIn {
+            from {
+              opacity: 0;
+              transform: scale(0.95);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1);
+            }
           }
-        }
-        @keyframes modalSlideIn {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
+          .pg-detail-overlay .pg-detail-modal {
+            position: relative;
           }
-          to {
-            opacity: 1;
-            transform: scale(1);
+          .pg-detail-overlay .blur-content {
+            filter: blur(8px);
+            pointer-events: none;
+            user-select: none;
           }
-        }
-        @media (min-width: 769px) {
-          .pg-detail-overlay {
-            align-items: center !important;
-            padding: 20px !important;
+          @media (min-width: 769px) {
+            .pg-detail-overlay {
+              align-items: center !important;
+              padding: 20px !important;
+            }
+            .pg-detail-modal {
+              border-radius: 24px !important;
+              max-height: 90vh !important;
+              animation: modalSlideIn 0.3s ease !important;
+            }
+            .detail-nav-btn {
+              display: flex !important;
+            }
           }
-          .pg-detail-modal {
-            border-radius: 24px !important;
-            max-height: 90vh !important;
-            animation: modalSlideIn 0.3s ease !important;
+          @media (max-width: 768px) {
+            .pg-detail-modal {
+              border-radius: 20px 20px 0 0 !important;
+              max-height: 92vh !important;
+            }
+            .detail-nav-btn {
+              display: none !important;
+            }
+            .pg-detail-content {
+              padding: 16px !important;
+            }
+            .pg-detail-title {
+              font-size: 18px !important;
+            }
+            .pg-detail-price {
+              font-size: 16px !important;
+            }
+            .amenities-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .pricing-grid {
+              grid-template-columns: 1fr 1fr !important;
+            }
+            .cta-buttons {
+              flex-direction: column;
+            }
+            .title-price-row {
+              flex-direction: column !important;
+              gap: 12px !important;
+            }
+            .title-price-row > div:first-child {
+              width: 100%;
+            }
+            .title-price-row > div:last-child {
+              width: 100%;
+              text-align: left !important;
+            }
           }
-          .detail-nav-btn {
-            display: flex !important;
+          @media (max-width: 480px) {
+            .amenities-grid {
+              grid-template-columns: 1fr 1fr !important;
+              gap: 6px !important;
+            }
+            .amenity-item {
+              padding: 6px 8px !important;
+              font-size: 10px !important;
+            }
+            .pricing-grid {
+              grid-template-columns: 1fr !important;
+            }
           }
-        }
-        @media (max-width: 768px) {
-          .detail-nav-btn {
-            display: none !important;
-          }
-        }
-      `}</style>
+        `}</style>
     </div>
   );
 };

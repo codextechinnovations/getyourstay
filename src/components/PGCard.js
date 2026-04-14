@@ -50,7 +50,10 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
   const handleNavigate = (e) => {
     e.stopPropagation();
     const address = encodeURIComponent(`${safePG.area}, ${safePG.city}`);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
+    window.open(
+      `https://www.google.com/maps/dir/?api=1&destination=${safePG.lat}%2C${safePG.lng}`,
+      '_blank'
+    );
   };
 
   const handleCall = (e) => {
@@ -147,26 +150,51 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
         )}
 
         {/* Verified Badge */}
-        <div style={{
-          position: 'absolute',
-          top: '8px',
-          right: '8px',
-          background: 'rgba(255,255,255,0.95)',
-          color: '#059669',
-          padding: '4px 8px',
-          borderRadius: '999px',
-          fontSize: '10px',
-          fontWeight: '700',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '3px',
-          fontFamily: "'Inter', sans-serif"
-        }}>
-          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="3">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          Verified
-        </div>
+        {safePG.isVerified ? (
+          <div style={{
+            position: 'absolute',
+            top: '8px',
+            right: '8px',
+            background: 'rgba(255,255,255,0.95)',
+            color: '#059669',
+            padding: '4px 8px',
+            borderRadius: '999px',
+            fontSize: '10px',
+            fontWeight: '700',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '3px',
+            fontFamily: "'Inter', sans-serif"
+          }}>
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="3">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Verified
+          </div>
+        ) : (
+          <div style={{
+            position: 'absolute',
+            top: '8px',
+            right: '8px',
+            background: '#fee2e2',
+            color: '#dc2626',
+            padding: '4px 8px',
+            borderRadius: '999px',
+            fontSize: '10px',
+            fontWeight: '700',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '3px',
+            fontFamily: "'Inter', sans-serif"
+          }}>
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            Not Verified
+          </div>
+        )}
 
         {/* Rating Badge */}
 
@@ -213,24 +241,26 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
             }}>
               {safePG.name}
             </h3>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{
-                fontSize: '18px',
-                fontWeight: '800',
-                color: '#FF6B2C',
-                fontFamily: "'Inter', sans-serif"
-              }}>
-                ₹{safePG.price.toLocaleString()}
+            {safePG.isVerified && (
+              <div style={{ textAlign: 'right' }}>
+                <div style={{
+                  fontSize: '18px',
+                  fontWeight: '800',
+                  color: '#FF6B2C',
+                  fontFamily: "'Inter', sans-serif"
+                }}>
+                  ₹{safePG.price.toLocaleString()}
+                </div>
+                <div style={{
+                  fontSize: '10px',
+                  color: '#94A3B8',
+                  fontWeight: '500',
+                  fontFamily: "'Inter', sans-serif"
+                }}>
+                  per month
+                </div>
               </div>
-              <div style={{
-                fontSize: '10px',
-                color: '#94A3B8',
-                fontWeight: '500',
-                fontFamily: "'Inter', sans-serif"
-              }}>
-                per month
-              </div>
-            </div>
+            )}
           </div>
 
           {/* Location */}
@@ -255,6 +285,7 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
               </svg>
               {safePG.area}, {safePG.city}
             </div>
+            {safePG.isVerified && (
             <button
               onClick={handleNavigate}
               style={{
@@ -278,6 +309,7 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
               </svg>
               Directions
             </button>
+            )}
           </div>
 
           {/* Amenities */}
@@ -356,12 +388,12 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
           justifyContent: 'space-between',
           alignItems: 'center'
         }}>
-          
 
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' , justifyContent:'space-between', width:'100%'}}>
+
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
 
             <div style={{
-             
+
               background: 'rgba(255,255,255,0.95)',
               padding: '4px 8px',
               borderRadius: '999px',
