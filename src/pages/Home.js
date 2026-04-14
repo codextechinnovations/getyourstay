@@ -1727,6 +1727,10 @@ const Home = () => {
           .tc-feature-icon { width: 56px; height: 56px; }
           .tc-feature-icon svg { width: 24px; height: 24px; }
           .tc-feature span { font-size: 13px; }
+          .search-container { flex-direction: column; gap: 10px; padding: 0 15px; }
+          .search-input-wrapper { padding: 0 12px; }
+          .search-input { padding: 12px 0; font-size: 13px; }
+          .search-btn { padding: 12px 20px; width: 100%; }
         }
 
         @media (max-width: 480px) {
@@ -1738,6 +1742,12 @@ const Home = () => {
           .tc-feature-icon { width: 52px; height: 52px; border-radius: 16px; }
           .tc-feature-icon svg { width: 22px; height: 22px; }
           .tc-feature span { font-size: 12px; }
+          .hero h1 { font-size: 24px; }
+          .hero p { font-size: 14px; }
+          .search-container { margin-bottom: 20px; }
+          .search-input-wrapper { gap: 8px; }
+          .search-input { padding: 10px 0; font-size: 12px; }
+          .search-btn { padding: 10px 16px; font-size: 13px; }
         }
 
         /* SEO Content Sections */

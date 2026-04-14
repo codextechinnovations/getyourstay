@@ -593,7 +593,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
                   <span style={{ fontSize: '14px' }}>📅</span>
                   <span style={{ fontSize: '12px', fontWeight: '600', color: '#4338ca' }}>Monthly Rent</span>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+                <div className="pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                   <div style={{ background: 'white', padding: '10px', borderRadius: '8px', textAlign: 'center' }}>
                     <div style={{ fontSize: '10px', color: '#64748b', marginBottom: '4px' }}>Single</div>
                     <div style={{ fontSize: '14px', fontWeight: '700', color: PRIMARY_GRADIENT[0] }}>
@@ -635,7 +635,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
                   <span style={{ fontSize: '14px' }}>🌙</span>
                   <span style={{ fontSize: '12px', fontWeight: '600', color: '#15803d' }}>Daily Rent</span>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+                <div className="pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                   <div style={{ background: 'white', padding: '10px', borderRadius: '8px', textAlign: 'center' }}>
                     <div style={{ fontSize: '10px', color: '#64748b', marginBottom: '4px' }}>Single</div>
                     <div style={{ fontSize: '14px', fontWeight: '700', color: '#16a34a' }}>
