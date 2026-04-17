@@ -706,8 +706,8 @@ const Home = () => {
 
           <div className="header-controls">
 
-           
-           
+
+
           </div>
         </div>
 
@@ -766,6 +766,7 @@ const Home = () => {
             {/* Pagination */}
             {pagination.pages > 1 && (
               <div className="pagination">
+
                 <button
                   className="pagination-btn"
                   onClick={() => fetchPGs(pagination.page - 1)}
@@ -774,19 +775,21 @@ const Home = () => {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M15 18l-6-6 6-6" />
                   </svg>
-                  Previous
+                  <span className="btn-text">Previous</span>
                 </button>
-                
-                <div className="pagination-pages">
-                  {Array.from({ length: pagination.pages }, (_, i) => i + 1).map((pageNum) => (
-                    <button
-                      key={pageNum}
-                      className={`pagination-page ${pagination.page === pageNum ? 'active' : ''}`}
-                      onClick={() => fetchPGs(pageNum)}
-                    >
-                      {pageNum}
-                    </button>
-                  ))}
+
+                <div className="pagination-pages-wrapper">
+                  <div className="pagination-pages">
+                    {Array.from({ length: pagination.pages }, (_, i) => i + 1).map((pageNum) => (
+                      <button
+                        key={pageNum}
+                        className={`pagination-page ${pagination.page === pageNum ? 'active' : ''}`}
+                        onClick={() => fetchPGs(pageNum)}
+                      >
+                        {pageNum}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <button
@@ -794,11 +797,12 @@ const Home = () => {
                   onClick={() => fetchPGs(pagination.page + 1)}
                   disabled={pagination.page >= pagination.pages}
                 >
-                  Next
+                  <span className="btn-text">Next</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M9 18l6-6-6-6" />
                   </svg>
                 </button>
+
               </div>
             )}
           </div>

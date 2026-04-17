@@ -811,3 +811,72 @@ input[type="range"]::-moz-range-thumb {
     font-size: 16px !important;
   }
 }
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+/* Buttons */
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Page numbers wrapper (important for mobile scroll) */
+.pagination-pages-wrapper {
+  flex: 1;
+  overflow-x: auto;
+}
+
+/* Page numbers */
+.pagination-pages {
+  display: flex;
+  gap: 6px;
+  min-width: max-content;
+}
+
+/* Individual page */
+.pagination-page {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.pagination-page.active {
+  background: #000;
+  color: #fff;
+}
+
+/* Hide scrollbar (optional) */
+.pagination-pages-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------------- MOBILE ---------------- */
+@media (max-width: 600px) {
+  
+  .pagination {
+    gap: 5px;
+  }
+
+  .pagination-btn {
+    padding: 6px;
+  }
+
+  /* Hide text, keep only arrows */
+  .btn-text {
+    display: none;
+  }
+
+  .pagination-page {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PRIMARY_GRADIENT = ["#1a1a4e", "#2d2d7e", "#1e3a8a"];
+const PRIMARY_GRADIENT = ["#EA580C", "#F97316", "#FDBA74"];
 
 const Sidebar = ({ 
   priceRange, 
@@ -415,7 +415,7 @@ const Sidebar = ({
         background: 'white',
         borderRadius: '16px',
         padding: '20px',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+        // boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
         height: 'fit-content',
         position: 'sticky',
         top: '90px'
