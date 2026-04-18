@@ -1,11 +1,12 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import PGCard from '../components/PGCard';
 import PGDetail from '../components/PGDetail';
 import { theme } from '../theme';
 import { pgApi } from '../services/api';
 import '../App.css';
+import AreaPage from './AboutArea';
 
 const HOME_SEO_FAQS = [
   {
@@ -103,7 +104,10 @@ const POPULAR_AREAS = [
     description: "Home to major IT companies like Infosys, Wipro, and TCS. Perfect for tech professionals and students.",
     rentRange: "₹4,000 - ₹12,000",
     highlights: ["Near IT Parks", "Affordable Options", "Good Connectivity"],
-    link: "/?area=Electronic+City"
+    link: "/?area=Electronic+City",
+    pincode: "560100",
+    famousFor: "IT Hub - Home to major tech companies like Infosys, Wipro, TCS, and many startups. Known as the silicon valley of India.",
+    nearbyPlaces: { malls: 3, schools: 8, pubs: 2 }
   },
   {
     name: "HSR Layout",
@@ -111,7 +115,10 @@ const POPULAR_AREAS = [
     description: "Popular residential area with excellent social infrastructure. Great for students and working professionals.",
     rentRange: "₹5,000 - ₹15,000",
     highlights: ["Trendy Area", "Many Restaurants", "Near Colleges"],
-    link: "/?area=HSR+Layout"
+    link: "/?area=HSR+Layout",
+    pincode: "560102",
+    famousFor: "Trendy Residential Area - Known for its vibrant food scene, coworking spaces, and proximity to top colleges like Christ University.",
+    nearbyPlaces: { malls: 5, schools: 12, pubs: 8 }
   },
   {
     name: "Koramangala",
@@ -119,7 +126,10 @@ const POPULAR_AREAS = [
     description: "Premium residential area with premium PGs. Close to major offices and entertainment hubs.",
     rentRange: "₹8,000 - ₹20,000",
     highlights: ["Premium PGs", "Nightlife", "Central Location"],
-    link: "/?area=Koramangala"
+    link: "/?area=Koramangala",
+    pincode: "560034",
+    famousFor: "Premium Lifestyle Hub - Famous for its upscale restaurants, bars, pubs, and being home to major corporate offices.",
+    nearbyPlaces: { malls: 7, schools: 15, pubs: 25 }
   },
   {
     name: "Whitefield",
@@ -127,7 +137,10 @@ const POPULAR_AREAS = [
     description: "IT hub with International Tech Park and many residential options. Growing area with modern infrastructure.",
     rentRange: "₹5,000 - ₹15,000",
     highlights: ["IT Hub", "Modern Infrastructure", "Good Food"],
-    link: "/?area=Whitefield"
+    link: "/?area=Whitefield",
+    pincode: "560066",
+    famousFor: "International Tech Park - Home to IT giants and SEZ zones. Known for modern apartments and excellent connectivity.",
+    nearbyPlaces: { malls: 4, schools: 10, pubs: 6 }
   },
   {
     name: "BTM Layout",
@@ -135,7 +148,10 @@ const POPULAR_AREAS = [
     description: "Budget-friendly area popular among students. Excellent PG options near educational institutions.",
     rentRange: "₹4,000 - ₹8,000",
     highlights: ["Student Friendly", "Budget Options", "Near Bannerghatta Road"],
-    link: "/?area=BTM+Layout"
+    link: "/?area=BTM+Layout",
+    pincode: "560068",
+    famousFor: "Student Paradise - Budget-friendly area with numerous PG options, tuition centers, and Bannerghatta National Park nearby.",
+    nearbyPlaces: { malls: 2, schools: 20, pubs: 4 }
   },
   {
     name: "Marathahalli",
@@ -143,7 +159,10 @@ const POPULAR_AREAS = [
     description: "Well-connected residential area with many PG options. Popular among IT professionals.",
     rentRange: "₹5,000 - ₹12,000",
     highlights: ["Good Connectivity", "Many Amenities", "Vibrant Area"],
-    link: "/?area=Marathahalli"
+    link: "/?area=Marathahalli",
+    pincode: "560037",
+    famousFor: "Tech Corridor - Popular among IT professionals with easy access to Manyata Tech Park and Outer Ring Road.",
+    nearbyPlaces: { malls: 3, schools: 6, pubs: 5 }
   }
 ];
 
@@ -259,6 +278,9 @@ const normalizePG = (pg) => ({
 });
 
 const Home = () => {
+  const [searchParams] = useSearchParams();
+  const selectedArea = searchParams.get('area');
+  
   const [selectedPG, setSelectedPG] = useState(null);
   const [detailPG, setDetailPG] = useState(null);
   const [priceRange, setPriceRange] = useState([0, 20000]);
@@ -277,6 +299,70 @@ const Home = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [pagination, setPagination] = useState({ page: 1, pages: 1, total: 0 });
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Area page state - PGs fetched via URL query param
+  const [areaPagePGs, setAreaPagePGs] = useState([]);
+  const [areaPageLoading, setAreaPageLoading] = useState(false);
+  const [areaPageError, setAreaPageError] = useState(null);
+  const [areaPageGender, setAreaPageGender] = useState('all');
+  const [areaPagePriceRange, setAreaPagePriceRange] = useState([0, 30000]);
+  const [areaPageRentalType, setAreaPageRentalType] = useState('all');
+
+  // Handle area query parameter - show Coming Soon screen
+  const isAreaPage = !!selectedArea;
+  const decodedArea = selectedArea ? decodeURIComponent(selectedArea) : '';
+
+  useEffect(() => {
+    if (selectedArea) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [selectedArea]);
+
+  // Fetch PGs for area page
+  useEffect(() => {
+    if (isAreaPage) {
+      setAreaPageLoading(true);
+      setAreaPageError(null);
+      
+      const fetchAreaPGs = async () => {
+        try {
+          const params = {
+            area: decodedArea,
+            limit: 50,
+            minPrice: areaPagePriceRange[0],
+            maxPrice: areaPagePriceRange[1]
+          };
+          
+          if (areaPageGender !== 'all') {
+            params.gender = areaPageGender;
+          }
+          
+          if (areaPageRentalType !== 'all') {
+            params.rentalType = areaPageRentalType;
+          }
+          
+          const response = await pgApi.getAll(params);
+          
+          let pgList = [];
+          if (response?.success && Array.isArray(response.data)) {
+            pgList = response.data;
+          } else if (Array.isArray(response)) {
+            pgList = response;
+          }
+          
+          const normalizedPGs = pgList.map(normalizePG);
+          setAreaPagePGs(normalizedPGs);
+        } catch (err) {
+          console.log('Error fetching area PGs:', err);
+          setAreaPageError('Failed to load PGs');
+        }
+        
+        setAreaPageLoading(false);
+      };
+      
+      fetchAreaPGs();
+    }
+  }, [selectedArea, decodedArea, areaPageGender, areaPagePriceRange, areaPageRentalType]);
 
   // Fetch PG data and areas on mount
   useEffect(() => {
@@ -466,6 +552,30 @@ const Home = () => {
     };
   }, []);
   const verifiedCount = pgs.filter(pg => pg.isVerified).length;
+  
+  // Show area page with PGs or Coming Soon
+ if (isAreaPage) {
+  return (
+    <AreaPage
+      decodedArea={decodedArea}
+      areaPagePGs={areaPagePGs}
+      areaPageLoading={areaPageLoading}
+      areaPageError={areaPageError}
+      areaPageGender={areaPageGender}
+      setAreaPageGender={setAreaPageGender}
+      areaPagePriceRange={areaPagePriceRange}
+      setAreaPagePriceRange={setAreaPagePriceRange}
+      areaPageRentalType={areaPageRentalType}
+      setAreaPageRentalType={setAreaPageRentalType}
+      availableAreas={availableAreas}
+      selectedPG={selectedPG}
+      setSelectedPG={setSelectedPG}
+      handleViewDetails={handleViewDetails}
+      POPULAR_AREAS={POPULAR_AREAS}
+    />
+  );
+}
+  
   return (
     <div className="app">
       {/* Hero Section */}
