@@ -7,6 +7,7 @@ import { theme } from '../theme';
 import { pgApi } from '../services/api';
 import '../App.css';
 import AreaPage from './AboutArea';
+import { generateTitle } from "../utils/seoTitle";
 
 const HOME_SEO_FAQS = [
   {
@@ -280,7 +281,7 @@ const normalizePG = (pg) => ({
 const Home = () => {
   const [searchParams] = useSearchParams();
   const selectedArea = searchParams.get('area');
-  
+
   const [selectedPG, setSelectedPG] = useState(null);
   const [detailPG, setDetailPG] = useState(null);
   const [priceRange, setPriceRange] = useState([0, 20000]);
@@ -318,12 +319,23 @@ const Home = () => {
     }
   }, [selectedArea]);
 
+  useEffect(() => {
+    document.title = generateTitle({ type: "home" });
+  }, []);
+  useEffect(() => {
+    if (isAreaPage) {
+      document.title = generateTitle({
+        type: "area",
+        area: decodedArea
+      });
+    }
+  }, [decodedArea]);
   // Fetch PGs for area page
   useEffect(() => {
     if (isAreaPage) {
       setAreaPageLoading(true);
       setAreaPageError(null);
-      
+
       const fetchAreaPGs = async () => {
         try {
           const params = {
@@ -332,34 +344,34 @@ const Home = () => {
             minPrice: areaPagePriceRange[0],
             maxPrice: areaPagePriceRange[1]
           };
-          
+
           if (areaPageGender !== 'all') {
             params.gender = areaPageGender;
           }
-          
+
           if (areaPageRentalType !== 'all') {
             params.rentalType = areaPageRentalType;
           }
-          
+
           const response = await pgApi.getAll(params);
-          
+
           let pgList = [];
           if (response?.success && Array.isArray(response.data)) {
             pgList = response.data;
           } else if (Array.isArray(response)) {
             pgList = response;
           }
-          
+
           const normalizedPGs = pgList.map(normalizePG);
           setAreaPagePGs(normalizedPGs);
         } catch (err) {
           console.log('Error fetching area PGs:', err);
           setAreaPageError('Failed to load PGs');
         }
-        
+
         setAreaPageLoading(false);
       };
-      
+
       fetchAreaPGs();
     }
   }, [selectedArea, decodedArea, areaPageGender, areaPagePriceRange, areaPageRentalType]);
@@ -552,30 +564,30 @@ const Home = () => {
     };
   }, []);
   const verifiedCount = pgs.filter(pg => pg.isVerified).length;
-  
+
   // Show area page with PGs or Coming Soon
- if (isAreaPage) {
-  return (
-    <AreaPage
-      decodedArea={decodedArea}
-      areaPagePGs={areaPagePGs}
-      areaPageLoading={areaPageLoading}
-      areaPageError={areaPageError}
-      areaPageGender={areaPageGender}
-      setAreaPageGender={setAreaPageGender}
-      areaPagePriceRange={areaPagePriceRange}
-      setAreaPagePriceRange={setAreaPagePriceRange}
-      areaPageRentalType={areaPageRentalType}
-      setAreaPageRentalType={setAreaPageRentalType}
-      availableAreas={availableAreas}
-      selectedPG={selectedPG}
-      setSelectedPG={setSelectedPG}
-      handleViewDetails={handleViewDetails}
-      POPULAR_AREAS={POPULAR_AREAS}
-    />
-  );
-}
-  
+  if (isAreaPage) {
+    return (
+      <AreaPage
+        decodedArea={decodedArea}
+        areaPagePGs={areaPagePGs}
+        areaPageLoading={areaPageLoading}
+        areaPageError={areaPageError}
+        areaPageGender={areaPageGender}
+        setAreaPageGender={setAreaPageGender}
+        areaPagePriceRange={areaPagePriceRange}
+        setAreaPagePriceRange={setAreaPagePriceRange}
+        areaPageRentalType={areaPageRentalType}
+        setAreaPageRentalType={setAreaPageRentalType}
+        availableAreas={availableAreas}
+        selectedPG={selectedPG}
+        setSelectedPG={setSelectedPG}
+        handleViewDetails={handleViewDetails}
+        POPULAR_AREAS={POPULAR_AREAS}
+      />
+    );
+  }
+
   return (
     <div className="app">
       {/* Hero Section */}
