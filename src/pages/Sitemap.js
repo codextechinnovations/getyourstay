@@ -70,6 +70,49 @@ const Sitemap = () => {
     <priority>0.6</priority>
   </url>
   
+  <!-- PG Owner Pages -->
+  <url>
+    <loc>https://www.getyourstay.in/list-your-pg</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.getyourstay.in/list-property</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.getyourstay.in/pg-management-app</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.getyourstay.in/pg-owner-app</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.getyourstay.in/pg-management-software</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.getyourstay.in/pg-app</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
   <!-- Coming Soon Pages -->
   <url>
     <loc>https://www.getyourstay.in/hotels</loc>
@@ -292,11 +335,11 @@ const Sitemap = () => {
             paddingLeft: '20px',
             lineHeight: '2'
           }}>
-            <li>Main pages: 9</li>
+            <li>Main pages: 16</li>
             <li>Location pages: {bangaloreAreas.length}</li>
             <li>Gender filters: 3</li>
             <li>City pages: 6</li>
-            <li><strong>Total URLs: {12 + bangaloreAreas.length + 3 + 6}</strong></li>
+            <li><strong>Total URLs: {25 + bangaloreAreas.length + 3 + 6}</strong></li>
           </ul>
         </div>
       </div>

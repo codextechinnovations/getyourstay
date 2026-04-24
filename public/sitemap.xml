@@ -1,328 +1,328 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
+
   <!-- Main Pages -->
   <url>
     <loc>https://www.getyourstay.in/</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
+
   <!-- Static Pages -->
   <url>
     <loc>https://www.getyourstay.in/about</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/contact</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/terms</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/privacy</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/sitemap</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
-  
+
   <!-- Tenant Pages -->
   <url>
     <loc>https://www.getyourstay.in/tenant-login</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/tenant-dashboard</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
   <!-- PG Owner Pages -->
   <url>
     <loc>https://www.getyourstay.in/list-your-pg</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/list-property</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <url>
-    <loc>https://www.getyourstay.in/pg-owner-app</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://www.getyourstay.in/pg-management-app</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  
+
+  <url>
+    <loc>https://www.getyourstay.in/pg-owner-app</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://www.getyourstay.in/pg-management-software</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.getyourstay.in/pg-management-app#pricing</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/pg-app</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-  
+
   <!-- Coming Soon Pages -->
   <url>
     <loc>https://www.getyourstay.in/hotels</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/flats</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
   <!-- PG Location Pages (Bangalore Areas) -->
   <url>
     <loc>https://www.getyourstay.in/?area=Koramangala</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Indiranagar</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=HSR+Layout</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Whitefield</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Marathahalli</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Electronic+City</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=MG+Road</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Silk+Board</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Jayanagar</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Bellandur</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Hebbal</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Banashankari</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Malleswaram</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=JP+Nagar</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Rajajinagar</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=BTM+Layout</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Domlur</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=CV+Raman+Nagar</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Basavanagudi</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?area=Sarjapur</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
+
   <!-- Gender-based PG Pages -->
   <url>
     <loc>https://www.getyourstay.in/?gender=male</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?gender=female</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?gender=colive</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  
+
   <!-- Cities Pages -->
   <url>
     <loc>https://www.getyourstay.in/?city=Bangalore</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?city=Hyderabad</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?city=Chennai</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?city=Pune</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?city=Mumbai</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://www.getyourstay.in/?city=Delhi</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
 </urlset>
