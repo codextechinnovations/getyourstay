@@ -1616,7 +1616,6 @@ const Home = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 12px 30px rgba(255, 107, 44, 0.3);
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           position: relative;
           overflow: hidden;
@@ -1633,7 +1632,6 @@ const Home = () => {
         }
         .tc-feature:hover .tc-feature-icon {
           transform: translateY(-6px) scale(1.05);
-          box-shadow: 0 20px 40px rgba(255, 107, 44, 0.4);
         }
         .tc-feature-icon svg {
           width: 28px;

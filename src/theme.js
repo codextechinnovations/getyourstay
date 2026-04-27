@@ -13,8 +13,8 @@ export const theme = {
   // Accent Colors - Orange
   accent: {
     500: '#f97316',  // Main orange
-    400: '#fb923c',  // Light orange
-    600: '#ea580c',  // Dark orange
+    400: '#f97316',  // Light orange
+    600: '#f97316',  // Dark orange
   },
   
   // Neutral Colors
@@ -40,7 +40,7 @@ export const theme = {
   // Gradients
   gradients: {
     primary: 'linear-gradient(135deg, #0f2744 0%, #1a365d 50%, #234681 100%)',
-    accent: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+    accent: 'linear-gradient(135deg, #f97316 100%, #f97316 100%)',
     hero: 'linear-gradient(135deg, #0a1929 0%, #0f2744 40%, #1a365d 100%)',
   }
 };

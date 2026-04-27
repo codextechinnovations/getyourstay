@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PRIMARY_GRADIENT = ["#EA580C", "#F97316", "#FDBA74"];
+const PRIMARY_GRADIENT = ["#F97316", "#F97316", "#F97316"];
 
 const Sidebar = ({ 
   priceRange, 
