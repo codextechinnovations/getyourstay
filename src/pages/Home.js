@@ -48,10 +48,11 @@ const hiwSteps = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M30 30L40 40" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <circle cx="20" cy="20" r="8" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
-        <circle cx="20" cy="20" r="3" fill="currentColor" />
+        <circle cx="20" cy="20" r="12" stroke="#1a365d" strokeWidth="2.5" />
+        <path d="M28 28L38 38" stroke="#1a365d" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="20" cy="20" r="6" stroke="#1a365d" strokeWidth="2" strokeDasharray="3 3" />
+        <circle cx="20" cy="20" r="3" fill="#f97316" />
+        <path d="M14 14L18 18M26 14L22 18" stroke="#1a365d" strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
       </svg>
     ),
     title: "Search & Filter",
@@ -60,11 +61,15 @@ const hiwSteps = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="10" width="36" height="28" rx="4" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M6 18H42" stroke="currentColor" strokeWidth="2" />
-        <circle cx="16" cy="28" r="5" stroke="currentColor" strokeWidth="2" />
-        <path d="M26 25H36" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        <path d="M26 31H34" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <rect x="8" y="8" width="14" height="18" rx="2" stroke="#1a365d" strokeWidth="2.5" />
+        <rect x="26" y="8" width="14" height="18" rx="2" stroke="#1a365d" strokeWidth="2.5" />
+        <path d="M22 15H26" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
+        <path d="M12 30H20" stroke="#1a365d" strokeWidth="2" strokeLinecap="round" />
+        <path d="M30 30H38" stroke="#1a365d" strokeWidth="2" strokeLinecap="round" />
+        <path d="M12 34H18" stroke="#1a365d" strokeWidth="2" strokeLinecap="round" />
+        <path d="M30 34H36" stroke="#1a365d" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="15" cy="26" r="2" fill="#f97316" />
+        <circle cx="33" cy="26" r="2" fill="#f97316" />
       </svg>
     ),
     title: "Explore & Compare",
@@ -73,11 +78,11 @@ const hiwSteps = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 6C15.163 6 8 13.163 8 22C8 28.154 11.077 33.625 15.5 37.2" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        <path d="M24 6C32.837 6 40 13.163 40 22C40 28.154 36.923 33.625 32.5 37.2" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        <path d="M24 14V22L30 26" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="40" cy="8" r="6" fill="white" stroke="currentColor" strokeWidth="2" />
-        <path d="M38 8H42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M8 6C8 6 8 14 16 14C24 14 24 6 32 6C40 6 40 14 40 22C40 30 32 38 24 42C16 38 8 30 8 22C8 14 8 6 8 6Z" stroke="#1a365d" strokeWidth="2.5" />
+        <circle cx="24" cy="20" r="6" stroke="#1a365d" strokeWidth="2" />
+        <path d="M22 20L24 22L26 18" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M36 36L42 42" stroke="#1a365d" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M36 42H42V36" stroke="#1a365d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     title: "Contact Owner",
@@ -86,11 +91,14 @@ const hiwSteps = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 42V20L24 8L40 20V42H30V30H18V42H8Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <rect x="20" y="34" width="8" height="8" stroke="currentColor" strokeWidth="2" />
-        <path d="M18 22L24 16L30 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="38" cy="14" r="6" fill="white" stroke="currentColor" strokeWidth="2" />
-        <path d="M36 14L38 16L41 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M24 6L8 18V42H40V18L24 6Z" stroke="#1a365d" strokeWidth="2.5" strokeLinejoin="round" />
+        <rect x="18" y="30" width="12" height="12" stroke="#1a365d" strokeWidth="2" />
+        <path d="M24 30V42" stroke="#1a365d" strokeWidth="2" />
+        <path d="M18 30H30" stroke="#1a365d" strokeWidth="2" />
+        <path d="M21 24L24 27L27 24" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M36 14L40 18" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M40 14V18" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="38" cy="12" r="3" fill="#f97316" stroke="#1a365d" strokeWidth="1.5" />
       </svg>
     ),
     title: "Move In",
@@ -171,10 +179,10 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M30 30L40 40" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <circle cx="20" cy="20" r="8" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
-        <circle cx="20" cy="20" r="3" fill="currentColor" />
+        <circle cx="20" cy="20" r="12" stroke="white" strokeWidth="2.5" />
+        <path d="M28 28L38 38" stroke="white" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="20" cy="20" r="6" stroke="white" strokeWidth="2" opacity="0.5" />
+        <circle cx="20" cy="20" r="3" fill="#fb923c" />
       </svg>
     ),
     title: "Research Before You Visit",
@@ -183,11 +191,11 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="14" width="36" height="24" rx="4" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M6 22H42" stroke="currentColor" strokeWidth="2.5" />
-        <circle cx="16" cy="30" r="3" stroke="currentColor" strokeWidth="2" />
-        <path d="M26 30H38" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        <path d="M34 10L38 14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <rect x="8" y="14" width="32" height="22" rx="4" stroke="white" strokeWidth="2.5" />
+        <path d="M8 22H40" stroke="white" strokeWidth="2.5" />
+        <circle cx="16" cy="28" r="3" fill="#fb923c" stroke="white" strokeWidth="2" />
+        <path d="M24 26H36" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M32 10L36 14" stroke="#fb923c" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
     ),
     title: "Understand the Total Cost",
@@ -196,10 +204,10 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 42V20L24 8L40 20V42H30V30H18V42H8Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <rect x="20" y="34" width="8" height="8" stroke="currentColor" strokeWidth="2" />
-        <circle cx="36" cy="14" r="8" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M36 10V18M32 14H40" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M8 42V20L24 8L40 20V42H30V30H18V42H8Z" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="20" y="34" width="8" height="8" fill="#fb923c" stroke="white" strokeWidth="2" />
+        <circle cx="36" cy="14" r="8" stroke="white" strokeWidth="2.5" />
+        <path d="M36 10V18M32 14H40" stroke="#fb923c" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
     ),
     title: "Visit During Different Times",
@@ -208,10 +216,12 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="16" cy="16" r="8" stroke="currentColor" strokeWidth="2.5" />
-        <circle cx="32" cy="16" r="8" stroke="currentColor" strokeWidth="2.5" />
-        <circle cx="24" cy="32" r="8" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M16 16L24 32M32 16L24 32M16 16H32" stroke="currentColor" strokeWidth="2" />
+        <circle cx="16" cy="16" r="7" stroke="white" strokeWidth="2.5" />
+        <circle cx="32" cy="16" r="7" stroke="white" strokeWidth="2.5" />
+        <circle cx="24" cy="32" r="7" stroke="white" strokeWidth="2.5" />
+        <path d="M16 16L24 32M32 16L24 32" stroke="#fb923c" strokeWidth="2" />
+        <circle cx="16" cy="16" r="3" fill="#fb923c" />
+        <circle cx="32" cy="16" r="3" fill="#fb923c" />
       </svg>
     ),
     title: "Talk to Current Tenants",
@@ -220,10 +230,12 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="8" y="6" width="32" height="36" rx="4" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M16 18H32M16 24H28M16 30H24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx="36" cy="36" r="8" fill="white" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M33 36L35 38L39 34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="8" y="6" width="32" height="36" rx="4" stroke="white" strokeWidth="2.5" />
+        <path d="M16 18H32" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M16 24H28" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M16 30H24" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="36" cy="36" r="8" fill="#1a365d" stroke="white" strokeWidth="2.5" />
+        <path d="M33 36L35.5 38.5L39 34" stroke="#fb923c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     title: "Get Everything in Writing",
@@ -232,9 +244,11 @@ const PG_HUNTING_TIPS = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 6L28 14H36L30 20L32 28L24 24L16 28L18 20L12 14H20L24 6Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="24" cy="36" r="8" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M24 32V40M20 36H28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M24 6L28 14H36L30 20L32 28L24 24L16 28L18 20L12 14H20L24 6Z" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="24" cy="36" r="8" stroke="white" strokeWidth="2.5" />
+        <path d="M24 32V40" stroke="#fb923c" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M20 36H28" stroke="#fb923c" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="24" cy="36" r="3" fill="#fb923c" />
       </svg>
     ),
     title: "Check Safety Features",
@@ -942,8 +956,9 @@ const Home = () => {
               <div className="vp-card vp-featured">
                 <div className="vp-card-icon">
                   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="2.5" fill="rgba(255,255,255,0.15)" />
-                    <path d="M24 12L26.5 20.5L35 20.5L28.5 26L31 35L24 29.5L17 35L19.5 26L13 20.5L21.5 20.5L24 12Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="rgba(255,255,255,0.2)" />
+                    <circle cx="24" cy="24" r="20" stroke="white" strokeWidth="2" opacity="0.8" />
+                    <path d="M24 14L27 22H35L29 27L31 35L24 30L17 35L19 27L13 22H21L24 14Z" fill="white" fillOpacity="0.9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <circle cx="24" cy="24" r="4" fill="#1a365d" />
                   </svg>
                 </div>
                 <h3>100% Verified Listings</h3>
@@ -958,11 +973,11 @@ const Home = () => {
               <div className="vp-card">
                 <div className="vp-card-icon">
                   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="6" y="14" width="36" height="24" rx="4" stroke="currentColor" strokeWidth="2.5" />
-                    <path d="M6 22H42" stroke="currentColor" strokeWidth="2.5" />
-                    <circle cx="16" cy="30" r="3" stroke="currentColor" strokeWidth="2" />
-                    <path d="M26 30H38" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                    <path d="M34 10L38 14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <rect x="8" y="12" width="32" height="24" rx="4" stroke="#1a365d" strokeWidth="2.5" />
+                    <path d="M8 20H40" stroke="#1a365d" strokeWidth="2.5" />
+                    <circle cx="16" cy="28" r="4" fill="#f97316" stroke="#1a365d" strokeWidth="2" />
+                    <path d="M24 26H36" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M32 10L36 14" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
                   </svg>
                 </div>
                 <h3>Zero Brokerage Fees</h3>
@@ -972,13 +987,13 @@ const Home = () => {
               <div className="vp-card">
                 <div className="vp-card-icon">
                   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M24 6C17.373 6 12 11.373 12 18C12 24.627 17.373 30 24 30" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                    <path d="M24 6C30.627 6 36 11.373 36 18C36 24.627 30.627 30 24 30" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                    <circle cx="18" cy="16" r="4" stroke="currentColor" strokeWidth="2.5" />
-                    <circle cx="30" cy="16" r="4" stroke="currentColor" strokeWidth="2.5" />
-                    <circle cx="24" cy="24" r="4" stroke="currentColor" strokeWidth="2.5" />
-                    <path d="M24 30V42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                    <path d="M18 42H30" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M24 8C18 8 14 12 14 18C14 24 18 28 24 28" stroke="#1a365d" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M24 8C30 8 34 12 34 18C34 24 30 28 24 28" stroke="#1a365d" strokeWidth="2.5" strokeLinecap="round" />
+                    <circle cx="18" cy="16" r="3" fill="#f97316" stroke="#1a365d" strokeWidth="2" />
+                    <circle cx="30" cy="16" r="3" fill="#f97316" stroke="#1a365d" strokeWidth="2" />
+                    <circle cx="24" cy="24" r="3" fill="#f97316" stroke="#1a365d" strokeWidth="2" />
+                    <path d="M24 28V40" stroke="#1a365d" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M18 40H30" stroke="#1a365d" strokeWidth="2.5" strokeLinecap="round" />
                   </svg>
                 </div>
                 <h3>Real Tenant Reviews</h3>
@@ -988,12 +1003,12 @@ const Home = () => {
               <div className="vp-card">
                 <div className="vp-card-icon">
                   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="8" y="6" width="32" height="36" rx="4" stroke="currentColor" strokeWidth="2.5" />
-                    <path d="M16 18H32" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                    <path d="M16 24H28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                    <path d="M16 30H24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                    <circle cx="36" cy="36" r="8" fill="white" stroke="currentColor" strokeWidth="2.5" />
-                    <path d="M33 36L35.5 38.5L39 34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <rect x="8" y="6" width="32" height="36" rx="4" stroke="#1a365d" strokeWidth="2.5" />
+                    <path d="M16 18H32" stroke="#1a365d" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M16 24H28" stroke="#1a365d" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M16 30H24" stroke="#1a365d" strokeWidth="2.5" strokeLinecap="round" />
+                    <circle cx="36" cy="36" r="7" fill="#f97316" stroke="#1a365d" strokeWidth="2.5" />
+                    <path d="M33 36L35.5 38.5L39 34" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <h3>Instant Booking</h3>
@@ -1003,13 +1018,13 @@ const Home = () => {
               <div className="vp-card">
                 <div className="vp-card-icon">
                   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="2.5" />
-                    <path d="M24 14V24L30 28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <circle cx="24" cy="24" r="3" stroke="currentColor" strokeWidth="2" />
-                    <circle cx="24" cy="6" r="2" fill="currentColor" />
-                    <circle cx="24" cy="42" r="2" fill="currentColor" />
-                    <circle cx="6" cy="24" r="2" fill="currentColor" />
-                    <circle cx="42" cy="24" r="2" fill="currentColor" />
+                    <circle cx="24" cy="24" r="16" stroke="#1a365d" strokeWidth="2.5" />
+                    <path d="M24 14V24L30 27" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <circle cx="24" cy="24" r="3" fill="#f97316" stroke="#1a365d" strokeWidth="2" />
+                    <circle cx="24" cy="6" r="2" fill="#1a365d" />
+                    <circle cx="24" cy="42" r="2" fill="#1a365d" />
+                    <circle cx="6" cy="24" r="2" fill="#1a365d" />
+                    <circle cx="42" cy="24" r="2" fill="#1a365d" />
                   </svg>
                 </div>
                 <h3>24/7 Support</h3>
@@ -1019,17 +1034,18 @@ const Home = () => {
               <div className="vp-card">
                 <div className="vp-card-icon">
                   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="8" y="16" width="32" height="24" rx="4" stroke="currentColor" strokeWidth="2.5" />
-                    <path d="M8 24H40" stroke="currentColor" strokeWidth="2.5" />
-                    <rect x="14" y="28" width="8" height="6" rx="1" stroke="currentColor" strokeWidth="2" />
-                    <circle cx="32" cy="31" r="2" fill="currentColor" />
-                    <path d="M14 20L18 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M18 20L14 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <rect x="8" y="16" width="32" height="24" rx="4" stroke="#1a365d" strokeWidth="2.5" />
+                    <path d="M8 24H40" stroke="#1a365d" strokeWidth="2.5" />
+                    <rect x="14" y="28" width="8" height="6" rx="1" fill="#f97316" stroke="#1a365d" strokeWidth="2" />
+                    <circle cx="32" cy="31" r="2" fill="#f97316" />
+                    <path d="M14 20L18 16" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M18 20L14 16" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
                 <h3>Secure Payments</h3>
                 <p>Your money is safe with us. We use industry-standard encryption and secure payment gateways for all transactions.</p>
               </div>
+
             </div>
 
             <div className="vp-stats-row">
@@ -1108,9 +1124,10 @@ const Home = () => {
             <div className="seo-features-grid">
               <article className="seo-feature-card">
                 <div className="seo-feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={theme.accent[500]} strokeWidth="2">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a365d" strokeWidth="2">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <polyline points="9,12 11,14 15,10" />
+                    <circle cx="12" cy="10" r="3" fill="#f97316" />
+                    <path d="M9 12L11 14L15 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <h3>Verified PG Listings</h3>
@@ -1119,9 +1136,12 @@ const Home = () => {
 
               <article className="seo-feature-card">
                 <div className="seo-feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={theme.accent[500]} strokeWidth="2">
-                    <line x1="12" y1="1" x2="12" y2="23" />
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a365d" strokeWidth="2">
+                    <rect x="3" y="6" width="18" height="14" rx="2" />
+                    <path d="M3 10H21" />
+                    <path d="M8 14H16" stroke="#f97316" strokeWidth="2" />
+                    <path d="M8 17H13" stroke="#f97316" strokeWidth="2" />
+                    <circle cx="18" cy="17" r="2" fill="#f97316" />
                   </svg>
                 </div>
                 <h3>Transparent Pricing</h3>
@@ -1130,11 +1150,13 @@ const Home = () => {
 
               <article className="seo-feature-card">
                 <div className="seo-feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={theme.accent[500]} strokeWidth="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a365d" strokeWidth="2">
+                    <circle cx="7" cy="8" r="3" fill="#f97316" />
+                    <circle cx="17" cy="8" r="3" fill="#f97316" />
+                    <circle cx="12" cy="16" r="3" fill="#f97316" />
+                    <path d="M7 11L12 14M17 11L12 14M7 11H17" stroke="#1a365d" strokeWidth="1.5" />
+                    <path d="M20 20L22 22" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="21" cy="21" r="4" stroke="#1a365d" strokeWidth="1.5" fill="none" />
                   </svg>
                 </div>
                 <h3>Real Reviews & Photos</h3>
@@ -1143,11 +1165,14 @@ const Home = () => {
 
               <article className="seo-feature-card">
                 <div className="seo-feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={theme.accent[500]} strokeWidth="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                    <line x1="16" y1="2" x2="16" y2="6" />
-                    <line x1="8" y1="2" x2="8" y2="6" />
-                    <line x1="3" y1="10" x2="21" y2="10" />
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a365d" strokeWidth="2">
+                    <rect x="4" y="4" width="16" height="18" rx="2" />
+                    <path d="M8 10H16" />
+                    <path d="M8 14H14" />
+                    <path d="M8 18H12" />
+                    <path d="M18 20L22 24" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="20" cy="22" r="3" fill="#f97316" stroke="#1a365d" strokeWidth="1.5" />
+                    <path d="M18.5 22L19.5 23L22 20.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <h3>Easy Booking Process</h3>
@@ -1290,14 +1315,14 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="maleGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#3B82F6" />
-                        <stop offset="100%" stopColor="#1D4ED8" />
+                        <stop offset="0%" stopColor="#1a365d" />
+                        <stop offset="100%" stopColor="#234681" />
                       </linearGradient>
                     </defs>
                     <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#maleGrad)" />
                     <circle cx="32" cy="24" r="10" fill="white" fillOpacity="0.9" />
                     <path d="M16 52C16 40.954 24.954 32 32 32C39.046 32 48 40.954 48 52" stroke="white" strokeWidth="4" strokeLinecap="round" />
-                    <circle cx="32" cy="24" r="5" fill="#1D4ED8" />
+                    <circle cx="32" cy="24" r="5" fill="#fb923c" />
                   </svg>
                 </span>
                 <span className="type-name">Boys PG</span>
@@ -1308,15 +1333,15 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="femaleGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#EC4899" />
-                        <stop offset="100%" stopColor="#BE185D" />
+                        <stop offset="0%" stopColor="#1a365d" />
+                        <stop offset="100%" stopColor="#234681" />
                       </linearGradient>
                     </defs>
                     <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#femaleGrad)" />
                     <circle cx="32" cy="22" r="10" fill="white" fillOpacity="0.9" />
                     <path d="M20 54C20 41.85 26.85 32 32 32C37.15 32 44 41.85 44 54" stroke="white" strokeWidth="4" strokeLinecap="round" />
-                    <path d="M28 20C28 20 30 16 32 16C34 16 36 20 36 20" stroke="#BE185D" strokeWidth="2" strokeLinecap="round" />
-                    <circle cx="32" cy="22" r="4" fill="#BE185D" />
+                    <path d="M28 20C28 20 30 16 32 16C34 16 36 20 36 20" stroke="#fb923c" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="32" cy="22" r="4" fill="#fb923c" />
                   </svg>
                 </span>
                 <span className="type-name">Girls PG</span>
@@ -1327,8 +1352,8 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="coliveGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#8B5CF6" />
-                        <stop offset="100%" stopColor="#6D28D9" />
+                        <stop offset="0%" stopColor="#1a365d" />
+                        <stop offset="100%" stopColor="#234681" />
                       </linearGradient>
                     </defs>
                     <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#coliveGrad)" />
@@ -1346,13 +1371,13 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="acGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#10B981" />
-                        <stop offset="100%" stopColor="#059669" />
+                        <stop offset="0%" stopColor="#1a365d" />
+                        <stop offset="100%" stopColor="#234681" />
                       </linearGradient>
                     </defs>
                     <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#acGrad)" />
                     <rect x="12" y="20" width="40" height="24" rx="4" fill="white" fillOpacity="0.9" />
-                    <path d="M18 28H46M18 32H38M18 36H30" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+                    <path d="M18 28H46M18 32H38M18 36H30" stroke="#fb923c" strokeWidth="3" strokeLinecap="round" />
                     <path d="M48 12L52 16M52 12L48 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
                     <path d="M54 20L58 24M58 20L54 24" stroke="white" strokeWidth="2" strokeLinecap="round" />
                   </svg>
@@ -1365,8 +1390,8 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="wifiGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#F97316" />
-                        <stop offset="100%" stopColor="#EA580C" />
+                        <stop offset="0%" stopColor="#1a365d" />
+                        <stop offset="100%" stopColor="#234681" />
                       </linearGradient>
                     </defs>
                     <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#wifiGrad)" />
@@ -1383,8 +1408,8 @@ const Home = () => {
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="foodGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#F59E0B" />
-                        <stop offset="100%" stopColor="#D97706" />
+                        <stop offset="0%" stopColor="#1a365d" />
+                        <stop offset="100%" stopColor="#234681" />
                       </linearGradient>
                     </defs>
                     <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#foodGrad)" />
@@ -1916,13 +1941,18 @@ const Home = () => {
         .seo-feature-icon {
           width: 64px;
           height: 64px;
-          background: white;
+          background: linear-gradient(135deg, rgba(26, 54, 93, 0.08), rgba(35, 70, 129, 0.08));
           border-radius: 16px;
           display: flex;
           align-items: center;
           justify-content: center;
           margin: 0 auto 20px;
           box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+          transition: all 0.3s ease;
+        }
+        .seo-feature-card:hover .seo-feature-icon {
+          transform: scale(1.05);
+          background: linear-gradient(135deg, rgba(26, 54, 93, 0.12), rgba(249, 115, 22, 0.12));
         }
         .seo-feature-card h3 {
           font-size: 18px;
@@ -2165,14 +2195,14 @@ const Home = () => {
           left: 0;
           right: 0;
           height: 4px;
-          background: linear-gradient(90deg, #FF6B2C, #FFB088);
+          background: linear-gradient(90deg, #1a365d, #f97316);
           opacity: 0;
           transition: opacity 0.3s ease;
         }
         .tip-card:hover {
           transform: translateY(-8px);
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-          border-color: rgba(255, 107, 44, 0.2);
+          border-color: rgba(26, 54, 93, 0.2);
         }
         .tip-card:hover::before {
           opacity: 1;
@@ -2180,24 +2210,22 @@ const Home = () => {
         .tip-icon {
           width: 64px;
           height: 64px;
-          background: #f97316;
+          background: linear-gradient(135deg, #1a365d 0%, #234681 100%);
           border-radius: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
           margin-bottom: 20px;
-          box-shadow: 0 8px 24px rgba(255, 107, 44, 0.3);
+          box-shadow: 0 8px 24px rgba(26, 54, 93, 0.3);
           transition: all 0.4s ease;
         }
         .tip-card:hover .tip-icon {
           transform: scale(1.1);
-          box-shadow: 0 12px 32px rgba(255, 107, 44, 0.4);
+          box-shadow: 0 12px 32px rgba(26, 54, 93, 0.4);
         }
         .tip-icon svg {
           width: 32px;
           height: 32px;
-          stroke: white;
-          stroke-width: 1.75;
         }
         .tip-card h3 {
           font-size: 18px;
@@ -2453,7 +2481,7 @@ const Home = () => {
         .vp-card:hover {
           transform: translateY(-8px);
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-          border-color: #FF6B2C;
+          border-color: #1a365d;
         }
         .vp-card.vp-featured {
           background: #f97316;
@@ -2504,15 +2532,20 @@ const Home = () => {
         .vp-card-icon {
           width: 56px;
           height: 56px;
-          background: white;
+          background: linear-gradient(135deg, rgba(26, 54, 93, 0.08), rgba(35, 70, 129, 0.08));
           border-radius: 16px;
           display: flex;
           align-items: center;
           justify-content: center;
           margin-bottom: 20px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255,255,255,0.8);
-          border: 1px solid rgba(0,0,0,0.05);
           transition: all 0.3s ease;
+        }
+        .vp-card:hover .vp-card-icon {
+          transform: scale(1.1);
+          background: linear-gradient(135deg, rgba(26, 54, 93, 0.12), rgba(249, 115, 22, 0.12));
+        }
+        .vp-card.vp-featured .vp-card-icon {
+          background: rgba(255, 255, 255, 0.2);
         }
         .vp-card:hover .vp-card-icon {
           transform: translateY(-4px) scale(1.05);
@@ -2601,8 +2634,8 @@ const Home = () => {
         .hiw-badge {
           display: inline-block;
           padding: 8px 20px;
-          background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05));
-          color: #FF6B2C;
+          background: linear-gradient(135deg, rgba(26, 54, 93, 0.1), rgba(26, 54, 93, 0.05));
+          color: #1a365d;
           font-size: 13px;
           font-weight: 700;
           border-radius: 50px;
@@ -2642,7 +2675,7 @@ const Home = () => {
           left: 12.5%;
           right: 12.5%;
           height: 3px;
-          background: linear-gradient(90deg, #FF6B2C, #FF8F5C, #FFB088, #FFD4B8);
+          background: linear-gradient(90deg, #1a365d, #f97316, #fb923c, #1a365d);
           border-radius: 2px;
           z-index: 0;
         }
@@ -2673,7 +2706,7 @@ const Home = () => {
         .hiw-step-number {
           width: 40px;
           height: 40px;
-          background: #f97316;
+          background: #1a365d;
           color: white;
           font-size: 16px;
           font-weight: 800;
@@ -2682,7 +2715,7 @@ const Home = () => {
           align-items: center;
           justify-content: center;
           margin-bottom: 20px;
-          box-shadow: 0 8px 20px rgba(255, 107, 44, 0.3);
+          box-shadow: 0 8px 20px rgba(26, 54, 93, 0.3);
           position: relative;
         }
         .hiw-step-number::after {
@@ -2721,7 +2754,7 @@ const Home = () => {
           left: 0;
           right: 0;
           height: 3px;
-          background: linear-gradient(90deg, #FF6B2C, #FFB088);
+          background: linear-gradient(90deg, #1a365d, #f97316);
           opacity: 0;
           transition: opacity 0.3s ease;
         }
@@ -2731,17 +2764,19 @@ const Home = () => {
         .hiw-step-icon svg {
           width: 42px;
           height: 42px;
-          stroke: #FF6B2C;
           transition: all 0.3s ease;
-          filter: drop-shadow(0 2px 4px rgba(255, 107, 44, 0.2));
+          filter: drop-shadow(0 2px 4px rgba(26, 54, 93, 0.2));
+        }
+        .hiw-step:hover .hiw-step-icon svg {
+          transform: scale(1.1);
         }
         .hiw-step:hover .hiw-step-icon {
           transform: translateY(-8px) scale(1.05);
-          box-shadow: 0 20px 50px rgba(255, 107, 44, 0.2);
-          border-color: rgba(255, 107, 44, 0.3);
+          box-shadow: 0 20px 50px rgba(26, 54, 93, 0.2);
+          border-color: rgba(26, 54, 93, 0.3);
         }
         .hiw-step:hover .hiw-step-icon svg {
-          stroke: #E85B1C;
+          stroke: #f97316;
           transform: scale(1.1);
         }
         .hiw-step-title {
@@ -2768,17 +2803,21 @@ const Home = () => {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          padding: 16px 32px;
-          background: #f97316;
+          padding: 14px 32px;
+          background: linear-gradient(135deg, #1a365d 0%, #234681 100%);
           color: white;
           border: none;
-          border-radius: 14px;
-          font-size: 16px;
-          font-weight: 700;
+          border-radius: 12px;
+          font-size: 15px;
+          font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 10px 30px rgba(255, 107, 44, 0.3);
+          box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
           font-family: 'Poppins', sans-serif;
+        }
+        .hiw-start-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(26, 54, 93, 0.4);
         }
         .hiw-start-btn:hover {
           transform: translateY(-3px);
@@ -3030,29 +3069,13 @@ const Home = () => {
             height: 48px;
             margin-bottom: 16px;
           }
-          .vp-card-icon svg {
-            width: 24px;
-            height: 24px;
-          }
-          .vp-card h3 {
-            font-size: 17px;
-          }
-          .vp-card p {
-            font-size: 13px;
-          }
-          .vp-stats-row {
-            padding: 25px 15px;
-            gap: 20px;
-          }
-          .vp-stat {
-            min-width: 80px;
-          }
-          .vp-stat-number {
-            font-size: 20px;
-          }
-          .vp-stat-label {
-            font-size: 11px;
-          }
+        .vp-card-icon svg {
+          width: 28px;
+          height: 28px;
+          transition: all 0.3s ease;
+        }
+        .vp-card:hover .vp-card-icon svg {
+          transform: scale(1.05);
         }
       `}</style>
     </div>

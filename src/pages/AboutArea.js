@@ -399,13 +399,13 @@ const AreaPage = ({
 
         /* ── Hero ── */
         .ap-hero {
-          background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 45%, #6d28d9 100%);
+          background: linear-gradient(135deg, #0a1929 0%, #0f2744 40%, #1a365d 100%);
           position: relative;
           overflow: hidden;
         }
         .ap-hero__blob { position: absolute; border-radius: 50%; pointer-events: none; }
-        .ap-hero__blob--1 { width: 380px; height: 380px; background: rgba(255,255,255,0.05); top: -130px; right: -100px; }
-        .ap-hero__blob--2 { width: 220px; height: 220px; background: rgba(251,146,60,0.12); bottom: 30px; left: -60px; }
+        .ap-hero__blob--1 { width: 380px; height: 380px; background: rgba(255,255,255,0.03); top: -130px; right: -100px; }
+        .ap-hero__blob--2 { width: 220px; height: 220px; background: rgba(249,115,22,0.08); bottom: 30px; left: -60px; }
 
         .ap-hero__inner {
           max-width: 1400px; margin: 0 auto; padding: 30px 24px 28px;
@@ -417,9 +417,9 @@ const AreaPage = ({
         /* Badges */
         .ap-hero__badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
         .ap-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.2px; }
-        .ap-badge--loc { background: rgba(251,146,60,0.22); color: #fed7aa; border: 1px solid rgba(251,146,60,0.4); }
-        .ap-badge--pin { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.2); }
-        .ap-badge--ver { background: rgba(52,211,153,0.2); color: #6ee7b7; border: 1px solid rgba(52,211,153,0.4); }
+        .ap-badge--loc { background: rgba(249,115,22,0.2); color: #fed7aa; border: 1px solid rgba(249,115,22,0.3); }
+        .ap-badge--pin { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.15); }
+        .ap-badge--ver { background: rgba(34,197,94,0.2); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
 
         /* Title */
         .ap-hero__title { font-size: clamp(22px, 4vw, 32px); font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -0.6px; margin-bottom: 12px; }
@@ -427,21 +427,21 @@ const AreaPage = ({
 
         /* Chips */
         .ap-hero__chips { display: flex; flex-wrap: wrap; gap: 8px; }
-        .ap-chip { font-size: 11.5px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.88); border: 1px solid rgba(255,255,255,0.2); }
+        .ap-chip { font-size: 11.5px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.15); }
 
         /* Stat cards */
         .ap-hero__stats { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; position: relative; z-index: 1; }
-        .ap-stat { min-width: 114px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.22); border-radius: 16px; padding: 16px 20px; text-align: center; }
-        .ap-stat--accent { background: linear-gradient(135deg, #f97316 0%, #ef4444 100%); border-color: transparent; box-shadow: 0 4px 20px rgba(249,115,22,0.35); }
+        .ap-stat { min-width: 114px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 16px 20px; text-align: center; backdrop-filter: blur(4px); }
+        .ap-stat--accent { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); border-color: transparent; box-shadow: 0 4px 20px rgba(249,115,22,0.3); }
         .ap-stat__num { font-size: 26px; font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.5px; }
-        .ap-stat__lbl { font-size: 10px; color: rgba(255,255,255,0.75); margin-top: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .ap-stat__lbl { font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* ── Pills bar ── */
-        .ap-pills { background: #fff; border-bottom: 1px solid #f0f0f0; }
+        .ap-pills { background: #fff; border-bottom: 1px solid #e2e8f0; }
         .ap-pills__inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
         .ap-pills__inner::-webkit-scrollbar { display: none; }
 
-        .ap-pill { display: flex; align-items: center; gap: 10px; padding: 14px 22px; border-right: 1px solid #f3f4f6; white-space: nowrap; flex-shrink: 0; }
+        .ap-pill { display: flex; align-items: center; gap: 10px; padding: 14px 22px; border-right: 1px solid #e2e8f0; white-space: nowrap; flex-shrink: 0; }
         .ap-pill:first-child { padding-left: 0; }
         .ap-pill:last-child  { border-right: none; }
 
@@ -454,8 +454,8 @@ const AreaPage = ({
         .ap-pill__dot--pink   { background: #fdf2f8; }
 
         .ap-pill__text { display: flex; flex-direction: column; }
-        .ap-pill__label { font-size: 10px; color: #9ca3af; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1; }
-        .ap-pill__value { font-size: 12.5px; font-weight: 700; color: #1e3a5f; margin-top: 3px; }
+        .ap-pill__label { font-size: 10px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1; }
+        .ap-pill__value { font-size: 12.5px; font-weight: 700; color: #1e293b; margin-top: 3px; }
 
         /* ── Misc ── */
         details summary::-webkit-details-marker { display: none; }
