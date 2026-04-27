@@ -198,7 +198,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
               marginTop: '20px',
               fontSize: '18px',
               fontWeight: '700',
-              color: '#0D1117'
+              color: 'linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);'
             }}>
               {pg.name}
             </h3>

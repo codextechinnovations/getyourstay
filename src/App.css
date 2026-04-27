@@ -52,7 +52,7 @@ h6 {
 }
 
 .app {
-  min-height: 100vh;
+  min-height:100vh;
 }
 
 /* Hero Section */
@@ -152,9 +152,9 @@ h6 {
 
 /* Main Content */
 .main-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 25px 20px;
+  max-width:1400px;
+  margin:0 auto;
+  padding:25px 20px;
 }
 
 /* Content Header */
@@ -748,14 +748,14 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .pagination-page:hover {
-  background: var(--neutral-100);
-  border-color: var(--neutral-300);
+  background: #f97316;
+  border-color: #f97316;
 }
 
 .pagination-page.active {
-  background: var(--accent-500);
+  background: #f97316 !important;
   color: white;
-  border-color: var(--accent-500);
+  border-color: #f97316 !important;
 }
 
 @media (max-width: 480px) {

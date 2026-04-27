@@ -402,7 +402,7 @@ const Home = () => {
       // Build query params
       const params = {
         page,
-        limit: 20,
+        limit: 10,
         minPrice: priceRange[0],
         maxPrice: priceRange[1],
       };
@@ -1566,7 +1566,7 @@ const Home = () => {
         .tc-title {
           font-size: 36px;
           font-weight: 800;
-          color: #0D1117;
+          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
           margin: 0 0 28px;
           line-height: 1.25;
           letter-spacing: -0.5px;
@@ -1611,7 +1611,7 @@ const Home = () => {
         .tc-feature-icon {
           width: 64px;
           height: 64px;
-          background: linear-gradient(135deg, #FF6B2C, #E85B1C);
+          background: #f97316;
           border-radius: 20px;
           display: flex;
           align-items: center;
@@ -1981,7 +1981,7 @@ const Home = () => {
         .areas-title {
           font-size: 36px;
           font-weight: 800;
-          color: #0D1117;
+          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
           margin: 0 0 16px;
           line-height: 1.25;
           letter-spacing: -0.5px;
@@ -2036,7 +2036,7 @@ const Home = () => {
         }
         .area-card:hover .area-icon-wrapper {
           transform: scale(1.1);
-          background: linear-gradient(135deg, #FF6B2C, #E85B1C);
+          background: #f97316;
         }
         .area-card:hover .area-icon-wrapper svg {
           fill: white;
@@ -2090,7 +2090,7 @@ const Home = () => {
         .area-header h3 {
           font-size: 18px;
           font-weight: 700;
-          color: #0D1117;
+          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
           margin: 0;
           font-family: 'Poppins', sans-serif;
         }
@@ -2182,7 +2182,7 @@ const Home = () => {
         .tip-icon {
           width: 64px;
           height: 64px;
-          background: linear-gradient(135deg, #FF6B2C, #E85B1C);
+          background: #f97316;
           border-radius: 20px;
           display: flex;
           align-items: center;
@@ -2204,7 +2204,7 @@ const Home = () => {
         .tip-card h3 {
           font-size: 18px;
           font-weight: 700;
-          color: #0D1117;
+          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
           margin: 0 0 12px;
           font-family: 'Poppins', sans-serif;
         }
@@ -2417,14 +2417,14 @@ const Home = () => {
         .vp-title {
           font-size: 38px;
           font-weight: 800;
-          color: #0D1117;
+          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
           margin: 0 0 16px;
           letter-spacing: -0.5px;
           line-height: 1.2;
           font-family: 'Poppins', sans-serif;
         }
         .vp-highlight {
-          background: linear-gradient(135deg, #FF6B2C, #E85B1C);
+          background: #f97316;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -2458,7 +2458,7 @@ const Home = () => {
           border-color: #FF6B2C;
         }
         .vp-card.vp-featured {
-          background: linear-gradient(135deg, #FF6B2C, #E85B1C);
+          background: #f97316;
           color: white;
           grid-column: span 1;
           position: relative;
@@ -2529,7 +2529,7 @@ const Home = () => {
         .vp-card h3 {
           font-size: 20px;
           font-weight: 700;
-          color: #0D1117;
+          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
           margin: 0 0 12px;
           font-family: 'Poppins', sans-serif;
         }
@@ -2548,7 +2548,7 @@ const Home = () => {
           justify-content: center;
           gap: 60px;
           padding: 40px;
-          background: linear-gradient(135deg, #0D1117, #1a1a2e);
+          background:  linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);
           border-radius: 24px;
           position: relative;
           overflow: hidden;
@@ -2616,7 +2616,7 @@ const Home = () => {
         .hiw-title {
           font-size: 40px;
           font-weight: 800;
-          color: #0D1117;
+          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
           margin: 0 0 12px;
           letter-spacing: -1px;
           line-height: 1.1;
@@ -2675,7 +2675,7 @@ const Home = () => {
         .hiw-step-number {
           width: 40px;
           height: 40px;
-          background: linear-gradient(135deg, #FF6B2C, #E85B1C);
+          background: #f97316;
           color: white;
           font-size: 16px;
           font-weight: 800;
@@ -2749,7 +2749,7 @@ const Home = () => {
         .hiw-step-title {
           font-size: 18px;
           font-weight: 800;
-          color: #0D1117;
+          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
           margin: 0 0 10px;
           letter-spacing: -0.3px;
           font-family: 'Poppins', sans-serif;
@@ -2771,7 +2771,7 @@ const Home = () => {
           align-items: center;
           gap: 10px;
           padding: 16px 32px;
-          background: linear-gradient(135deg, #FF6B2C, #E85B1C);
+          background: #f97316;
           color: white;
           border: none;
           border-radius: 14px;

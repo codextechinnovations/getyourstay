@@ -217,7 +217,7 @@ const Footer = () => {
           display: flex;
           align-items: center;
           gap: 8px;
-          background: linear-gradient(135deg, #FF6B2C, #E85B1C);
+          background: #f97316;
           padding: 8px 16px;
           border-radius: 20px;
           font-size: 11px;

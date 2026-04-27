@@ -234,7 +234,7 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
               margin: 0,
               fontSize: '16px',
               fontWeight: '800',
-              color: '#0D1117',
+              color: 'linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);',
               fontFamily: "'Inter', sans-serif",
               letterSpacing: '-0.3px',
               lineHeight: 1.2
@@ -335,8 +335,8 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
             ))}
             {safePG.amenities.length > 4 && (
               <span style={{
-                background: '#0D1117',
-                border: '1px solid #0D1117',
+                background: 'linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);',
+                border: '1px solid linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);',
                 padding: '3px 10px',
                 borderRadius: '999px',
                 fontSize: '10px',
@@ -402,7 +402,7 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
               display: 'flex',
               alignItems: 'center',
               gap: '3px',
-              color: '#0D1117',
+              color: 'linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);',
               fontFamily: "'Inter', sans-serif"
             }}>
               <span style={{ color: '#F59E0B' }}>★</span>
