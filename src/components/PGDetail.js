@@ -221,29 +221,32 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
 
         {/* Header with Close Button */}
         <div style={{
-          position: 'absolute',
+          position: 'fixed',
           top: '15px',
           right: '15px',
-          zIndex: 10,
+          zIndex: 3005,
           display: 'flex',
           gap: '8px'
         }}>
           <button
             onClick={onClose}
             style={{
-              width: '36px',
-              height: '36px',
+              width: '44px',
+              height: '44px',
               borderRadius: '50%',
-              background: 'rgba(255,255,255,0.95)',
-              border: 'none',
+              background: 'rgba(255,255,255,0.98)',
+              border: '2px solid rgba(0,0,0,0.1)',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '20px',
+              fontSize: '24px',
               color: '#333',
-              boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
+              boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+              transition: 'all 0.2s ease'
             }}
+            onMouseEnter={e => e.target.style.transform = 'scale(1.1)'}
+            onMouseLeave={e => e.target.style.transform = 'scale(1)'}
           >
             ×
           </button>
