@@ -1,0 +1,29 @@
+Copyright (c) 2026 Codex Tech Innovations & Consultants LLP. All rights reserved.
+
+This software and associated documentation files (the "Software") are the
+proprietary and confidential property of Codex Tech Innovations & Consultants LLP.
+
+No part of this Software may be copied, modified, distributed, sold, licensed,
+or transferred in any form or by any means, electronic or mechanical, without
+the prior written permission of the author.
+
+This Software is provided for access and use only through the official platform
+https://getyourstay.in and related services. Users are granted a limited,
+non-exclusive, non-transferable, revocable license to use the Software strictly
+for its intended purpose as a hosted service (SaaS).
+
+Unauthorized use, reproduction, reverse engineering, decompilation, or
+redistribution of this Software, in whole or in part, is strictly prohibited
+and may result in legal action.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+For licensing inquiries, contact: support@getyourstay.in
+
+Last Updated: 2026-05-06
