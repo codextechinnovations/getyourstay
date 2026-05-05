@@ -53,9 +53,11 @@ const Logo = ({ size = 'normal', variant = 'full', light = false }) => {
           color: textColor,
           letterSpacing: '-0.5px',
           lineHeight: 1.1,
-          fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif"
+          fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+          display: 'flex',
+          alignItems: 'flex-start'
         }}>
-          get<span style={{ color: theme.accent[500] }}>your</span>stay
+          get<span style={{ color: theme.accent[500] }}>your</span>stay<span style={{ fontSize: `${s.text * 0.35}px`, marginLeft: '2px', color: subColor, fontWeight: '500' }}>™</span>
         </h1>
         {variant === 'full' && (
           <p style={{
@@ -113,9 +115,11 @@ export const LogoText = ({ size = 'normal', light = false }) => {
       fontWeight: '700',
       color: light ? '#ffffff' : theme.primary[800],
       letterSpacing: '-0.5px',
-      fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif"
+      fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+      display: 'flex',
+      alignItems: 'flex-start'
     }}>
-      get<span style={{ color: theme.accent[500] }}>your</span>stay
+      get<span style={{ color: theme.accent[500] }}>your</span>stay<span style={{ fontSize: `${((sizes[size] || sizes.normal) * 0.35)}px`, marginLeft: '2px', color: light ? 'rgba(255,255,255,0.7)' : theme.neutral[500], fontWeight: '500' }}>™</span>
     </h1>
   );
 };
