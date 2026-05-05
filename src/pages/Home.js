@@ -1591,7 +1591,7 @@ const Home = () => {
         .tc-title {
           font-size: 36px;
           font-weight: 800;
-          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
+          color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 28px;
           line-height: 1.25;
           letter-spacing: -0.5px;
@@ -2009,7 +2009,7 @@ const Home = () => {
         .areas-title {
           font-size: 36px;
           font-weight: 800;
-          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
+          color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 16px;
           line-height: 1.25;
           letter-spacing: -0.5px;
@@ -2118,7 +2118,7 @@ const Home = () => {
         .area-header h3 {
           font-size: 18px;
           font-weight: 700;
-          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
+          color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0;
           font-family: 'Poppins', sans-serif;
         }
@@ -2230,7 +2230,7 @@ const Home = () => {
         .tip-card h3 {
           font-size: 18px;
           font-weight: 700;
-          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
+          color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 12px;
           font-family: 'Poppins', sans-serif;
         }
@@ -2443,7 +2443,7 @@ const Home = () => {
         .vp-title {
           font-size: 38px;
           font-weight: 800;
-          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
+          color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 16px;
           letter-spacing: -0.5px;
           line-height: 1.2;
@@ -2560,7 +2560,7 @@ const Home = () => {
         .vp-card h3 {
           font-size: 20px;
           font-weight: 700;
-          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
+          color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 12px;
           font-family: 'Poppins', sans-serif;
         }
@@ -2579,7 +2579,7 @@ const Home = () => {
           justify-content: center;
           gap: 60px;
           padding: 40px;
-          background:  linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);
+          background:  linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);
           border-radius: 24px;
           position: relative;
           overflow: hidden;
@@ -2647,7 +2647,7 @@ const Home = () => {
         .hiw-title {
           font-size: 40px;
           font-weight: 800;
-          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
+          color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 12px;
           letter-spacing: -1px;
           line-height: 1.1;
@@ -2782,7 +2782,7 @@ const Home = () => {
         .hiw-step-title {
           font-size: 18px;
           font-weight: 800;
-          color: linear-gradient(135deg, rgb(15, 39, 68) 0%, rgb(26, 54, 93) 50%, rgb(35, 70, 129) 100%);;
+          color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 10px;
           letter-spacing: -0.3px;
           font-family: 'Poppins', sans-serif;
