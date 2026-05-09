@@ -62,7 +62,7 @@ const ContactUs = () => {
               <div className="success-message">
                 <div className="success-icon">✓</div>
                 <h2>Thank You for Contacting Us!</h2>
-                <p>We've received your message and will get back to you within 24 hours. For urgent queries, call us directly at +91 8660801742.</p>
+                <p>We've received your message and will get back to you within 24 hours. For urgent queries, call us directly at +91 8660801742, 9741821179.</p>
                 <button onClick={() => setSubmitted(false)} className="submit-another">
                   Send Another Message
                 </button>
@@ -106,7 +106,7 @@ const ContactUs = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+91 8660801742"
+                        placeholder="+91 8660801742, 9741821179"
                         required
                       />
                     </div>
@@ -172,7 +172,7 @@ const ContactUs = () => {
                   <div className="method-icon">📞</div>
                   <div className="method-details">
                     <span className="method-label">Phone</span>
-                    <a href="tel:+919876543210" className="method-value">+91 8660801742</a>
+                    <a href="tel:+919876543210" className="method-value">+91 8660801742, 9741821179</a>
                   </div>
                 </div>
                 <div className="contact-method">
@@ -186,7 +186,7 @@ const ContactUs = () => {
                   <div className="method-icon">💬</div>
                   <div className="method-details">
                     <span className="method-label">WhatsApp</span>
-                    <a href="https://wa.me/919876543210" className="method-value">+91 8660801742</a>
+                    <a href="https://wa.me/919876543210" className="method-value">+91 8660801742, 9741821179</a>
                   </div>
                 </div>
                 <div className="contact-method">
