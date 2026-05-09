@@ -804,7 +804,8 @@ const Home = () => {
                   <div className="nearby-price-row">
                     {pg.isVerified && (
                       <div className="nearby-price">
-                        <span className="price">₹{(pg.longTermRent?.single || pg.shortTermRent?.single || pg.price || 0).toLocaleString()}</span>
+                         <span className="period">Starting From :</span>
+                        <span className="price">₹{(pg.longTermRent?.triple || pg.shortTermRent?.double || pg.price || 0).toLocaleString()}</span>
                         <span className="period">{pg.rentalType === 'short_term' ? '/day' : '/month'}</span>
                       </div>
                     )}

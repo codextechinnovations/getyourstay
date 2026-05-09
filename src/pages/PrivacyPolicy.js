@@ -241,7 +241,7 @@ const PrivacyPolicy = () => {
           <div className="contact-box">
             <p><strong>Data Protection Officer</strong></p>
             <p>📧 privacy@getyourstay.in</p>
-            <p>📞 +91 98765 43210</p>
+            <p>📞 +91 8660801742</p>
             <p>📍 Electronic City, Bangalore - 560100</p>
           </div>
         </section>
@@ -290,8 +290,8 @@ const PrivacyPolicy = () => {
           <div className="contact-box">
             <p><strong>GetYourStay Technologies Pvt. Ltd.</strong></p>
             <p>📧 Email: privacy@getyourstay.in</p>
-            <p>📞 Phone: +91 98765 43210</p>
-            <p>💬 WhatsApp: +91 98765 43210</p>
+            <p>📞 Phone: +91 8660801742</p>
+            <p>💬 WhatsApp: +91 8660801742</p>
             <p>📍 Address: Electronic City, Phase 2, Bangalore - 560100, Karnataka, India</p>
             <p>⏰ Support Hours: Monday - Saturday, 9:00 AM - 8:00 PM IST</p>
           </div>

@@ -4,8 +4,8 @@ const PRIMARY_GRADIENT = ["#1a1a4e", "#2d2d7e", "#1e3a8a"];
 
 const PGDetail = ({ pg, onClose, onEnquire }) => {
   console.log("PG detail : ", pg);
-  
-  
+
+
   const [currentImage, setCurrentImage] = useState(0);
   const [showEnquireForm, setShowEnquireForm] = useState(false);
   const [formData, setFormData] = useState({
@@ -58,22 +58,29 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
       'Garden': '🌳',
       'Spa': '💆',
       'Concierge': '🛎️',
+      'Washing Machine': '🧺',
+      'Generator': '🔋',
+      'Lift': '🛗',
+
       'wifi': '📶',
       'ac': '❄️',
       'food': '🍽️',
       'laundry': '👕',
-      'parking': '🅿️'
+      'parking': '🅿️',
+      'washing_machine': '🧺',
+      'generator': '🔋',
+      'lift': '🛗'
     };
     return icons[amenity] || '✓';
   };
 
-  
+
 
   const longTermRent = pg.longTermRent || { single: 0, double: 0, triple: 0 };
   const shortTermRent = pg.shortTermRent || { single: 0, double: 0, triple: 0 };
   const rentalType = pg.rentalType || 'long_term';
 
- 
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -426,7 +433,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
                   fontWeight: '700',
                   color: PRIMARY_GRADIENT[1]
                 }}>
-                  ₹{(longTermRent.single || pg.price || 0).toLocaleString()}
+                  ₹{(longTermRent.triple || pg.price || 0).toLocaleString()}
                   <span style={{ fontSize: '11px', fontWeight: '400', color: '#999' }}>/mo</span>
                 </div>
               )}
@@ -440,7 +447,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
                     fontWeight: '600',
                     color: '#16a34a'
                   }}>
-                    ₹{(shortTermRent.single || 0).toLocaleString()}
+                    ₹{(shortTermRent.triple || 0).toLocaleString()}
                     <span style={{ fontSize: '10px', fontWeight: '400', color: '#999' }}>/day</span>
                   </div>
                 </div>
@@ -562,7 +569,8 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
                   }}
                 >
                   <span style={{ fontSize: '14px' }}>{getAmenityIcon(amenity)}</span>
-                  <span style={{ fontSize: '11px', color: '#475569', fontWeight: '500' }}>{amenity}</span>
+                  <span style={{ fontSize: '11px', color: '#475569', fontWeight: '500' }}>{amenity.replace(/_/g, ' ')
+                    .replace(/\b\w/g, char => char.toUpperCase())}</span>
                 </div>
               ))}
             </div>
@@ -929,7 +937,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
         )}
       </div>
 
-        <style>{`
+      <style>{`
           @keyframes slideUp {
             from {
               opacity: 0;

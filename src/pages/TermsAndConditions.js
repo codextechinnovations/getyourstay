@@ -330,7 +330,7 @@ const TermsAndConditions = () => {
           <div className="contact-box">
             <p><strong>GetYourStay Technologies Pvt. Ltd.</strong></p>
             <p>📍 Electronic City, Phase 2, Bangalore - 560100, Karnataka, India</p>
-            <p>📞 Phone: +91 98765 43210</p>
+            <p>📞 Phone: +91 8660801742</p>
             <p>✉️ Email: legal@getyourstay.in</p>
             <p>🌐 Website: www.getyourstay.in</p>
           </div>

@@ -244,6 +244,14 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
             {safePG.isVerified && (
               <div style={{ textAlign: 'right' }}>
                 <div style={{
+                  fontSize: '10px',
+                  color: '#94A3B8',
+                  fontWeight: '500',
+                  fontFamily: "'Inter', sans-serif"
+                }}>
+                  Starting From
+                </div>
+                <div style={{
                   fontSize: '18px',
                   fontWeight: '800',
                   color: '#FF6B2C',

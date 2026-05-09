@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const SEO_CONFIG = {
   '/': {
     title: 'GetYourStay - #1 Platform for PG Accommodation in Bangalore | Paying Guest Hostels Near Me',
-    description: 'Find verified paying guest accommodation in Bangalore, Hyderabad, Chennai, Pune. Browse Male PG, Female PG, Co-living with WiFi, AC, food. 10,000+ happy tenants. Book online or call +91 98765 43210.',
+    description: 'Find verified paying guest accommodation in Bangalore, Hyderabad, Chennai, Pune. Browse Male PG, Female PG, Co-living with WiFi, AC, food. 10,000+ happy tenants. Book online or call +91 8660801742.',
     keywords: 'PG in Bangalore, Paying Guest Bangalore, PG near me, Hostel Bangalore, Male PG, Female PG, Co-living Bangalore, PG with food, PG with WiFi, PG accommodation, best PG Bangalore, cheap PG Bangalore',
     canonical: 'https://www.getyourstay.in/',
     ogTitle: 'GetYourStay - Find Verified PG Accommodation in Bangalore | Paying Guest Hostels',
@@ -19,7 +19,7 @@ const SEO_CONFIG = {
   },
   '/contact': {
     title: 'Contact GetYourStay - PG Accommodation Support | 24/7 Help',
-    description: 'Contact GetYourStay for PG accommodation help. Our support team is available 24/7 to assist with PG search, booking, and owner inquiries. Call +91 98765 43210 or email support@getyourstay.in.',
+    description: 'Contact GetYourStay for PG accommodation help. Our support team is available 24/7 to assist with PG search, booking, and owner inquiries. Call +91 8660801742 or email support@getyourstay.in.',
     keywords: 'contact GetYourStay, PG support, PG help, PG accommodation help, tenant support, PG owner support',
     canonical: 'https://www.getyourstay.in/contact',
     ogTitle: 'Contact GetYourStay - PG Accommodation Support',

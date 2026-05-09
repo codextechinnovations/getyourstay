@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { theme } from '../theme';
+import { submitEnquiry } from '../services/api';
 
 const ListYourPG = () => {
   const [step, setStep] = useState(1);
@@ -234,11 +235,20 @@ const ListYourPG = () => {
     
     setSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log('Form submitted:', formData);
-      setSubmitted(true);
+      const response = await submitEnquiry({
+        ownerName: formData.ownerName,
+        pgName: formData.pgName,
+        phone: formData.ownerPhone,
+        email: formData.ownerEmail,
+        address: formData.address
+      });
+      if (response?.success) {
+        setSubmitted(true);
+      } else {
+        setErrors({ submit: response?.message || 'Submission failed. Please try again.' });
+      }
     } catch (err) {
-      console.error('Submission error:', err);
+      setErrors({ submit: err?.message || 'Submission failed. Please try again.' });
     }
     setSubmitting(false);
   };
@@ -824,6 +834,11 @@ const ListYourPG = () => {
               </div>
             )}
 
+            {errors.submit && (
+              <div style={{ padding: '12px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', marginBottom: '16px', color: '#dc2626', fontSize: '13px', textAlign: 'center' }}>
+                {errors.submit}
+              </div>
+            )}
             <div style={{ display: 'flex', gap: '12px', marginTop: '24px', paddingTop: '20px', borderTop: '1px solid #e2e8f0' }}>
               {step > 1 && (
                 <button type="button" onClick={handlePrev} style={{ flex: 1, padding: '12px', background: 'white', border: '1px solid #e2e8f0', borderRadius: '10px', fontSize: '14px', fontWeight: '500', color: '#64748b', cursor: 'pointer' }}>Back</button>

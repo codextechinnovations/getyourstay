@@ -81,6 +81,18 @@ export const pgApi = {
       params: { latitude, longitude, radius } 
     });
   },
+
+};
+
+const ENQUIRY_API = "https://api.manageyourpg.com/api/pg-en";
+
+export const submitEnquiry = async (data) => {
+  const res = await fetch(`${ENQUIRY_API}/apply`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  return res.json();
 };
 
 export default api;
