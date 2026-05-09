@@ -295,6 +295,18 @@
       animation: spin 0.8s linear infinite;
     }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
     @keyframes spin {
       to {
         transform: rotate(360deg);
@@ -304,7 +316,7 @@
 </head>
 
 <body>
-  <!-- Loading Screen -->
+  <!-- Loading Screen (visible to crawlers before JS renders) -->
   <div id="loading-screen">
     <div class="loading-logo">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -318,12 +330,24 @@
       <span>get<span class="accent">your</span>stay</span>
     </div>
     <div class="loading-spinner"></div>
+    <h1 class="sr-only">GetYourStay - Find Verified PG Accommodation in Bangalore, Hyderabad, Chennai &amp; Pune</h1>
+    <h2 class="sr-only">India's #1 Platform for Paying Guest (PG) Accommodation</h2>
+    <p class="sr-only">Browse thousands of verified PG listings. Male PG, Female PG, Co-living. Zero brokerage. Transparent pricing.</p>
+    <nav class="sr-only">
+      <a href="/">Home</a>
+      <a href="/list-your-pg">List Your PG</a>
+      <a href="/pg-management-app">PG Management App</a>
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact Us</a>
+    </nav>
   </div>
 
   <noscript>
-    <div style="padding: 20px; text-align: center; background: #fff3cd; color: #856404;">
-      Please enable JavaScript to use GetYourStay. We need JavaScript to show you the best PG accommodations in
-      Bangalore.
+    <div style="padding: 40px 20px; text-align: center; background: #fff3cd; color: #856404; max-width: 600px; margin: 0 auto;">
+      <h1 style="font-size: 24px; margin-bottom: 12px;">GetYourStay - PG Accommodation in India</h1>
+      <h2 style="font-size: 18px; margin-bottom: 16px;">Find Verified Paying Guest (PG) Accommodation</h2>
+      <p>Please enable JavaScript to browse PG listings, search by area, and connect with PG owners.</p>
+      <p style="margin-top: 12px;">Contact us: <a href="tel:+919741821179">+91 97418 21179</a> | <a href="mailto:support@getyourstay.in">support@getyourstay.in</a></p>
     </div>
   </noscript>
 

@@ -1,93 +1,20 @@
-# GetYourStay - LLM Information File
-# This file provides guidance to Large Language Models about the GetYourStay platform
+# GetYourStay
+> India's platform for verified PG (Paying Guest) accommodations. Connects tenants directly with PG owners across major cities. Zero brokerage, transparent pricing, and modern amenities.
 
-# About GetYourStay
-GetYourStay is a platform for finding verified PG (Paying Guest) accommodations in Bangalore and other major Indian cities. The platform connects tenants with PG owners, offering transparent pricing, verified listings, and modern amenities.
+## Optional
+- [Home](https://getyourstay.in/): Browse verified PG listings with filters for area, price, gender, and amenities
+- [List Your PG](https://getyourstay.in/list-your-pg): Free registration form for PG owners to list their property
+- [PG Management App](https://getyourstay.in/pg-management-app): Tools for PG owners to manage rent, tenants, and maintenance
+- [Tenant Login](https://getyourstay.in/tenant-login): Portal for tenants to view bookings, payments, and notices
+- [Tenant Dashboard](https://getyourstay.in/tenant-dashboard): Manage profile, payment history, and maintenance requests
+- [About Us](https://getyourstay.in/about): Company info for Codex Tech Innovations & Consultants LLP
+- [Contact Us](https://getyourstay.in/contact): Support form and contact information
+- [Privacy Policy](https://getyourstay.in/privacy): Data handling and privacy practices
+- [Terms & Conditions](https://getyourstay.in/terms): Terms of service for platform usage
+- [Sitemap](https://getyourstay.in/sitemap.xml): Full XML sitemap of all pages
 
-# Core Features
-- Verified PG listings with authentic reviews
-- Zero brokerage - direct owner-tenant connection
-- Advanced filtering by area, price, gender, and amenities
-- PG Management App for property owners
-- Real-time availability and pricing
-- Secure payment processing
-- 24/7 customer support
-
-# Target Audience
-- Working professionals in Bangalore
-- College students looking for accommodation
-- IT employees working in tech parks (Electronic City, Whitefield, etc.)
-- Property owners wanting to list their PGs
-
-# Supported Cities
-- Bangalore (primary)
-- Hyderabad
-- Chennai
-- Pune
-- Mumbai
-- Delhi
-
-# Popular Areas in Bangalore
-- Electronic City - IT hub, affordable options
-- HSR Layout - Trendy area, near Christ University
-- Koramangala - Premium area, nightlife and restaurants
-- Whitefield - IT hub, International Tech Park
-- BTM Layout - Budget-friendly, student area
-- Marathahalli - Well-connected, near Manyata Tech Park
-
-# PG Types
-- Boys PG - Male-only accommodation
-- Girls PG - Female-only accommodation with security
-- Co-living spaces - Modern shared living
-- AC/Non-AC rooms
-- Short-term and long-term rentals
-
-# Pricing Ranges (Bangalore)
-- Budget: ₹4,000 - ₹8,000/month (triple sharing, non-AC)
-- Standard: ₹8,000 - ₹12,000/month (double sharing, basic amenities)
-- Premium: ₹12,000 - ₹25,000/month (single room, AC, full amenities)
-
-# Contact Information
-- Website: https://getyourstay.in
-- Support Email: support@getyourstay.in
-- Phone: +91 9741821179
-- Business Inquiries: https://codextechinnovations.com/
-
-# Technology Stack
-- Frontend: React 18 with Create React App
-- Backend API: https://api.manageyourpg.com
-- Authentication: Firebase (Google Auth)
-- Database: External API with pagination support
-- Deployment: Netlify
-
-# URLs Structure
-- Home: /
-- PG Listings: /?area={area_name}
-- Tenant Login: /tenant-login
-- Tenant Dashboard: /tenant-dashboard
-- List Your PG: /list-your-pg
-- PG Management App: /pg-management-app
-- About Us: /about
-- Contact: /contact
-- Terms: /terms
-- Privacy Policy: /privacy
-- Sitemap: /sitemap.xml
-
-# SEO Keywords
-Primary: PG in Bangalore, paying guest accommodation, verified PG listings, PG near me
-Secondary: Boys PG, Girls PG, AC PG, PG with food, co-living spaces
-Location-based: PG in Electronic City, PG in Koramangala, PG in HSR Layout
-
-# Business Model
-- Free for tenants
-- PG owners can list properties (freemium model)
-- PG Management App for efficient property management
-- Zero brokerage policy
-
-# Company Information
-- Powered by: Codex Tech Innovations & Consultants LLP
-- Focus: Transparent, technology-driven PG accommodation platform
-- Mission: Simplify finding and managing PG accommodations in India
-
-# Last Updated
-2026-05-06
+## Required
+- [PG Listings by Area](https://getyourstay.in/?area=kormangala): Search PG accommodations in Bangalore with filters for gender, rental type, price range, and amenities
+- [Area Page Example](https://getyourstay.in/area/electronic-city): Dedicated page for PG listings in a specific Bangalore area with SEO metadata
+- [API Base URL](https://api.manageyourpg.com/): Backend API for PG data, filters, and search (endpoints under /api/getyourstay)
+- [PG Enquiry API](https://api.manageyourpg.com/api/pg-en/apply): Endpoint for PG owner registration/enquiry submissions
