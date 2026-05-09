@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { theme } from '../theme';
 import { submitEnquiry } from '../services/api';
+import './ListYourPG.css';
 
 const ListYourPG = () => {
   const [step, setStep] = useState(1);
@@ -255,50 +256,17 @@ const ListYourPG = () => {
 
   if (submitted) {
     return (
-      <div style={{
-        minHeight: '100vh',
-        background: '#f8fafc',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '40px 20px'
-      }}>
-        <div style={{
-          background: 'white',
-          borderRadius: '20px',
-          padding: '48px',
-          maxWidth: '480px',
-          textAlign: 'center',
-          boxShadow: '0 10px 40px rgba(0,0,0,0.08)'
-        }}>
-          <div style={{
-            width: '72px',
-            height: '72px',
-            background: '#dcfce7',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto 24px'
-          }}>
+      <div className="submit-success">
+        <div className="success-card">
+          <div className="success-check-icon">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2">
               <polyline points="20,6 9,17 4,12" />
             </svg>
           </div>
-          <h2 style={{ color: theme.primary[800], marginBottom: '12px', fontSize: '24px', fontWeight: '700' }}>
-            Listing Submitted!
-          </h2>
-          <p style={{ color: '#64748b', marginBottom: '24px', lineHeight: '1.6', fontSize: '15px' }}>
-            Thank you for listing on GetYourStay. Our team will verify your listing and activate it within 2 hours.
-          </p>
-          <div style={{
-            background: '#f0f9ff',
-            borderRadius: '12px',
-            padding: '16px',
-            marginBottom: '24px',
-            textAlign: 'left'
-          }}>
-            <p style={{ color: '#0369a1', fontSize: '14px', margin: 0 }}>
+          <h2>Listing Submitted!</h2>
+          <p>Thank you for listing on GetYourStay. Our team will verify your listing and activate it within 2 hours.</p>
+          <div className="success-next-steps">
+            <p>
               <strong>What happens next:</strong><br/>
               1. We'll verify your listing<br/>
               2. Your listing goes live<br/>
@@ -307,15 +275,8 @@ const ListYourPG = () => {
           </div>
           <Link 
             to="/"
-            style={{
-              display: 'inline-block',
-              padding: '12px 28px',
-              background: theme.primary[800],
-              color: 'white',
-              borderRadius: '10px',
-              textDecoration: 'none',
-              fontWeight: '600'
-            }}
+            className="btn btn-primary"
+            style={{ padding: '12px 28px' }}
           >
             Go to Home
           </Link>
@@ -325,91 +286,27 @@ const ListYourPG = () => {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8fafc' }}>
-      <div style={{
-        background: theme.primary[800],
-        padding: '48px 20px',
-        textAlign: 'center'
-      }}>
-        <h1 style={{ 
-          color: 'white', 
-          marginBottom: '12px', 
-          fontSize: 'clamp(24px, 4vw, 36px)',
-          fontWeight: '700'
-        }}>
-          List Your PG on GetYourStay
-        </h1>
-        <p style={{ 
-          color: 'rgba(255,255,255,0.85)', 
-          fontSize: '16px'
-        }}>
-          100% Free Listing • Reach 50,000+ Active Users
-        </p>
+    <div className="list-pg-page">
+      <div className="list-pg-hero">
+        <h1>List Your PG on GetYourStay</h1>
+        <p>100% Free Listing • Reach 50,000+ Active Users</p>
       </div>
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '40px 20px' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '20px',
-          marginBottom: '40px'
-        }}>
+      <div className="page-section">
+        <div className="benefits-grid">
           {benefits.map((benefit, idx) => (
-            <div
-              key={idx}
-              style={{
-                background: 'white',
-                borderRadius: '12px',
-                padding: '20px',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '14px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                border: '1px solid #e2e8f0'
-              }}
-            >
-              <div style={{
-                width: '44px',
-                height: '44px',
-                background: `${theme.primary[800]}10`,
-                borderRadius: '10px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                color: theme.primary[800]
-              }}>
-                {benefit.icon}
-              </div>
+            <div key={idx} className="benefit-card">
+              <div className="benefit-icon">{benefit.icon}</div>
               <div>
-                <h3 style={{
-                  color: theme.primary[800],
-                  fontSize: '15px',
-                  fontWeight: '600',
-                  marginBottom: '4px'
-                }}>
-                  {benefit.title}
-                </h3>
-                <p style={{
-                  color: '#64748b',
-                  fontSize: '13px',
-                  margin: 0,
-                  lineHeight: '1.5'
-                }}>
-                  {benefit.desc}
-                </p>
+                <h3 className="benefit-title">{benefit.title}</h3>
+                <p className="benefit-desc">{benefit.desc}</p>
               </div>
             </div>
           ))}
         </div>
 
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <h2 style={{ 
-            color: theme.primary[800], 
-            fontSize: '22px', 
-            fontWeight: '600',
-            marginBottom: '4px' 
-          }}>
+          <h2 style={{ color: theme.primary[800], fontSize: '22px', fontWeight: '600', marginBottom: '4px' }}>
             Create Your Listing
           </h2>
           <p style={{ color: '#64748b', fontSize: '14px' }}>
@@ -417,76 +314,34 @@ const ListYourPG = () => {
           </p>
         </div>
 
-        <div style={{
-          background: 'white',
-          borderRadius: '16px',
-          padding: '32px',
-          marginBottom: '32px',
-          border: '1px solid #e2e8f0',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
-        }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <div style={{
-              width: '64px',
-              height: '64px',
-              background: `linear-gradient(135deg, ${theme.primary[800]}, ${theme.primary[500]})`,
-              borderRadius: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: '16px'
-            }}>
+        <div className="app-promo-card">
+          <div className="app-promo-inner">
+            <div className="app-promo-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                 <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
                 <line x1="12" y1="18" x2="12.01" y2="18"/>
               </svg>
             </div>
-            <h3 style={{
-              color: theme.primary[800],
-              fontSize: '20px',
-              fontWeight: '700',
-              marginBottom: '8px'
-            }}>
-              Also Get PG Owner App
-            </h3>
-            <p style={{
-              color: '#64748b',
-              fontSize: '14px',
-              marginBottom: '16px',
-              maxWidth: '400px',
-              lineHeight: '1.6'
-            }}>
-              Manage your entire PG from your phone. Track rent, manage tenants, handle maintenance - all free with your listing!
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginBottom: '16px' }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748b' }}>
+            <h3 className="app-promo-title">Also Get PG Owner App</h3>
+            <p className="app-promo-desc">Manage your entire PG from your phone. Track rent, manage tenants, handle maintenance - all free with your listing!</p>
+            <div className="app-promo-features">
+              <span className="app-promo-feature">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>
                 Rent Tracking
               </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748b' }}>
+              <span className="app-promo-feature">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>
                 Tenant Management
               </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748b' }}>
+              <span className="app-promo-feature">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>
                 WhatsApp Alerts
               </span>
             </div>
             <Link
               to="/pg-management-app"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '10px 20px',
-                background: '#f0f4ff',
-                color: theme.primary[800],
-                borderRadius: '8px',
-                textDecoration: 'none',
-                fontSize: '14px',
-                fontWeight: '600',
-                border: '1px solid #c7d2fe'
-              }}
+              className="btn btn-outline"
+              style={{ background: '#f0f4ff', color: theme.primary[800], border: '1px solid #c7d2fe' }}
             >
               Learn More About PG App
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -499,80 +354,66 @@ const ListYourPG = () => {
       </div>
 
       <div style={{ maxWidth: '640px', margin: '0 auto 60px', padding: '0 20px' }}>
-        <div style={{
-          background: 'white',
-          borderRadius: '16px',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-          overflow: 'hidden'
-        }}>
-          <div style={{
-            display: 'flex',
-            background: '#f8fafc',
-            borderBottom: '1px solid #e2e8f0'
-          }}>
+        <div className="form-card">
+          <div className="form-steps">
             {['Owner Info', 'PG Details', 'Pricing', 'Review'].map((label, idx) => (
               <div
                 key={idx}
-                style={{
-                  flex: 1,
-                  padding: '14px 8px',
-                  textAlign: 'center',
-                  fontSize: '13px',
-                  fontWeight: '500',
-                  color: step === idx + 1 ? 'white' : '#64748b',
-                  background: step === idx + 1 ? theme.primary[800] : 'transparent'
-                }}
+                className={`form-step ${step === idx + 1 ? 'form-step-active' : 'form-step-inactive'}`}
               >
                 {idx + 1}. {label}
               </div>
             ))}
           </div>
 
-          <form onSubmit={handleSubmit} style={{ padding: '28px' }}>
+          <form onSubmit={handleSubmit} className="form-body">
             {step === 1 && (
               <div>
                 <h3 style={{ color: theme.primary[800], marginBottom: '20px', fontSize: '18px', fontWeight: '600' }}>
                   Owner Information
                 </h3>
                 
-                <div style={{ marginBottom: '16px' }}>
-                  <label style={labelStyle}>Full Name *</label>
+                <div className="form-group">
+                  <label className="form-label">Full Name *</label>
                   <input
                     type="text"
                     name="ownerName"
                     value={formData.ownerName}
                     onChange={handleChange}
                     placeholder="Enter your full name"
-                    style={{ ...inputStyle, borderColor: errors.ownerName ? '#ef4444' : '#e2e8f0' }}
+                    className="input-field"
+                    style={{ borderColor: errors.ownerName ? '#ef4444' : '#e2e8f0' }}
                   />
-                  {errors.ownerName && <span style={errorStyle}>{errors.ownerName}</span>}
+                  {errors.ownerName && <span className="error-text">{errors.ownerName}</span>}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>Phone Number *</label>
+                <div className="form-grid-2">
+                  <div>
+                    <label className="form-label">Phone Number *</label>
                     <input
                       type="tel"
                       name="ownerPhone"
                       value={formData.ownerPhone}
                       onChange={handleChange}
                       placeholder="10-digit mobile"
-                      style={{ ...inputStyle, borderColor: errors.ownerPhone ? '#ef4444' : '#e2e8f0' }}
+                      className="input-field"
+                      style={{ borderColor: errors.ownerPhone ? '#ef4444' : '#e2e8f0' }}
                     />
-                    {errors.ownerPhone && <span style={errorStyle}>{errors.ownerPhone}</span>}
+                    {errors.ownerPhone && <span className="error-text">{errors.ownerPhone}</span>}
                   </div>
 
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>Email Address *</label>
+                  <div>
+                    <label className="form-label">Email Address *</label>
                     <input
                       type="email"
                       name="ownerEmail"
                       value={formData.ownerEmail}
                       onChange={handleChange}
                       placeholder="your@email.com"
-                      style={{ ...inputStyle, borderColor: errors.ownerEmail ? '#ef4444' : '#e2e8f0' }}
+                      className="input-field"
+                      style={{ borderColor: errors.ownerEmail ? '#ef4444' : '#e2e8f0' }}
                     />
-                    {errors.ownerEmail && <span style={errorStyle}>{errors.ownerEmail}</span>}
+                    {errors.ownerEmail && <span className="error-text">{errors.ownerEmail}</span>}
                   </div>
                 </div>
               </div>
@@ -584,27 +425,28 @@ const ListYourPG = () => {
                   PG / Property Details
                 </h3>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>PG / Property Name *</label>
+                <div className="form-grid-2">
+                  <div>
+                    <label className="form-label">PG / Property Name *</label>
                     <input
                       type="text"
                       name="pgName"
                       value={formData.pgName}
                       onChange={handleChange}
                       placeholder="e.g., Green Valley PG"
-                      style={{ ...inputStyle, borderColor: errors.pgName ? '#ef4444' : '#e2e8f0' }}
+                      className="input-field"
+                      style={{ borderColor: errors.pgName ? '#ef4444' : '#e2e8f0' }}
                     />
-                    {errors.pgName && <span style={errorStyle}>{errors.pgName}</span>}
+                    {errors.pgName && <span className="error-text">{errors.pgName}</span>}
                   </div>
 
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>Property Type</label>
+                  <div>
+                    <label className="form-label">Property Type</label>
                     <select
                       name="pgType"
                       value={formData.pgType}
                       onChange={handleChange}
-                      style={{ ...inputStyle, cursor: 'pointer' }}
+                      className="input-field select-field"
                     >
                       <option value="pg">PG / Hostel</option>
                       <option value="hotel">Hotel</option>
@@ -613,14 +455,14 @@ const ListYourPG = () => {
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>For Gender *</label>
+                <div className="form-grid-2">
+                  <div>
+                    <label className="form-label">For Gender *</label>
                     <select
                       name="gender"
                       value={formData.gender}
                       onChange={handleChange}
-                      style={{ ...inputStyle, cursor: 'pointer' }}
+                      className="input-field select-field"
                     >
                       <option value="male">Male Only</option>
                       <option value="female">Female Only</option>
@@ -628,60 +470,62 @@ const ListYourPG = () => {
                     </select>
                   </div>
 
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>Area / Location *</label>
+                  <div>
+                    <label className="form-label">Area / Location *</label>
                     <select
                       name="area"
                       value={formData.area}
                       onChange={handleChange}
-                      style={{ ...inputStyle, cursor: 'pointer', borderColor: errors.area ? '#ef4444' : '#e2e8f0' }}
+                      className="input-field select-field"
+                      style={{ borderColor: errors.area ? '#ef4444' : '#e2e8f0' }}
                     >
                       <option value="">Select Area</option>
                       {areas.map(area => (
                         <option key={area} value={area}>{area}</option>
                       ))}
                     </select>
-                    {errors.area && <span style={errorStyle}>{errors.area}</span>}
+                    {errors.area && <span className="error-text">{errors.area}</span>}
                   </div>
                 </div>
 
-                <div style={{ marginBottom: '16px' }}>
-                  <label style={labelStyle}>Full Address *</label>
+                <div className="form-group">
+                  <label className="form-label">Full Address *</label>
                   <textarea
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
                     placeholder="House no., Street, Landmark"
                     rows={2}
-                    style={{ ...inputStyle, resize: 'vertical', borderColor: errors.address ? '#ef4444' : '#e2e8f0' }}
+                    className="input-field"
+                    style={{ resize: 'vertical', borderColor: errors.address ? '#ef4444' : '#e2e8f0' }}
                   />
-                  {errors.address && <span style={errorStyle}>{errors.address}</span>}
+                  {errors.address && <span className="error-text">{errors.address}</span>}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>City *</label>
-                    <input type="text" name="city" value={formData.city} onChange={handleChange} style={inputStyle} />
+                <div className="form-grid-3">
+                  <div>
+                    <label className="form-label">City *</label>
+                    <input type="text" name="city" value={formData.city} onChange={handleChange} className="input-field" />
                   </div>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>State</label>
-                    <input type="text" name="state" value={formData.state} onChange={handleChange} style={inputStyle} />
+                  <div>
+                    <label className="form-label">State</label>
+                    <input type="text" name="state" value={formData.state} onChange={handleChange} className="input-field" />
                   </div>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>Pincode *</label>
-                    <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} placeholder="6-digit" maxLength={6} style={{ ...inputStyle, borderColor: errors.pincode ? '#ef4444' : '#e2e8f0' }} />
-                    {errors.pincode && <span style={errorStyle}>{errors.pincode}</span>}
+                  <div>
+                    <label className="form-label">Pincode *</label>
+                    <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} placeholder="6-digit" maxLength={6} className="input-field" style={{ borderColor: errors.pincode ? '#ef4444' : '#e2e8f0' }} />
+                    {errors.pincode && <span className="error-text">{errors.pincode}</span>}
                   </div>
                 </div>
 
-                <div style={{ marginBottom: '16px' }}>
-                  <label style={labelStyle}>Description</label>
-                  <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Describe your PG..." rows={3} style={{ ...inputStyle, resize: 'vertical' }} />
+                <div className="form-group">
+                  <label className="form-label">Description</label>
+                  <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Describe your PG..." rows={3} className="input-field" style={{ resize: 'vertical' }} />
                 </div>
 
-                <div style={{ marginBottom: '16px' }}>
-                  <label style={labelStyle}>Total Rooms Available</label>
-                  <input type="number" name="totalRooms" value={formData.totalRooms} onChange={handleChange} placeholder="e.g., 20" min="1" style={inputStyle} />
+                <div className="form-group">
+                  <label className="form-label">Total Rooms Available</label>
+                  <input type="number" name="totalRooms" value={formData.totalRooms} onChange={handleChange} placeholder="e.g., 20" min="1" className="input-field" />
                 </div>
               </div>
             )}
@@ -692,88 +536,88 @@ const ListYourPG = () => {
                   Pricing & Amenities
                 </h3>
 
-                <div style={{ marginBottom: '20px' }}>
-                  <label style={labelStyle}>Rental Type</label>
-                  <div style={{ display: 'flex', gap: '10px', marginTop: '8px' }}>
+                <div className="form-group">
+                  <label className="form-label">Rental Type</label>
+                  <div className="rental-type-options">
                     {[{ value: 'long_term', label: 'Monthly Only' }, { value: 'short_term', label: 'Daily Only' }, { value: 'both', label: 'Both' }].map(option => (
-                      <label key={option.value} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px', border: `2px solid ${formData.rentalType === option.value ? theme.primary[800] : '#e2e8f0'}`, borderRadius: '8px', cursor: 'pointer', background: formData.rentalType === option.value ? '#f0f4ff' : 'white' }}>
-                        <input type="radio" name="rentalType" value={option.value} checked={formData.rentalType === option.value} onChange={handleChange} style={{ display: 'none' }} />
-                        <span style={{ color: formData.rentalType === option.value ? theme.primary[800] : '#64748b', fontWeight: '500', fontSize: '13px' }}>{option.label}</span>
+                      <label key={option.value} className={`rental-type-option ${formData.rentalType === option.value ? 'rental-type-option-active' : ''}`}>
+                        <input type="radio" name="rentalType" value={option.value} checked={formData.rentalType === option.value} onChange={handleChange} />
+                        <span className={`rental-type-label ${formData.rentalType === option.value ? 'rental-type-label-active' : 'rental-type-label-inactive'}`}>{option.label}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
                 {(formData.rentalType === 'long_term' || formData.rentalType === 'both') && (
-                  <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '16px', marginBottom: '16px' }}>
-                    <h4 style={{ color: theme.primary[800], marginBottom: '12px', fontSize: '14px', fontWeight: '600' }}>Monthly Rent (₹)</h4>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+                  <div className="pricing-section">
+                    <h4 className="pricing-section-title" style={{ color: theme.primary[800] }}>Monthly Rent (₹)</h4>
+                    <div className="pricing-grid-3">
                       <div>
-                        <label style={labelStyle}>Single</label>
-                        <input type="number" value={formData.longTermRent.single} onChange={(e) => handleNestedChange('longTermRent', 'single', e.target.value)} placeholder="₹8000" style={inputStyle} />
+                        <label className="form-label">Single</label>
+                        <input type="number" value={formData.longTermRent.single} onChange={(e) => handleNestedChange('longTermRent', 'single', e.target.value)} placeholder="₹8000" className="input-field" />
                       </div>
                       <div>
-                        <label style={labelStyle}>Double</label>
-                        <input type="number" value={formData.longTermRent.double} onChange={(e) => handleNestedChange('longTermRent', 'double', e.target.value)} placeholder="₹6000" style={inputStyle} />
+                        <label className="form-label">Double</label>
+                        <input type="number" value={formData.longTermRent.double} onChange={(e) => handleNestedChange('longTermRent', 'double', e.target.value)} placeholder="₹6000" className="input-field" />
                       </div>
                       <div>
-                        <label style={labelStyle}>Triple</label>
-                        <input type="number" value={formData.longTermRent.triple} onChange={(e) => handleNestedChange('longTermRent', 'triple', e.target.value)} placeholder="₹5000" style={inputStyle} />
+                        <label className="form-label">Triple</label>
+                        <input type="number" value={formData.longTermRent.triple} onChange={(e) => handleNestedChange('longTermRent', 'triple', e.target.value)} placeholder="₹5000" className="input-field" />
                       </div>
                     </div>
                   </div>
                 )}
 
                 {(formData.rentalType === 'short_term' || formData.rentalType === 'both') && (
-                  <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '16px', marginBottom: '16px' }}>
-                    <h4 style={{ color: '#15803d', marginBottom: '12px', fontSize: '14px', fontWeight: '600' }}>Daily Rent (₹)</h4>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+                  <div className="pricing-section">
+                    <h4 className="pricing-section-title" style={{ color: '#15803d' }}>Daily Rent (₹)</h4>
+                    <div className="pricing-grid-3">
                       <div>
-                        <label style={labelStyle}>Single</label>
-                        <input type="number" value={formData.shortTermRent.single} onChange={(e) => handleNestedChange('shortTermRent', 'single', e.target.value)} placeholder="₹500" style={inputStyle} />
+                        <label className="form-label">Single</label>
+                        <input type="number" value={formData.shortTermRent.single} onChange={(e) => handleNestedChange('shortTermRent', 'single', e.target.value)} placeholder="₹500" className="input-field" />
                       </div>
                       <div>
-                        <label style={labelStyle}>Double</label>
-                        <input type="number" value={formData.shortTermRent.double} onChange={(e) => handleNestedChange('shortTermRent', 'double', e.target.value)} placeholder="₹400" style={inputStyle} />
+                        <label className="form-label">Double</label>
+                        <input type="number" value={formData.shortTermRent.double} onChange={(e) => handleNestedChange('shortTermRent', 'double', e.target.value)} placeholder="₹400" className="input-field" />
                       </div>
                       <div>
-                        <label style={labelStyle}>Triple</label>
-                        <input type="number" value={formData.shortTermRent.triple} onChange={(e) => handleNestedChange('shortTermRent', 'triple', e.target.value)} placeholder="₹350" style={inputStyle} />
+                        <label className="form-label">Triple</label>
+                        <input type="number" value={formData.shortTermRent.triple} onChange={(e) => handleNestedChange('shortTermRent', 'triple', e.target.value)} placeholder="₹350" className="input-field" />
                       </div>
                     </div>
                   </div>
                 )}
 
-                <div style={{ marginBottom: '20px' }}>
-                  <label style={labelStyle}>Amenities Available</label>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '8px', marginTop: '8px' }}>
+                <div className="form-group">
+                  <label className="form-label">Amenities Available</label>
+                  <div className="amenities-grid-list">
                     {amenitiesList.map(amenity => (
-                      <label key={amenity} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', background: formData.amenities.includes(amenity) ? '#f0f4ff' : '#f8fafc', border: `1px solid ${formData.amenities.includes(amenity) ? theme.primary[800] : '#e2e8f0'}`, borderRadius: '6px', cursor: 'pointer', fontSize: '13px', color: formData.amenities.includes(amenity) ? theme.primary[800] : '#64748b' }}>
-                        <input type="checkbox" checked={formData.amenities.includes(amenity)} onChange={() => toggleAmenity(amenity)} style={{ display: 'none' }} />
-                        <span style={{ width: '16px', height: '16px', borderRadius: '4px', border: `1px solid ${formData.amenities.includes(amenity) ? theme.primary[800] : '#cbd5e1'}`, background: formData.amenities.includes(amenity) ? theme.primary[800] : 'white' }} />
+                      <label key={amenity} className="amenity-checkbox-item" style={{ background: formData.amenities.includes(amenity) ? '#f0f4ff' : '#f8fafc', border: `1px solid ${formData.amenities.includes(amenity) ? theme.primary[800] : '#e2e8f0'}`, color: formData.amenities.includes(amenity) ? theme.primary[800] : '#64748b' }}>
+                        <input type="checkbox" checked={formData.amenities.includes(amenity)} onChange={() => toggleAmenity(amenity)} />
+                        <span className="amenity-checkbox-custom" style={{ border: `1px solid ${formData.amenities.includes(amenity) ? theme.primary[800] : '#cbd5e1'}`, background: formData.amenities.includes(amenity) ? theme.primary[800] : 'white' }} />
                         {amenity}
                       </label>
                     ))}
                   </div>
                 </div>
 
-                <div style={{ marginBottom: '16px' }}>
-                  <label style={labelStyle}>Upload Images (Max 10)</label>
-                  <div style={{ border: '2px dashed #e2e8f0', borderRadius: '10px', padding: '24px', textAlign: 'center', background: '#f8fafc', cursor: 'pointer', marginTop: '8px' }}>
-                    <input type="file" multiple accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} id="image-upload" />
+                <div className="form-group">
+                  <label className="form-label">Upload Images (Max 10)</label>
+                  <div className="image-upload-zone">
+                    <input type="file" multiple accept="image/*" onChange={handleImageUpload} id="image-upload" />
                     <label htmlFor="image-upload" style={{ cursor: 'pointer', display: 'block' }}>
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1.5" style={{ marginBottom: '8px' }}>
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/>
                       </svg>
-                      <p style={{ color: '#64748b', margin: 0, fontSize: '13px' }}>Click to upload images</p>
+                      <p className="text-muted m-0">Click to upload images</p>
                     </label>
                   </div>
                   {formData.images.length > 0 && (
-                    <div style={{ display: 'flex', gap: '8px', marginTop: '12px', flexWrap: 'wrap' }}>
+                    <div className="image-previews">
                       {formData.images.map((img, idx) => (
-                        <div key={idx} style={{ position: 'relative', width: '80px', height: '80px' }}>
-                          <img src={img} alt={`Upload ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px', border: '1px solid #e2e8f0' }} />
-                          <button type="button" onClick={() => removeImage(idx)} style={{ position: 'absolute', top: '-6px', right: '-6px', width: '20px', height: '20px', borderRadius: '50%', background: '#ef4444', color: 'white', border: 'none', cursor: 'pointer', fontSize: '12px' }}>×</button>
+                        <div key={idx} className="image-preview-item">
+                          <img src={img} alt={`Upload ${idx + 1}`} />
+                          <button type="button" onClick={() => removeImage(idx)} className="image-remove-btn">×</button>
                         </div>
                       ))}
                     </div>
@@ -788,65 +632,65 @@ const ListYourPG = () => {
                   Bank Details & Confirm
                 </h3>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>Bank Name</label>
-                    <input type="text" name="bankName" value={formData.bankName} onChange={handleChange} placeholder="e.g., HDFC Bank" style={inputStyle} />
+                <div className="form-grid-2">
+                  <div>
+                    <label className="form-label">Bank Name</label>
+                    <input type="text" name="bankName" value={formData.bankName} onChange={handleChange} placeholder="e.g., HDFC Bank" className="input-field" />
                   </div>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>Account Holder</label>
-                    <input type="text" name="accountHolder" value={formData.accountHolder} onChange={handleChange} placeholder="Name as per bank" style={inputStyle} />
-                  </div>
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>Account Number</label>
-                    <input type="text" name="accountNumber" value={formData.accountNumber} onChange={handleChange} placeholder="Your account number" style={inputStyle} />
-                  </div>
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={labelStyle}>IFSC Code</label>
-                    <input type="text" name="ifscCode" value={formData.ifscCode} onChange={handleChange} placeholder="e.g., HDFC0001234" style={inputStyle} />
+                  <div>
+                    <label className="form-label">Account Holder</label>
+                    <input type="text" name="accountHolder" value={formData.accountHolder} onChange={handleChange} placeholder="Name as per bank" className="input-field" />
                   </div>
                 </div>
 
-                <div style={{ background: '#f8fafc', borderRadius: '10px', padding: '16px', marginBottom: '16px' }}>
-                  <h4 style={{ color: theme.primary[800], marginBottom: '12px', fontSize: '14px', fontWeight: '600' }}>Listing Summary</h4>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '13px' }}>
-                    <span style={{ color: '#64748b' }}>PG Name:</span>
-                    <span style={{ color: theme.primary[800], fontWeight: '500' }}>{formData.pgName || '-'}</span>
-                    <span style={{ color: '#64748b' }}>Location:</span>
-                    <span style={{ color: theme.primary[800], fontWeight: '500' }}>{formData.area}, {formData.city}</span>
-                    <span style={{ color: '#64748b' }}>For:</span>
-                    <span style={{ color: theme.primary[800], fontWeight: '500' }}>{formData.gender === 'male' ? 'Male' : formData.gender === 'female' ? 'Female' : 'Co-live'}</span>
-                    <span style={{ color: '#64748b' }}>Listing:</span>
-                    <span style={{ color: '#16a34a', fontWeight: '600' }}>FREE</span>
+                <div className="form-grid-2">
+                  <div>
+                    <label className="form-label">Account Number</label>
+                    <input type="text" name="accountNumber" value={formData.accountNumber} onChange={handleChange} placeholder="Your account number" className="input-field" />
+                  </div>
+                  <div>
+                    <label className="form-label">IFSC Code</label>
+                    <input type="text" name="ifscCode" value={formData.ifscCode} onChange={handleChange} placeholder="e.g., HDFC0001234" className="input-field" />
                   </div>
                 </div>
 
-                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', marginBottom: '16px' }}>
-                  <input type="checkbox" name="termsAccepted" checked={formData.termsAccepted} onChange={handleChange} style={{ marginTop: '3px', width: '16px', height: '16px' }} />
-                  <span style={{ fontSize: '13px', color: '#64748b', lineHeight: '1.5' }}>
-                    I agree to the <Link to="/terms" style={{ color: theme.primary[800], fontWeight: '500' }}>Terms</Link> and <Link to="/privacy" style={{ color: theme.primary[800], fontWeight: '500' }}>Privacy Policy</Link>.
+                <div className="summary-card">
+                  <h4 className="pricing-section-title" style={{ color: theme.primary[800] }}>Listing Summary</h4>
+                  <div className="summary-grid">
+                    <span className="summary-label">PG Name:</span>
+                    <span className="summary-value">{formData.pgName || '-'}</span>
+                    <span className="summary-label">Location:</span>
+                    <span className="summary-value">{formData.area}, {formData.city}</span>
+                    <span className="summary-label">For:</span>
+                    <span className="summary-value">{formData.gender === 'male' ? 'Male' : formData.gender === 'female' ? 'Female' : 'Co-live'}</span>
+                    <span className="summary-label">Listing:</span>
+                    <span className="summary-value" style={{ color: '#16a34a', fontWeight: '600' }}>FREE</span>
+                  </div>
+                </div>
+
+                <label className="terms-checkbox">
+                  <input type="checkbox" name="termsAccepted" checked={formData.termsAccepted} onChange={handleChange} />
+                  <span className="terms-text">
+                    I agree to the <Link to="/terms">Terms</Link> and <Link to="/privacy">Privacy Policy</Link>.
                   </span>
                 </label>
-                {errors.termsAccepted && <span style={errorStyle}>{errors.termsAccepted}</span>}
+                {errors.termsAccepted && <span className="error-text">{errors.termsAccepted}</span>}
               </div>
             )}
 
             {errors.submit && (
-              <div style={{ padding: '12px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', marginBottom: '16px', color: '#dc2626', fontSize: '13px', textAlign: 'center' }}>
+              <div className="form-submit-error">
                 {errors.submit}
               </div>
             )}
-            <div style={{ display: 'flex', gap: '12px', marginTop: '24px', paddingTop: '20px', borderTop: '1px solid #e2e8f0' }}>
+            <div className="form-actions">
               {step > 1 && (
-                <button type="button" onClick={handlePrev} style={{ flex: 1, padding: '12px', background: 'white', border: '1px solid #e2e8f0', borderRadius: '10px', fontSize: '14px', fontWeight: '500', color: '#64748b', cursor: 'pointer' }}>Back</button>
+                <button type="button" onClick={handlePrev} className="form-back-btn">Back</button>
               )}
               {step < 4 ? (
-                <button type="button" onClick={handleNext} style={{ flex: 2, padding: '12px', background: theme.primary[800], border: 'none', borderRadius: '10px', fontSize: '14px', fontWeight: '600', color: 'white', cursor: 'pointer' }}>Continue</button>
+                <button type="button" onClick={handleNext} className="btn btn-primary" style={{ flex: 2, padding: '12px' }}>Continue</button>
               ) : (
-                <button type="submit" disabled={submitting} style={{ flex: 2, padding: '12px', background: submitting ? '#94a3b8' : theme.accent[500], border: 'none', borderRadius: '10px', fontSize: '14px', fontWeight: '600', color: 'white', cursor: submitting ? 'not-allowed' : 'pointer' }}>
+                <button type="submit" disabled={submitting} className="btn" style={{ flex: 2, padding: '12px', background: submitting ? '#94a3b8' : theme.accent[500], color: 'white', cursor: submitting ? 'not-allowed' : 'pointer' }}>
                   {submitting ? 'Submitting...' : 'Submit Listing (Free)'}
                 </button>
               )}
@@ -854,19 +698,8 @@ const ListYourPG = () => {
           </form>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 640px) {
-          div[style*="gridTemplateColumns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
-          div[style*="gridTemplateColumns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </div>
   );
 };
-
-const labelStyle = { display: 'block', marginBottom: '6px', fontSize: '13px', fontWeight: '500', color: '#374151' };
-const inputStyle = { width: '100%', padding: '10px 12px', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '14px', boxSizing: 'border-box' };
-const errorStyle = { display: 'block', marginTop: '4px', fontSize: '12px', color: '#ef4444' };
 
 export default ListYourPG;

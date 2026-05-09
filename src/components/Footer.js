@@ -5,17 +5,8 @@ import { theme } from '../theme';
 
 const Footer = () => {
   return (
-    <footer style={{
-      background: theme.gradients.hero,
-      color: 'white',
-      padding: '50px 0 25px',
-      marginTop: '50px'
-    }}>
-      <div style={{
-        maxWidth: '1400px',
-        margin: '0 auto',
-        padding: '0 20px'
-      }}>
+    <footer className="gradient-hero" style={{ color: 'white', padding: '50px 0 25px', marginTop: '50px' }}>
+      <div className="container-wide">
         {/* Main Footer Content */}
         <div className="footer-grid">
           {/* Brand Column */}
@@ -107,11 +98,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div style={{
-          height: '1px',
-          background: 'rgba(255,255,255,0.15)',
-          margin: '25px 0'
-        }} />
+        <div style={{ height: '1px', background: 'rgba(255,255,255,0.15)', margin: '25px 0' }} />
 
         {/* Bottom Bar */}
         <div className="footer-bottom">

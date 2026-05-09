@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { bangaloreAreas } from '../data/pgData';
+import './Sitemap.css';
 
 const Sitemap = () => {
   const [downloadMode, setDownloadMode] = useState(false);
@@ -227,114 +228,45 @@ const Sitemap = () => {
   const sitemap = generateSitemap();
 
   return (
-    <div style={{
-      padding: '40px 20px',
-      maxWidth: '900px',
-      margin: '0 auto',
-      fontFamily: 'system-ui, -apple-system, sans-serif'
-    }}>
-      <div style={{
-        background: 'white',
-        borderRadius: '16px',
-        padding: '30px',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.08)'
-      }}>
-        <h1 style={{ 
-          color: '#0a1929', 
-          marginBottom: '10px',
-          fontSize: '28px'
-        }}>
+    <div className="sitemap-page">
+      <div className="sitemap-card">
+        <h1 className="sitemap-title">
           XML Sitemap
         </h1>
-        <p style={{ color: '#64748b', marginBottom: '20px' }}>
+        <p className="sitemap-subtitle">
           This XML sitemap helps search engines crawl your site efficiently.
         </p>
         
-        <div style={{
-          display: 'flex',
-          gap: '12px',
-          marginBottom: '30px',
-          flexWrap: 'wrap'
-        }}>
+        <div className="sitemap-actions">
           <a 
             href="/sitemap.xml"
-            style={{
-              padding: '10px 20px',
-              background: 'linear-gradient(135deg, #1a1a4e, #2d2d7e)',
-              color: 'white',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              fontSize: '14px',
-              fontWeight: '600'
-            }}
+            className="sitemap-btn sitemap-btn-primary"
           >
             View XML Sitemap
           </a>
           <a 
             href="/sitemap?download=true"
-            style={{
-              padding: '10px 20px',
-              background: '#f97316',
-              color: 'white',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              fontSize: '14px',
-              fontWeight: '600'
-            }}
+            className="sitemap-btn sitemap-btn-accent"
           >
             Download Sitemap
           </a>
         </div>
 
-        <h2 style={{ 
-          color: '#0a1929', 
-          marginBottom: '15px',
-          fontSize: '20px',
-          borderBottom: '2px solid #e2e8f0',
-          paddingBottom: '10px'
-        }}>
+        <h2 className="sitemap-section-title">
           Sitemap Preview
         </h2>
         
-        <div style={{
-          background: '#1e293b',
-          borderRadius: '12px',
-          padding: '20px',
-          overflow: 'auto',
-          maxHeight: '500px'
-        }}>
-          <pre style={{ 
-            color: '#e2e8f0', 
-            fontSize: '12px',
-            lineHeight: '1.6',
-            margin: 0,
-            whiteSpace: 'pre-wrap',
-            wordBreak: 'break-all'
-          }}>
+        <div className="sitemap-code-block">
+          <pre>
             {sitemap}
           </pre>
         </div>
 
-        <div style={{
-          marginTop: '30px',
-          padding: '20px',
-          background: '#f8fafc',
-          borderRadius: '12px',
-          border: '1px solid #e2e8f0'
-        }}>
-          <h3 style={{ 
-            color: '#0a1929', 
-            marginBottom: '15px',
-            fontSize: '16px'
-          }}>
+        <div className="sitemap-stats-card">
+          <h3>
             Sitemap Statistics
           </h3>
-          <ul style={{ 
-            color: '#64748b', 
-            margin: 0, 
-            paddingLeft: '20px',
-            lineHeight: '2'
-          }}>
+          <ul className="sitemap-stats-list">
             <li>Main pages: 16</li>
             <li>Location pages: {bangaloreAreas.length}</li>
             <li>Gender filters: 3</li>

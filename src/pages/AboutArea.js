@@ -6,6 +6,7 @@ import PGDetail from '../components/PGDetail';
 import { theme } from '../theme';
 import { pgApi } from '../services/api';
 import '../App.css';
+import DefinitionBlock from '../components/DefinitionBlock';
 
 
 const AREA_SEO = {
@@ -246,26 +247,26 @@ const AreaPage = ({
 
       {/* ── Main Content ── */}
       {areaPageLoading ? (
-        <div style={{ padding: '80px 20px', textAlign: 'center' }}>
-          <div style={{ width: '36px', height: '36px', border: `3px solid ${theme.neutral[200]}`, borderTopColor: theme.accent[500], borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 12px' }} />
+        <div className="ap-loading">
+          <div className="ap-loading-spinner" />
           <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
-          <p style={{ color: theme.neutral[500], fontSize: '14px' }}>Loading PGs in {decodedArea}...</p>
+          <p className="ap-loading-text">Loading PGs in {decodedArea}...</p>
         </div>
 
       ) : areaPagePGs.length > 0 ? (
-        <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '24px 20px' }}>
+        <main className="ap-main-content">
 
           {/* Results header */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
-            <p style={{ fontSize: '14px', color: theme.neutral[600] }}>
-              <strong style={{ color: theme.primary[800] }}>{areaPagePGs.length} PGs</strong> found in {decodedArea}
+          <div className="ap-sort-header">
+            <p className="ap-sort-count">
+              <strong className="ap-sort-count-num">{areaPagePGs.length} PGs</strong> found in {decodedArea}
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <label style={{ fontSize: '13px', color: theme.neutral[500] }}>Sort by:</label>
+            <div className="ap-sort-controls">
+              <label className="ap-sort-label">Sort by:</label>
               <select
                 value={sortBy}
                 onChange={e => setSortBy(e.target.value)}
-                style={{ fontSize: '13px', padding: '6px 10px', borderRadius: '8px', border: `1px solid ${theme.neutral[200]}`, background: 'white', color: theme.primary[800] }}
+                className="ap-sort-select"
               >
                 <option value="recommended">Recommended</option>
                 <option value="price_asc">Price: Low to high</option>
@@ -292,7 +293,7 @@ const AreaPage = ({
                 setAreaPageRentalType('all');
               }}
             />
-            <div className="main-area" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="main-area ap-main-area">
               {sortedPGs.filter(Boolean).map(pg => (
                 <PGCard
                   key={pg.id}
@@ -306,26 +307,26 @@ const AreaPage = ({
           </div>
 
           {/* ── About This Area ── */}
-          <section aria-labelledby="about-area-heading" style={{ marginTop: '40px', background: 'white', borderRadius: '16px', border: `1px solid ${theme.neutral[200]}`, padding: '28px' }}>
-            <h2 id="about-area-heading" style={{ fontSize: '20px', fontWeight: 700, color: theme.primary[800], marginBottom: '12px' }}>
+          <section aria-labelledby="about-area-heading" className="ap-about-section">
+            <h2 id="about-area-heading" className="ap-about-title">
               About {decodedArea} for PG accommodation
             </h2>
-            <p style={{ fontSize: '14px', color: theme.neutral[600], lineHeight: 1.8, marginBottom: '20px' }}>{seo.intro}</p>
+            <p className="ap-about-text">{seo.intro}</p>
             {areaInfo && (
-              <p style={{ fontSize: '14px', color: theme.neutral[600], lineHeight: 1.8, marginBottom: '20px' }}>
+              <p className="ap-about-text">
                 {areaInfo.famousFor}. PG rents in {decodedArea} range from {areaInfo.rentRange}/month depending on room type, amenities, and proximity to the main road.
               </p>
             )}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px', marginTop: '16px' }}>
+            <div className="ap-about-grid">
               {[
                 { label: 'Rent range', value: areaInfo?.rentRange || 'Varies' },
                 { label: 'Best for',   value: seo.bestFor },
                 { label: 'Metro access', value: seo.metro },
                 { label: 'Commute info', value: seo.commute }
               ].map((item, i) => (
-                <div key={i} style={{ background: theme.neutral[50], borderRadius: '10px', padding: '12px 14px', border: `1px solid ${theme.neutral[200]}` }}>
-                  <div style={{ fontSize: '11px', color: theme.neutral[400], marginBottom: '4px' }}>{item.label}</div>
-                  <div style={{ fontSize: '13px', fontWeight: 600, color: theme.primary[800] }}>{item.value}</div>
+                <div key={i} className="ap-about-card">
+                  <div className="ap-about-card-label">{item.label}</div>
+                  <div className="ap-about-card-value">{item.value}</div>
                 </div>
               ))}
             </div>
@@ -333,18 +334,18 @@ const AreaPage = ({
 
           {/* ── Area FAQs ── */}
           {seo.faqs.length > 0 && (
-            <section aria-labelledby="area-faq-heading" style={{ marginTop: '24px', background: 'white', borderRadius: '16px', border: `1px solid ${theme.neutral[200]}`, padding: '28px' }}>
-              <h2 id="area-faq-heading" style={{ fontSize: '20px', fontWeight: 700, color: theme.primary[800], marginBottom: '16px' }}>
+            <section aria-labelledby="area-faq-heading" className="ap-faq-section">
+              <h2 id="area-faq-heading" className="ap-faq-title">
                 FAQs about PG in {decodedArea}
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div className="ap-faq-list">
                 {seo.faqs.map((faq, i) => (
-                  <details key={i} style={{ borderRadius: '10px', border: `1px solid ${theme.neutral[200]}`, overflow: 'hidden' }}>
-                    <summary style={{ padding: '14px 18px', fontSize: '14px', fontWeight: 600, color: theme.primary[800], cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: theme.neutral[50] }}>
+                  <details key={i} className="ap-faq-details">
+                    <summary className="ap-faq-summary">
                       {faq.q}
-                      <span style={{ fontSize: '18px', color: theme.accent[500], marginLeft: '12px' }}>+</span>
+                      <span className="ap-faq-plus">+</span>
                     </summary>
-                    <div style={{ padding: '14px 18px', fontSize: '13px', color: theme.neutral[600], lineHeight: 1.7 }}>{faq.a}</div>
+                    <div className="ap-faq-answer">{faq.a}</div>
                   </details>
                 ))}
               </div>
@@ -352,33 +353,44 @@ const AreaPage = ({
           )}
 
           {/* ── Explore Nearby Areas ── */}
-          <section aria-labelledby="nearby-areas-heading" style={{ marginTop: '24px' }}>
-            <h2 id="nearby-areas-heading" style={{ fontSize: '18px', fontWeight: 700, color: theme.primary[800], marginBottom: '14px' }}>
+          <section aria-labelledby="nearby-areas-heading" className="ap-nearby-section">
+            <h2 id="nearby-areas-heading" className="ap-nearby-title">
               Explore PGs in nearby areas
             </h2>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <div className="ap-nearby-list">
               {POPULAR_AREAS.filter(a => a.name !== decodedArea).map((area, i) => (
                 <Link key={i} to={area.link}
-                  style={{ padding: '10px 18px', background: 'white', border: `1px solid ${theme.neutral[200]}`, borderRadius: '20px', color: theme.primary[800], textDecoration: 'none', fontSize: '13px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  className="ap-nearby-link">
                   📍 PG in {area.name}
-                  <span style={{ fontSize: '11px', color: theme.neutral[400] }}>{area.rentRange}/mo</span>
+                  <span className="ap-nearby-rent">{area.rentRange}/mo</span>
                 </Link>
               ))}
             </div>
           </section>
 
+          {/* ── Definitions ── */}
+          <section className="ap-defs-section">
+            <h2 className="ap-defs-title">About {decodedArea} PG Accommodations</h2>
+            <p className="ap-defs-subtitle">
+              Understanding the types of PG accommodations available in {decodedArea}
+            </p>
+            <DefinitionBlock term="PG Accommodation" compact />
+            <DefinitionBlock term="Co-living Spaces" compact />
+            <DefinitionBlock term="Single Occupancy Rooms" compact />
+          </section>
+
         </main>
 
       ) : (
-        <div style={{ padding: '60px 20px', textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
-          <div style={{ width: '64px', height: '64px', background: theme.neutral[100], borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: '28px' }}>📍</div>
-          <h2 style={{ fontSize: '24px', fontWeight: 700, color: theme.primary[800], marginBottom: '12px' }}>Coming soon to {decodedArea}</h2>
-          <p style={{ color: theme.neutral[500], fontSize: '14px', lineHeight: 1.7, marginBottom: '28px' }}>
+        <div className="ap-empty">
+          <div className="ap-empty-icon">📍</div>
+          <h2 className="ap-empty-title">Coming soon to {decodedArea}</h2>
+          <p className="ap-empty-desc">
             We're partnering with verified PG owners in {decodedArea} to bring you the best accommodation options. We'll notify you as soon as listings go live.
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
+          <div className="ap-empty-links">
             {POPULAR_AREAS.filter(a => a.name !== decodedArea).slice(0, 4).map((area, i) => (
-              <Link key={i} to={area.link} style={{ padding: '10px 18px', border: `1px solid ${theme.neutral[200]}`, borderRadius: '20px', color: theme.primary[800], textDecoration: 'none', fontSize: '13px', background: 'white' }}>
+              <Link key={i} to={area.link} className="ap-empty-link">
                 PG in {area.name}
               </Link>
             ))}
@@ -456,6 +468,61 @@ const AreaPage = ({
         .ap-pill__text { display: flex; flex-direction: column; }
         .ap-pill__label { font-size: 10px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1; }
         .ap-pill__value { font-size: 12.5px; font-weight: 700; color: #1e293b; margin-top: 3px; }
+
+        /* ── Loading ── */
+        .ap-loading { padding: 80px 20px; text-align: center; }
+        .ap-loading-spinner { width: 36px; height: 36px; border: 3px solid var(--neutral-200); border-top-color: var(--accent-500); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px; }
+        .ap-loading-text { color: var(--neutral-500); font-size: 14px; }
+
+        /* ── Main content ── */
+        .ap-main-content { max-width: 1400px; margin: 0 auto; padding: 24px 20px; }
+        .ap-main-area { display: flex; flex-direction: column; }
+
+        /* ── Sort header ── */
+        .ap-sort-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+        .ap-sort-count { font-size: 14px; color: var(--neutral-600); }
+        .ap-sort-count-num { color: var(--primary-800); }
+        .ap-sort-controls { display: flex; align-items: center; gap: 8px; }
+        .ap-sort-label { font-size: 13px; color: var(--neutral-500); }
+        .ap-sort-select { font-size: 13px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--neutral-200); background: white; color: var(--primary-800); }
+
+        /* ── About section ── */
+        .ap-about-section { margin-top: 40px; background: white; border-radius: 16px; border: 1px solid var(--neutral-200); padding: 28px; }
+        .ap-about-title { font-size: 20px; font-weight: 700; color: var(--primary-800); margin-bottom: 12px; }
+        .ap-about-text { font-size: 14px; color: var(--neutral-600); line-height: 1.8; margin-bottom: 20px; }
+        .ap-about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
+        .ap-about-card { background: var(--neutral-50); border-radius: 10px; padding: 12px 14px; border: 1px solid var(--neutral-200); }
+        .ap-about-card-label { font-size: 11px; color: var(--neutral-400); margin-bottom: 4px; }
+        .ap-about-card-value { font-size: 13px; font-weight: 600; color: var(--primary-800); }
+
+        /* ── FAQ section ── */
+        .ap-faq-section { margin-top: 24px; background: white; border-radius: 16px; border: 1px solid var(--neutral-200); padding: 28px; }
+        .ap-faq-title { font-size: 20px; font-weight: 700; color: var(--primary-800); margin-bottom: 16px; }
+        .ap-faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .ap-faq-details { border-radius: 10px; border: 1px solid var(--neutral-200); overflow: hidden; }
+        .ap-faq-summary { padding: 14px 18px; font-size: 14px; font-weight: 600; color: var(--primary-800); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: var(--neutral-50); }
+        .ap-faq-plus { font-size: 18px; color: var(--accent-500); margin-left: 12px; }
+        .ap-faq-answer { padding: 14px 18px; font-size: 13px; color: var(--neutral-600); line-height: 1.7; }
+
+        /* ── Nearby areas ── */
+        .ap-nearby-section { margin-top: 24px; }
+        .ap-nearby-title { font-size: 18px; font-weight: 700; color: var(--primary-800); margin-bottom: 14px; }
+        .ap-nearby-list { display: flex; gap: 10px; flex-wrap: wrap; }
+        .ap-nearby-link { padding: 10px 18px; background: white; border: 1px solid var(--neutral-200); border-radius: 20px; color: var(--primary-800); text-decoration: none; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+        .ap-nearby-rent { font-size: 11px; color: var(--neutral-400); }
+
+        /* ── Definitions ── */
+        .ap-defs-section { margin-top: 32px; padding: 24px; background: var(--neutral-50); border-radius: 12px; border: 1px solid var(--neutral-200); }
+        .ap-defs-title { font-size: 20px; font-weight: 700; color: var(--primary-700); margin-bottom: 6px; }
+        .ap-defs-subtitle { font-size: 13px; color: var(--neutral-500); margin-bottom: 16px; }
+
+        /* ── Empty state ── */
+        .ap-empty { padding: 60px 20px; text-align: center; max-width: 600px; margin: 0 auto; }
+        .ap-empty-icon { width: 64px; height: 64px; background: var(--neutral-100); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; }
+        .ap-empty-title { font-size: 24px; font-weight: 700; color: var(--primary-800); margin-bottom: 12px; }
+        .ap-empty-desc { color: var(--neutral-500); font-size: 14px; line-height: 1.7; margin-bottom: 28px; }
+        .ap-empty-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .ap-empty-link { padding: 10px 18px; border: 1px solid var(--neutral-200); border-radius: 20px; color: var(--primary-800); text-decoration: none; font-size: 13px; background: white; }
 
         /* ── Misc ── */
         details summary::-webkit-details-marker { display: none; }

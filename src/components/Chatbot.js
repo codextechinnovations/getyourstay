@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { theme } from '../theme';
+import './Chatbot.css';
 
 const chatbotResponses = {
   greeting: [
@@ -139,23 +140,7 @@ const Chatbot = () => {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          width: '60px',
-          height: '60px',
-          borderRadius: '50%',
-          background: theme.gradients.primary,
-          border: 'none',
-          cursor: 'pointer',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          transition: 'transform 0.3s ease'
-        }}
+        className="chatbot-fab"
       >
         {isOpen ? (
           <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -169,73 +154,27 @@ const Chatbot = () => {
       </button>
 
       {isOpen && (
-        <div style={{
-          position: 'fixed',
-          bottom: '90px',
-          right: '20px',
-          width: '380px',
-          height: '520px',
-          background: 'white',
-          borderRadius: '16px',
-          boxShadow: '0 8px 40px rgba(0,0,0,0.15)',
-          display: 'flex',
-          flexDirection: 'column',
-          overflow: 'hidden',
-          zIndex: 1000,
-          fontFamily: 'system-ui, -apple-system, sans-serif'
-        }}>
+        <div className="chatbot-window">
           {/* Header */}
-          <div style={{
-            padding: '16px 20px',
-            background: theme.gradients.primary,
-            color: 'white',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px'
-          }}>
-            <div style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              background: 'rgba(255,255,255,0.2)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+          <div className="chatbot-header">
+            <div className="chatbot-avatar">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                 <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
               </svg>
             </div>
             <div>
-              <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '600' }}>GetYourStay Assistant</h3>
-              <p style={{ margin: 0, fontSize: '12px', opacity: 0.9 }}>Ask me about PG accommodations</p>
+              <h3 className="chatbot-header-title">GetYourStay Assistant</h3>
+              <p className="chatbot-header-subtitle">Ask me about PG accommodations</p>
             </div>
           </div>
 
           {/* Quick Replies */}
-          <div style={{
-            padding: '12px 16px',
-            display: 'flex',
-            gap: '8px',
-            flexWrap: 'wrap',
-            borderBottom: '1px solid #e2e8f0'
-          }}>
+          <div className="chatbot-quick-replies">
             {quickReplies.map((reply, i) => (
               <button
                 key={i}
-                onClick={() => {
-                  setInput(reply.text);
-                }}
-                style={{
-                  padding: '6px 12px',
-                  borderRadius: '20px',
-                  border: `1px solid ${theme.primary[500]}`,
-                  background: 'transparent',
-                  color: theme.primary[500],
-                  fontSize: '12px',
-                  cursor: 'pointer',
-                  fontWeight: '500'
-                }}
+                onClick={() => setInput(reply.text)}
+                className="chatbot-quick-btn"
               >
                 {reply.label}
               </button>
@@ -243,32 +182,11 @@ const Chatbot = () => {
           </div>
 
           {/* Messages */}
-          <div style={{
-            flex: 1,
-            overflow: 'auto',
-            padding: '16px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '12px'
-          }}>
+          <div className="chatbot-messages">
             {messages.map((msg, i) => (
               <div
                 key={i}
-                style={{
-                  maxWidth: '85%',
-                  alignSelf: msg.type === 'user' ? 'flex-end' : 'flex-start',
-                  background: msg.type === 'user' 
-                    ? theme.primary[700] 
-                    : '#f1f5f9',
-                  color: msg.type === 'user' ? 'white' : '#1e293b',
-                  padding: '12px 16px',
-                  borderRadius: msg.type === 'user' 
-                    ? '16px 16px 4px 16px' 
-                    : '4px 16px 16px 16px',
-                  fontSize: '14px',
-                  lineHeight: '1.5',
-                  whiteSpace: 'pre-wrap'
-                }}
+                className={`chatbot-msg ${msg.type === 'user' ? 'chatbot-msg-user' : 'chatbot-msg-bot'}`}
               >
                 {msg.text}
               </div>
@@ -277,42 +195,18 @@ const Chatbot = () => {
           </div>
 
           {/* Input */}
-          <div style={{
-            padding: '16px',
-            borderTop: '1px solid #e2e8f0',
-            display: 'flex',
-            gap: '10px'
-          }}>
+          <div className="chatbot-input-area">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Type your message..."
-              style={{
-                flex: 1,
-                padding: '12px 16px',
-                borderRadius: '24px',
-                border: `1px solid ${theme.neutral[300]}`,
-                fontSize: '14px',
-                outline: 'none',
-                fontFamily: 'inherit'
-              }}
+              className="chatbot-input"
             />
             <button
               onClick={handleSend}
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: theme.primary[700],
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0
-              }}
+              className="chatbot-send-btn"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -321,26 +215,9 @@ const Chatbot = () => {
           </div>
 
           {/* Links */}
-          <div style={{
-            padding: '12px 16px',
-            background: '#f8fafc',
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '16px',
-            fontSize: '12px'
-          }}>
-            <Link 
-              to="/list-your-pg" 
-              style={{ color: theme.primary[500], textDecoration: 'none' }}
-            >
-              List Your PG
-            </Link>
-            <Link 
-              to="/contact" 
-              style={{ color: theme.primary[500], textDecoration: 'none' }}
-            >
-              Contact Us
-            </Link>
+          <div className="chatbot-footer-links">
+            <Link to="/list-your-pg" className="chatbot-footer-link">List Your PG</Link>
+            <Link to="/contact" className="chatbot-footer-link">Contact Us</Link>
           </div>
         </div>
       )}

@@ -33,29 +33,9 @@ const PGManagementApp = lazy(() => import('./pages/PGManagementApp'));
 
 // Loading component
 const PageLoader = () => (
-  <div style={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '60vh',
-    gap: '15px'
-  }}>
+  <div className="page-loader-container">
     <div className="page-loader"></div>
-    <p style={{ color: '#64748b', fontSize: '14px' }}>Loading...</p>
-    <style>{`
-      .page-loader {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #e5e7eb;
-        border-top-color: #2d2d7e;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-      }
-      @keyframes spin {
-        to { transform: rotate(360deg); }
-      }
-    `}</style>
+    <p>Loading...</p>
   </div>
 );
 
@@ -194,37 +174,15 @@ function App() {
 
 // 404 Not Found page
 const NotFound = () => (
-  <div style={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '60vh',
-    textAlign: 'center',
-    padding: '40px 20px'
-  }}>
+  <div className="not-found">
     <div style={{ fontSize: '80px', marginBottom: '20px' }}>🏠</div>
-    <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#1a1a4e', margin: '0 0 10px' }}>
+    <h1>
       Page Not Found
     </h1>
-    <p style={{ color: '#64748b', fontSize: '16px', marginBottom: '25px' }}>
+    <p>
       The page you're looking for doesn't exist or has been moved.
     </p>
-    <a
-      href="/"
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '8px',
-        padding: '12px 24px',
-        background: 'linear-gradient(135deg, #1a1a4e, #2d2d7e)',
-        color: 'white',
-        textDecoration: 'none',
-        borderRadius: '10px',
-        fontSize: '14px',
-        fontWeight: '600'
-      }}
-    >
+    <a href="/" className="btn-home">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         <polyline points="9 22 9 12 15 12 15 22" />

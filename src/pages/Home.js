@@ -3,9 +3,11 @@ import { Link, useSearchParams } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import PGCard from '../components/PGCard';
 import PGDetail from '../components/PGDetail';
+import DefinitionBlock from '../components/DefinitionBlock';
 import { theme } from '../theme';
 import { pgApi } from '../services/api';
 import '../App.css';
+import './Home.css';
 import AreaPage from './AboutArea';
 import { generateTitle } from "../utils/seoTitle";
 
@@ -605,7 +607,7 @@ const Home = () => {
   return (
     <div className="app">
       {/* Hero Section */}
-      <section className="hero" style={{ background: theme.gradients.hero }}>
+      <section className="hero">
         <div className="hero-content">
           <h1>Find Your Perfect <span className="highlight">PG Accommodation</span> in Bangalore</h1>
           <p>Verified PGs with transparent pricing, real reviews, and modern amenities</p>
@@ -863,7 +865,7 @@ const Home = () => {
             onApplyFilters={handleApplyFilters}
           />
 
-          <div className={`main-area`} style={{ display: 'flex', flexDirection: 'column', }}>
+          <div className={`main-area`}>
             {(viewMode === 'split' || viewMode === 'list') && (
               <div >
                 {loading ? (
@@ -1081,7 +1083,7 @@ const Home = () => {
 
             <div className="hiw-steps">
               {hiwSteps.map((step, index) => (
-                <div key={index} className="hiw-step" style={{ animationDelay: `${index * 0.15}s` }}>
+                <div key={index} className="hiw-step">
                   <div className="hiw-step-number">{index + 1}</div>
                   <div className="hiw-step-icon">{step.icon}</div>
                   <h3 className="hiw-step-title">{step.title}</h3>
@@ -1101,11 +1103,11 @@ const Home = () => {
           </div>
         </section>
         {/* CTA Section */}
-        <section className="cta-section" style={{ background: theme.gradients.primary }}>
-          <div className="cta-content" style={{ color: 'white' }}>
-            <h2 style={{ color: 'white' }}>Can't find what you're looking for?</h2>
-            <p style={{ color: 'rgba(255,255,255,0.8)' }}>Let us know your requirements and we'll help you find the perfect PG</p>
-            <Link to="/contact" className="cta-button" style={{ background: theme.accent[500] }}>
+        <section className="cta-section">
+          <div className="cta-content">
+            <h2>Can't find what you're looking for?</h2>
+            <p>Let us know your requirements and we'll help you find the perfect PG</p>
+            <Link to="/contact" className="cta-button">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
               </svg>
@@ -1424,6 +1426,21 @@ const Home = () => {
                 <span className="type-name">PG with Food</span>
                 <span className="type-desc">Meals included accommodation</span>
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Definitions Section */}
+        <section className="definitions-section">
+          <div className="seo-container">
+            <h2 className="seo-heading">Understanding PG Accommodation Terms</h2>
+            <p className="seo-subheading">
+              Clear definitions of common terms used in the PG accommodation industry
+            </p>
+            <div className="definitions-grid">
+              <DefinitionBlock term="PG Accommodation" compact />
+              <DefinitionBlock term="Co-living Spaces" compact />
+              <DefinitionBlock term="Single Occupancy Rooms" compact />
             </div>
           </div>
         </section>
@@ -3077,6 +3094,20 @@ const Home = () => {
         }
         .vp-card:hover .vp-card-icon svg {
           transform: scale(1.05);
+        }
+
+        /* Definitions Section */
+        .definitions-section {
+          background: #ffffff;
+          padding: 60px 20px;
+          border-top: 1px solid #e2e8f0;
+        }
+        .definitions-grid {
+          max-width: 800px;
+          margin: 32px auto 0;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
         }
       `}</style>
     </div>

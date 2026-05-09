@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { theme } from '../theme';
+import './PGManagementApp.css';
 
 const PGManagementApp = () => {
   const [showNotifyModal, setShowNotifyModal] = useState(false);
@@ -223,145 +224,69 @@ const PGManagementApp = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8fafc' }}>
-      <div style={{
-        background: `linear-gradient(135deg, ${theme.primary[800]} 0%, ${theme.primary[500]} 100%)`,
-        padding: '60px 20px 120px',
-        textAlign: 'center',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(249,115,22,0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%)`
-        }} />
+    <div className="pghome-page">
+      <div className="pghome-hero">
+        <div className="pghome-hero-bg" />
         
-        <div style={{ position: 'relative', maxWidth: '900px', margin: '0 auto' }}>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'rgba(255,255,255,0.15)',
-            border: '1px solid rgba(255,255,255,0.2)',
-            padding: '8px 16px',
-            borderRadius: '30px',
-            marginBottom: '24px'
-          }}>
+        <div className="pghome-hero-inner">
+          <div className="pghome-badge">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
               <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
               <line x1="12" y1="18" x2="12.01" y2="18"/>
             </svg>
-            <span style={{ color: 'white', fontWeight: '600', fontSize: '14px' }}>PG Management App</span>
+            <span className="pghome-badge-text">PG Management App</span>
           </div>
           
-          <h1 style={{ 
-            color: 'white', 
-            fontSize: 'clamp(32px, 6vw, 52px)', 
-            fontWeight: '800',
-            marginBottom: '20px',
-            lineHeight: '1.1'
-          }}>
+          <h1 className="pghome-hero-title">
             Manage Your PG Business
             <br />
-            <span style={{ color: theme.accent[500] }}>From Your Phone</span>
+            <span className="pghome-hero-title-accent">From Your Phone</span>
           </h1>
           
-          <p style={{ 
-            color: 'rgba(255,255,255,0.9)', 
-            fontSize: '18px', 
-            marginBottom: '32px',
-            maxWidth: '600px',
-            margin: '0 auto 32px'
-          }}>
+          <p className="pghome-hero-subtitle">
             Track rent payments, manage tenants, handle maintenance, view analytics - all in one powerful app designed for Indian PG owners.
           </p>
           
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '12px',
-            background: 'rgba(255,255,255,0.1)',
-            padding: '12px 24px',
-            borderRadius: '12px',
-            marginBottom: '32px'
-          }}>
-            <div style={{ color: 'white' }}>
-              <span style={{ fontSize: '32px', fontWeight: '800' }}>₹499</span>
-              <span style={{ fontSize: '14px', opacity: 0.8 }}>/month</span>
+          <div className="pghome-price-display">
+            <div>
+              <span className="pghome-price-amount">₹499</span>
+              <span className="pghome-price-period">/month</span>
             </div>
-            <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.3)' }} />
-            <div style={{ color: 'white' }}>
-              <span style={{ fontSize: '32px', fontWeight: '800' }}>₹3,999</span>
-              <span style={{ fontSize: '14px', opacity: 0.8 }}>/year</span>
+            <div className="pghome-price-divider" />
+            <div>
+              <span className="pghome-price-amount">₹3,999</span>
+              <span className="pghome-price-period">/year</span>
             </div>
-            <div style={{
-              background: theme.accent[500],
-              padding: '4px 10px',
-              borderRadius: '6px',
-              fontSize: '12px',
-              fontWeight: '600',
-              color: 'white'
-            }}>
+            <div className="pghome-savings-badge">
               Save 33%
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="pghome-cta-row">
             <button 
                onClick={() => window.location.href = "https://manageyourpg.com"}
-              style={{
-                padding: '16px 36px',
-                background: 'white',
-                color: theme.primary[800],
-                border: 'none',
-                borderRadius: '30px',
-                fontSize: '16px',
-                fontWeight: '700',
-                cursor: 'pointer',
-                boxShadow: '0 8px 30px rgba(0,0,0,0.2)'
-              }}
+              className="pghome-cta-primary"
             >
               Start 7-Day Free Trial
             </button>
             <Link 
               to="/list-your-pg"
-              style={{
-                padding: '16px 36px',
-                background: 'transparent',
-                color: 'white',
-                border: '2px solid rgba(255,255,255,0.4)',
-                borderRadius: '30px',
-                fontSize: '16px',
-                fontWeight: '600',
-                textDecoration: 'none'
-              }}
+              className="pghome-cta-secondary"
             >
               List Your PG First
             </Link>
           </div>
           
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '32px',
-            flexWrap: 'wrap',
-            color: 'rgba(255,255,255,0.85)',
-            fontSize: '14px',
-            marginTop: '32px'
-          }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="pghome-hero-features">
+            <span className="pghome-hero-feature">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>
               No Credit Card Required
             </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span className="pghome-hero-feature">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>
               Cancel Anytime
             </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span className="pghome-hero-feature">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>
               24/7 Support
             </span>
@@ -369,76 +294,29 @@ const PGManagementApp = () => {
         </div>
       </div>
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
-        <div style={{
-          background: 'white',
-          borderRadius: '24px',
-          padding: '48px',
-          marginTop: '-80px',
-          boxShadow: '0 25px 80px rgba(10, 25, 41, 0.12)',
-          position: 'relative'
-        }}>
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ 
-              color: theme.primary[800], 
-              fontSize: '28px', 
-              fontWeight: '700',
-              marginBottom: '12px' 
-            }}>
+      <div className="pghome-features-card">
+        <div className="pghome-features-card-inner">
+          <div className="pghome-section-header">
+            <h2 className="pghome-section-title">
               Everything You Need to Manage Your PG
             </h2>
-            <p style={{ color: '#64748b', fontSize: '16px' }}>
+            <p className="pghome-section-subtitle">
               Powerful features designed specifically for Indian PG owners
             </p>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '20px'
-          }}>
+          <div className="pghome-features-grid">
             {features.map((feature, idx) => (
               <div
                 key={idx}
-                style={{
-                  background: '#f8fafc',
-                  borderRadius: '16px',
-                  padding: '24px',
-                  border: '1px solid #e2e8f0',
-                  display: 'flex',
-                  gap: '16px'
-                }}
+                className="pghome-feature-card"
               >
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  background: `linear-gradient(135deg, ${theme.primary[800]}15, ${theme.primary[500]}15)`,
-                  borderRadius: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  color: theme.primary[800]
-                }}>
+                <div className="pghome-feature-icon">
                   {feature.icon}
                 </div>
                 <div>
-                  <h3 style={{
-                    color: theme.primary[800],
-                    fontSize: '16px',
-                    fontWeight: '700',
-                    marginBottom: '6px'
-                  }}>
-                    {feature.title}
-                  </h3>
-                  <p style={{
-                    color: '#64748b',
-                    fontSize: '13px',
-                    lineHeight: '1.5',
-                    margin: 0
-                  }}>
-                    {feature.description}
-                  </p>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -446,48 +324,22 @@ const PGManagementApp = () => {
         </div>
       </div>
 
-      <div style={{
-        background: `linear-gradient(135deg, ${theme.primary[800]}, ${theme.primary[500]})`,
-        padding: '80px 20px'
-      }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <h2 style={{ 
-            color: 'white', 
-            fontSize: '28px', 
-            textAlign: 'center',
-            marginBottom: '48px',
-            fontWeight: '700'
-          }}>
+      <div className="pghome-benefits-section">
+        <div className="pghome-benefits-inner">
+          <h2 className="pghome-benefits-title">
             Results That Speak for Themselves
           </h2>
           
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '32px'
-          }}>
+          <div className="pghome-benefits-grid">
             {benefits.map((benefit, idx) => (
-              <div key={idx} style={{ textAlign: 'center' }}>
-                <div style={{
-                  fontSize: '48px',
-                  fontWeight: '800',
-                  color: theme.accent[500],
-                  marginBottom: '8px'
-                }}>
+              <div key={idx} className="pghome-benefit-item">
+                <div className="pghome-benefit-number">
                   {benefit.number}
                 </div>
-                <div style={{
-                  color: 'white',
-                  fontSize: '18px',
-                  fontWeight: '700',
-                  marginBottom: '8px'
-                }}>
+                <div className="pghome-benefit-label">
                   {benefit.label}
                 </div>
-                <div style={{
-                  color: 'rgba(255,255,255,0.7)',
-                  fontSize: '14px'
-                }}>
+                <div className="pghome-benefit-desc">
                   {benefit.desc}
                 </div>
               </div>
@@ -496,107 +348,49 @@ const PGManagementApp = () => {
         </div>
       </div>
 
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '80px 20px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <h2 style={{ 
-            color: theme.primary[800], 
-            fontSize: '28px', 
-            fontWeight: '700',
-            marginBottom: '12px' 
-          }}>
+      <div className="pghome-pricing-wrapper">
+        <div className="pghome-section-header">
+          <h2 className="pghome-section-title">
             Simple, Transparent Pricing
           </h2>
-          <p style={{ color: '#64748b', fontSize: '16px' }}>
+          <p className="pghome-section-subtitle">
             Start free for 7 days. No hidden charges. Cancel anytime.
           </p>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '24px',
-          maxWidth: '700px',
-          margin: '0 auto'
-        }}>
+        <div className="pghome-pricing-grid">
           {pricingPlans.map((plan, idx) => (
             <div
               key={idx}
-              style={{
-                background: plan.popular ? `linear-gradient(135deg, ${theme.primary[800]}, ${theme.primary[500]})` : 'white',
-                borderRadius: '20px',
-                padding: '32px',
-                border: plan.popular ? 'none' : '1px solid #e2e8f0',
-                boxShadow: plan.popular ? '0 20px 60px rgba(10, 25, 41, 0.2)' : '0 4px 20px rgba(0,0,0,0.06)',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
+              className={`${plan.popular ? 'pghome-pricing-card-popular' : 'pghome-pricing-card'}`}
             >
               {plan.popular && (
-                <div style={{
-                  position: 'absolute',
-                  top: '16px',
-                  right: '-30px',
-                  background: theme.accent[500],
-                  color: 'white',
-                  padding: '6px 40px',
-                  fontSize: '12px',
-                  fontWeight: '700',
-                  transform: 'rotate(45deg)'
-                }}>
+                <div className="pghome-pricing-popular-badge">
                   POPULAR
                 </div>
               )}
               
-              <div style={{
-                fontSize: '18px',
-                fontWeight: '700',
-                color: plan.popular ? 'white' : theme.primary[800],
-                marginBottom: '8px'
-              }}>
+              <div className={`pghome-pricing-name ${plan.popular ? 'pghome-pricing-name-light' : 'pghome-pricing-name-dark'}`}>
                 {plan.name}
               </div>
               
-              <div style={{ marginBottom: '4px' }}>
-                <span style={{
-                  fontSize: '42px',
-                  fontWeight: '800',
-                  color: plan.popular ? 'white' : theme.primary[800]
-                }}>
+              <div className="pghome-pricing-price-row">
+                <span className={`pghome-pricing-price ${plan.popular ? 'pghome-pricing-price-light' : 'pghome-pricing-price-dark'}`}>
                   ₹{plan.price}
                 </span>
               </div>
-              <div style={{
-                fontSize: '14px',
-                color: plan.popular ? 'rgba(255,255,255,0.8)' : '#64748b',
-                marginBottom: plan.subtext ? '16px' : '24px'
-              }}>
+              <div className={`pghome-pricing-period ${plan.popular ? 'pghome-pricing-period-light' : 'pghome-pricing-period-dark'}`} style={{ marginBottom: plan.subtext ? '16px' : '24px' }}>
                 {plan.period}
                 {plan.subtext && (
-                  <span style={{
-                    marginLeft: '8px',
-                    padding: '2px 8px',
-                    background: plan.popular ? 'rgba(255,255,255,0.2)' : '#dcfce7',
-                    borderRadius: '4px',
-                    color: plan.popular ? 'white' : '#16a34a',
-                    fontSize: '12px',
-                    fontWeight: '600'
-                  }}>
+                  <span className={`pghome-pricing-subtext-badge ${plan.popular ? 'pghome-pricing-subtext-badge-light' : 'pghome-pricing-subtext-badge-dark'}`}>
                     {plan.subtext}
                   </span>
                 )}
               </div>
               
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px' }}>
+              <ul className="pghome-pricing-features-list">
                 {plan.features.map((feature, i) => (
-                  <li key={i} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px',
-                    padding: '8px 0',
-                    fontSize: '14px',
-                    color: plan.popular ? 'rgba(255,255,255,0.9)' : '#374151',
-                    borderBottom: `1px solid ${plan.popular ? 'rgba(255,255,255,0.1)' : '#f1f5f9'}`
-                  }}>
+                  <li key={i} className={`pghome-pricing-feature ${plan.popular ? 'pghome-pricing-feature-light' : 'pghome-pricing-feature-dark'}`}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={plan.popular ? 'white' : '#16a34a'} strokeWidth="2">
                       <polyline points="20,6 9,17 4,12"/>
                     </svg>
@@ -607,17 +401,7 @@ const PGManagementApp = () => {
               
               <button 
                 onClick={() =>window.location.href = "https://manageyourpg.com"}
-                style={{
-                  width: '100%',
-                  padding: '14px',
-                  background: plan.popular ? 'white' : theme.primary[800],
-                  color: plan.popular ? theme.primary[800] : 'white',
-                  border: 'none',
-                  borderRadius: '12px',
-                  fontSize: '15px',
-                  fontWeight: '700',
-                  cursor: 'pointer'
-                }}
+                className={`pghome-pricing-btn ${plan.popular ? 'pghome-pricing-btn-popular' : 'pghome-pricing-btn-default'}`}
               >
                 Start 7-Day Free Trial
               </button>
@@ -626,73 +410,39 @@ const PGManagementApp = () => {
         </div>
       </div>
 
-      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 20px 80px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <h2 style={{ 
-            color: theme.primary[800], 
-            fontSize: '28px', 
-            fontWeight: '700',
-            marginBottom: '12px' 
-          }}>
+      <div className="pghome-testimonials">
+        <div className="pghome-section-header">
+          <h2 className="pghome-section-title">
             Loved by PG Owners Across India
           </h2>
-          <p style={{ color: '#64748b', fontSize: '16px' }}>
+          <p className="pghome-section-subtitle">
             See what our users have to say
           </p>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div className="pghome-testimonials-list">
           {testimonials.map((testimonial, idx) => (
             <div
               key={idx}
-              style={{
-                background: 'white',
-                borderRadius: '16px',
-                padding: '28px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-                border: '1px solid #e2e8f0'
-              }}
+              className="pghome-testimonial-card"
             >
-              <div style={{ display: 'flex', gap: '4px', marginBottom: '12px' }}>
+              <div className="pghome-testimonial-stars">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <span key={i} style={{ color: '#f59e0b', fontSize: '18px' }}>★</span>
+                  <span key={i}>★</span>
                 ))}
               </div>
-              <p style={{
-                color: '#374151',
-                fontSize: '15px',
-                lineHeight: '1.7',
-                marginBottom: '20px'
-              }}>
+              <p className="pghome-testimonial-text">
                 "{testimonial.text}"
               </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${theme.primary[800]}, ${theme.primary[500]})`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'white',
-                  fontWeight: '700',
-                  fontSize: '18px'
-                }}>
+              <div className="pghome-testimonial-author">
+                <div className="pghome-testimonial-avatar">
                   {testimonial.name.charAt(0)}
                 </div>
-                <div>
-                  <div style={{
-                    color: theme.primary[800],
-                    fontWeight: '700',
-                    fontSize: '15px'
-                  }}>
+                <div className="pghome-testimonial-info">
+                  <div className="pghome-testimonial-name">
                     {testimonial.name}
                   </div>
-                  <div style={{
-                    color: '#64748b',
-                    fontSize: '13px'
-                  }}>
+                  <div className="pghome-testimonial-location">
                     {testimonial.pg} • {testimonial.location}
                   </div>
                 </div>
@@ -702,48 +452,23 @@ const PGManagementApp = () => {
         </div>
       </div>
 
-      <div style={{ background: '#f8fafc', padding: '80px 20px' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{ 
-            color: theme.primary[800], 
-            fontSize: '28px', 
-            textAlign: 'center',
-            marginBottom: '48px',
-            fontWeight: '700'
-          }}>
+      <div className="pghome-faq-wrapper">
+        <div className="pghome-faq-inner">
+          <h2 className="pghome-faq-title">
             Frequently Asked Questions
           </h2>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div className="pghome-faq-list">
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
-                style={{
-                  background: 'white',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  border: '1px solid #e2e8f0'
-                }}
+                className="app-faq-item"
               >
                 <button
                   onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-                  style={{
-                    width: '100%',
-                    padding: '20px 24px',
-                    background: 'none',
-                    border: 'none',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    cursor: 'pointer',
-                    textAlign: 'left'
-                  }}
+                  className="app-faq-question"
                 >
-                  <span style={{
-                    color: theme.primary[800],
-                    fontSize: '15px',
-                    fontWeight: '600'
-                  }}>
+                  <span className="app-faq-question-text">
                     {faq.q}
                   </span>
                   <svg 
@@ -753,18 +478,13 @@ const PGManagementApp = () => {
                     fill="none" 
                     stroke={theme.primary[800]} 
                     strokeWidth="2"
-                    style={{ transform: activeFaq === idx ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s' }}
+                    className={`app-faq-arrow ${activeFaq === idx ? 'open' : ''}`}
                   >
                     <polyline points="6,9 12,15 18,9"/>
                   </svg>
                 </button>
                 {activeFaq === idx && (
-                  <div style={{
-                    padding: '0 24px 20px',
-                    color: '#64748b',
-                    fontSize: '14px',
-                    lineHeight: '1.6'
-                  }}>
+                  <div className="app-faq-answer">
                     {faq.a}
                   </div>
                 )}
@@ -774,55 +494,24 @@ const PGManagementApp = () => {
         </div>
       </div>
 
-      <div style={{
-        background: `linear-gradient(135deg, ${theme.primary[800]}, ${theme.primary[500]})`,
-        padding: '80px 20px',
-        textAlign: 'center'
-      }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <h2 style={{ 
-            color: 'white', 
-            fontSize: '28px',
-            marginBottom: '16px',
-            fontWeight: '700'
-          }}>
+      <div className="app-cta-section">
+        <div className="app-cta-inner">
+          <h2 className="app-cta-title">
             Ready to Streamline Your PG Business?
           </h2>
-          <p style={{ 
-            color: 'rgba(255,255,255,0.9)', 
-            fontSize: '16px',
-            marginBottom: '32px'
-          }}>
+          <p className="app-cta-desc">
             Start your 7-day free trial today. No credit card required.
           </p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="app-cta-actions">
             <button 
               onClick={() => setShowNotifyModal(true)}
-              style={{
-                padding: '16px 36px',
-                background: 'white',
-                color: theme.primary[800],
-                border: 'none',
-                borderRadius: '30px',
-                fontSize: '16px',
-                fontWeight: '700',
-                cursor: 'pointer'
-              }}
+              className="app-cta-btn"
             >
               Start Free Trial
             </button>
             <Link 
               to="/list-your-pg"
-              style={{
-                padding: '16px 36px',
-                background: 'transparent',
-                color: 'white',
-                border: '2px solid white',
-                borderRadius: '30px',
-                fontSize: '16px',
-                fontWeight: '600',
-                textDecoration: 'none'
-              }}
+              className="app-cta-btn-outline"
             >
               List Your PG
             </Link>
@@ -832,114 +521,58 @@ const PGManagementApp = () => {
 
       {showNotifyModal && (
         <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(0,0,0,0.6)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 2000,
-            padding: '20px'
-          }}
+          className="pghome-modal-overlay"
           onClick={() => setShowNotifyModal(false)}
         >
           <div 
-            style={{
-              background: 'white',
-              borderRadius: '24px',
-              padding: '40px',
-              maxWidth: '440px',
-              width: '100%',
-              textAlign: 'center'
-            }}
+            className="pghome-modal"
             onClick={(e) => e.stopPropagation()}
           >
             {submitted ? (
               <>
-                <div style={{
-                  width: '64px',
-                  height: '64px',
-                  background: 'linear-gradient(135deg, #dcfce7, #bbf7d0)',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 20px'
-                }}>
+                <div className="pghome-modal-success-icon">
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2">
                     <polyline points="20,6 9,17 4,12" />
                   </svg>
                 </div>
-                <h3 style={{ color: theme.primary[800], marginBottom: '10px', fontSize: '22px', fontWeight: '700' }}>
+                <h3 className="pghome-modal-title">
                   You're on the list!
                 </h3>
-                <p style={{ color: '#64748b', fontSize: '14px' }}>
+                <p className="pghome-modal-desc">
                   We'll notify you as soon as the app is available for download.
                 </p>
               </>
             ) : (
               <>
-                <div style={{
-                  width: '64px',
-                  height: '64px',
-                  background: `linear-gradient(135deg, ${theme.primary[800]}15, ${theme.primary[500]}15)`,
-                  borderRadius: '16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 20px',
-                  color: theme.primary[800]
-                }}>
+                <div className="pghome-modal-icon-box">
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
                     <line x1="12" y1="18" x2="12.01" y2="18"/>
                   </svg>
                 </div>
-                <h3 style={{ color: theme.primary[800], marginBottom: '10px', fontSize: '22px', fontWeight: '700' }}>
+                <h3 className="pghome-modal-title">
                   Start Your 7-Day Free Trial
                 </h3>
-                <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '24px' }}>
+                <p className="pghome-modal-desc pghome-modal-desc-mb">
                   Get full access to all features. No credit card required.
                 </p>
-                <form onSubmit={handleNotifySubmit}>
+                <form className="pghome-modal-form" onSubmit={handleNotifySubmit}>
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
                     required
-                    style={{
-                      width: '100%',
-                      padding: '14px 16px',
-                      border: '2px solid #e2e8f0',
-                      borderRadius: '12px',
-                      fontSize: '15px',
-                      marginBottom: '16px',
-                      boxSizing: 'border-box'
-                    }}
+                    className="pghome-modal-input"
                   />
                   <button
                     type="submit"
-                    style={{
-                      width: '100%',
-                      padding: '14px',
-                      background: theme.accent[500],
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '12px',
-                      fontSize: '15px',
-                      fontWeight: '700',
-                      cursor: 'pointer'
-                    }}
+                    className="pghome-modal-submit"
                   >
                     Start Free Trial
                   </button>
                 </form>
-                <p style={{ color: '#94a3b8', fontSize: '12px', marginTop: '16px' }}>
+                <p className="pghome-modal-disclaimer">
                   By signing up, you agree to our Terms and Privacy Policy.
                 </p>
               </>

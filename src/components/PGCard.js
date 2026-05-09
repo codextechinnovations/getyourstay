@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { theme } from '../theme';
+import './PGCard.css';
 
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=300&fit=crop';
 
@@ -75,118 +76,42 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        display: 'flex',
-        width: '100%',
-        background: '#fff',
-        borderRadius: '16px',
-        overflow: 'hidden',
-        marginBottom: '14px',
-        boxShadow: isHovered ? '0 6px 24px rgba(0,0,0,0.1)' : '0 3px 12px rgba(0,0,0,0.05)',
-        border: isSelected ? `2px solid ${theme.accent[500]}` : '1px solid #e8e4de',
-        transition: 'all 0.3s ease',
-        transform: isHovered ? 'translateY(-2px)' : 'translateY(0)',
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        border: isSelected ? `2px solid ${theme.accent[500]}` : '1px solid #e8e4de'
       }}
     >
       {/* LEFT IMAGE */}
-      <div className="pg-card-image" style={{ width: '380px', minWidth: '380px', height: '280px', position: 'relative' }}>
+      <div className="pg-card-image">
         <img
           src={safePG.images[0] || DEFAULT_IMAGE}
           alt={safePG.name}
           className="pg-card-img"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            transition: 'transform 0.4s ease',
-            transform: isHovered ? 'scale(1.03)' : 'scale(1)'
-          }}
         />
 
         {/* Gradient Overlay */}
-        <div style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '50px',
-          background: 'linear-gradient(transparent, rgba(10,12,18,0.5))'
-        }} />
+        <div className="img-overlay" />
 
         {/* Gender Badge */}
-        <div style={{
-          position: 'absolute',
-          top: '8px',
-          left: '8px',
-          background: genderStyle.bg,
-          color: genderStyle.text,
-          padding: '4px 10px',
-          borderRadius: '999px',
-          fontSize: '10px',
-          fontWeight: '700',
-          fontFamily: "'Inter', sans-serif"
-        }}>
+        <div className="badge" style={{ position: 'absolute', top: '8px', left: '8px', background: genderStyle.bg, color: genderStyle.text }}>
           {safePG.gender}
         </div>
 
         {/* Top Rated Badge */}
         {safePG.isTopRated && (
-          <div style={{
-            position: 'absolute',
-            top: '8px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            background: '#FF6B2C',
-            color: 'white',
-            padding: '4px 10px',
-            borderRadius: '999px',
-            fontSize: '10px',
-            fontWeight: '700',
-            whiteSpace: 'nowrap',
-            fontFamily: "'Inter', sans-serif"
-          }}>
+          <div className="badge" style={{ position: 'absolute', top: '8px', left: '50%', transform: 'translateX(-50%)', background: '#FF6B2C', color: 'white', whiteSpace: 'nowrap' }}>
             Top Rated
           </div>
         )}
 
         {/* Verified Badge */}
         {safePG.isVerified ? (
-          <div style={{
-            position: 'absolute',
-            top: '8px',
-            right: '8px',
-            background: 'rgba(255,255,255,0.95)',
-            color: '#059669',
-            padding: '4px 8px',
-            borderRadius: '999px',
-            fontSize: '10px',
-            fontWeight: '700',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '3px',
-            fontFamily: "'Inter', sans-serif"
-          }}>
+          <div className="badge" style={{ position: 'absolute', top: '8px', right: '8px', background: 'rgba(255,255,255,0.95)', color: '#059669' }}>
             <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="3">
               <polyline points="20 6 9 17 4 12" />
             </svg>
             Verified
           </div>
         ) : (
-          <div style={{
-            position: 'absolute',
-            top: '8px',
-            right: '8px',
-            background: '#fee2e2',
-            color: '#dc2626',
-            padding: '4px 8px',
-            borderRadius: '999px',
-            fontSize: '10px',
-            fontWeight: '700',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '3px',
-            fontFamily: "'Inter', sans-serif"
-          }}>
+          <div className="badge badge-warning" style={{ position: 'absolute', top: '8px', right: '8px' }}>
             <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="8" x2="12" y2="12" />
@@ -201,92 +126,33 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
 
         {/* Savings Badge */}
         {safePG.savings > 0 && (
-          <div style={{
-            position: 'absolute',
-            bottom: '8px',
-            right: '8px',
-            background: '#059669',
-            color: 'white',
-            padding: '4px 8px',
-            borderRadius: '999px',
-            fontSize: '10px',
-            fontWeight: '700',
-            fontFamily: "'Inter', sans-serif"
-          }}>
+          <div className="badge" style={{ position: 'absolute', bottom: '8px', right: '8px', background: '#059669', color: 'white' }}>
             Save ₹{safePG.savings.toLocaleString()}
           </div>
         )}
       </div>
 
       {/* RIGHT CONTENT */}
-      <div style={{
-        flex: 1,
-        padding: '14px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-      }}>
+      <div className="pg-card-content">
         {/* TOP */}
         <div>
           {/* Name and Price Row */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px' }}>
-            <h3 style={{
-              margin: 0,
-              fontSize: '16px',
-              fontWeight: '800',
-              color: 'linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);',
-              fontFamily: "'Inter', sans-serif",
-              letterSpacing: '-0.3px',
-              lineHeight: 1.2
-            }}>
+          <div className="flex-between" style={{ alignItems: 'flex-start', marginBottom: '6px' }}>
+            <h3 className="pg-card-name">
               {safePG.name}
             </h3>
             {safePG.isVerified && (
-              <div style={{ textAlign: 'right' }}>
-                <div style={{
-                  fontSize: '10px',
-                  color: '#94A3B8',
-                  fontWeight: '500',
-                  fontFamily: "'Inter', sans-serif"
-                }}>
-                  Starting From
-                </div>
-                <div style={{
-                  fontSize: '18px',
-                  fontWeight: '800',
-                  color: '#FF6B2C',
-                  fontFamily: "'Inter', sans-serif"
-                }}>
-                  ₹{safePG.price.toLocaleString()}
-                </div>
-                <div style={{
-                  fontSize: '10px',
-                  color: '#94A3B8',
-                  fontWeight: '500',
-                  fontFamily: "'Inter', sans-serif"
-                }}>
-                  per month
-                </div>
+              <div className="text-center" style={{ flexShrink: 0 }}>
+                <div className="pg-card-price-start">Starting From</div>
+                <div className="pg-card-price">₹{safePG.price.toLocaleString()}</div>
+                <div className="pg-card-price-period">per month</div>
               </div>
             )}
           </div>
 
           {/* Location */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginBottom: '8px'
-          }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              fontSize: '12px',
-              color: '#64748B',
-              fontWeight: '500',
-              fontFamily: "'Inter', sans-serif"
-            }}>
+          <div className="flex-between" style={{ marginBottom: '8px' }}>
+            <div className="pg-card-location">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                 <circle cx="12" cy="10" r="3" />
@@ -294,24 +160,7 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
               {safePG.area}, {safePG.city}
             </div>
             {safePG.isVerified && (
-            <button
-              onClick={handleNavigate}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
-                padding: '5px 10px',
-                background: '#f8f7f4',
-                border: '1px solid #e8e4de',
-                borderRadius: '6px',
-                fontSize: '10px',
-                fontWeight: '600',
-                color: '#475569',
-                cursor: 'pointer',
-                fontFamily: "'Inter', sans-serif",
-                transition: 'all 0.2s'
-              }}
-            >
+            <button onClick={handleNavigate} className="pg-card-directions-btn">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polygon points="3 11 22 2 13 21 11 13 3 11" />
               </svg>
@@ -321,37 +170,14 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
           </div>
 
           {/* Amenities */}
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '5px',
-            marginBottom: '6px'
-          }}>
+          <div className="pg-card-amenities">
             {safePG.amenities.slice(0, 4).map((amenity, idx) => (
-              <span key={idx} style={{
-                background: '#f8f7f4',
-                border: '1px solid #eae6e0',
-                padding: '3px 10px',
-                borderRadius: '999px',
-                fontSize: '10px',
-                color: '#475569',
-                fontWeight: '600',
-                fontFamily: "'Inter', sans-serif"
-              }}>
+              <span key={idx} className="amenity-tag">
                 {amenity}
               </span>
             ))}
             {safePG.amenities.length > 4 && (
-              <span style={{
-                background: 'linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);',
-                border: '1px solid linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);',
-                padding: '3px 10px',
-                borderRadius: '999px',
-                fontSize: '10px',
-                color: 'white',
-                fontWeight: '600',
-                fontFamily: "'Inter', sans-serif"
-              }}>
+              <span className="amenity-tag-more">
                 +{safePG.amenities.length - 4}
               </span>
             )}
@@ -359,106 +185,32 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
 
           {/* High Demand Badge */}
           {safePG.highDemand && (
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '5px',
-              padding: '4px 10px',
-              background: '#FFFBEB',
-              border: '1px solid #FDE68A',
-              borderRadius: '6px',
-              fontSize: '10px',
-              fontWeight: '700',
-              color: '#92400E',
-              fontFamily: "'Inter', sans-serif"
-            }}>
-              <span style={{
-                width: '5px',
-                height: '5px',
-                background: '#F59E0B',
-                borderRadius: '50%'
-              }} />
+            <div className="pg-card-high-demand">
+              <span className="high-demand-dot" />
               High demand
             </div>
           )}
         </div>
 
         {/* Divider */}
-        <div style={{
-          height: '1px',
-          background: '#f1ede8',
-          margin: '10px 0'
-        }} />
+        <div className="pg-card-divider" />
 
         {/* BOTTOM */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}>
-
-
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-
-            <div style={{
-
-              background: 'rgba(255,255,255,0.95)',
-              padding: '4px 8px',
-              borderRadius: '999px',
-              fontSize: '14px',
-              fontWeight: '700',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '3px',
-              color: 'linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);',
-              fontFamily: "'Inter', sans-serif"
-            }}>
-              <span style={{ color: '#F59E0B' }}>★</span>
+        <div className="pg-card-bottom">
+          <div className="flex flex-1 gap-8" style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+            <div className="pg-card-rating">
+              <span className="pg-card-rating-star">★</span>
               {safePG.rating.toFixed(1)}
-              <span style={{ fontSize: '10px', color: '#64748B', fontWeight: '500' }}>
-                ({safePG.reviews})
-              </span>
+              <span className="pg-card-rating-reviews">({safePG.reviews})</span>
             </div>
-            <button
-              onClick={handleViewDetails}
-              style={{
-                padding: '8px 16px',
-                background: '#FF6B2C',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '8px',
-                fontSize: '12px',
-                fontWeight: '700',
-                cursor: 'pointer',
-                fontFamily: "'Inter', sans-serif",
-                transition: 'all 0.2s',
-                boxShadow: '0 2px 8px rgba(255,107,44,0.2)'
-              }}
-            >
+            <button onClick={handleViewDetails} className="pg-card-view-btn">
               View Details
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Responsive Styles */}
-      <style>{`
-        @media (max-width: 768px) {
-          .pg-card-horizontal {
-            flex-direction: column !important;
-          }
-          .pg-card-image {
-            width: 100% !important;
-            min-width: 100% !important;
-            height: 180px !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .pg-card-image {
-            height: 160px !important;
-          }
-        }
-      `}</style>
+
     </div>
   );
 };
