@@ -41,6 +41,7 @@ const PageLoader = () => (
 
 // Layout for pages with header and footer
 const MainLayout = ({ children }) => {
+  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState(null);
 
   useEffect(() => {

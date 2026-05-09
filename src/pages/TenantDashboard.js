@@ -8,6 +8,7 @@ const TenantDashboard = () => {
   const navigate = useNavigate();
   const [tenant, setTenant] = useState(null);
   const [activeSection, setActiveSection] = useState('dashboard');
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(true);
   const [payments, setPayments] = useState([]);
   useEffect(() => {

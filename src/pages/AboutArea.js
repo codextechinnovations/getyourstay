@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import PGCard from '../components/PGCard';
 import PGDetail from '../components/PGDetail';
-import { theme } from '../theme';
-import { pgApi } from '../services/api';
 import '../App.css';
 import DefinitionBlock from '../components/DefinitionBlock';
 
@@ -144,6 +142,7 @@ const AreaPage = ({
         if (el) el.remove();
       });
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [decodedArea, areaPagePGs.length]);
 
   const sortedPGs = [...areaPagePGs].sort((a, b) => {

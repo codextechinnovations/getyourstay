@@ -1,5 +1,4 @@
 import React from 'react';
-import { theme } from '../theme';
 import '../App.css';
 
 // Professional logo matching favicon design

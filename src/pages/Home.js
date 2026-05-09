@@ -304,15 +304,16 @@ const Home = () => {
   const [selectedAreas, setSelectedAreas] = useState([]);
   const [selectedGender, setSelectedGender] = useState('all');
   const [selectedRentalType, setSelectedRentalType] = useState('all');
+  // eslint-disable-next-line no-unused-vars
   const [pgType, setPgType] = useState('all');
-  const [viewMode, setViewMode] = useState('split');
-  const [sortBy, setSortBy] = useState('recommended');
+  const [sortBy] = useState('recommended');
   const [activeTab, setActiveTab] = useState('pg');
   const [pgs, setPgs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [nearbyPGs, setNearbyPGs] = useState([]);
   const [availableAreas, setAvailableAreas] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [userLocation, setUserLocation] = useState(null);
   const [pagination, setPagination] = useState({ page: 1, pages: 1, total: 0 });
   const [searchQuery, setSearchQuery] = useState('');
@@ -345,7 +346,7 @@ const Home = () => {
         area: decodedArea
       });
     }
-  }, [decodedArea]);
+  }, [decodedArea, isAreaPage]);
   // Fetch PGs for area page
   useEffect(() => {
     if (isAreaPage) {
@@ -390,13 +391,14 @@ const Home = () => {
 
       fetchAreaPGs();
     }
-  }, [selectedArea, decodedArea, areaPageGender, areaPagePriceRange, areaPageRentalType]);
+  }, [selectedArea, decodedArea, areaPageGender, areaPagePriceRange, areaPageRentalType, isAreaPage]);
 
   // Fetch PG data and areas on mount
   useEffect(() => {
     fetchPGs();
     fetchAreas();
     getUserLocation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGender, selectedRentalType, priceRange, searchQuery, sortBy, selectedAreas]);
 
   const fetchAreas = async () => {
@@ -866,8 +868,7 @@ const Home = () => {
           />
 
           <div className={`main-area`}>
-            {(viewMode === 'split' || viewMode === 'list') && (
-              <div >
+            <div >
                 {loading ? (
                   <div className="loading-state">
                     <div className="loader"></div>
@@ -900,7 +901,7 @@ const Home = () => {
                   </div>
                 )}
               </div>
-            )}
+
 
             {/* Pagination */}
             {pagination.pages > 1 && (

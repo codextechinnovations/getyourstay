@@ -7,6 +7,7 @@ const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f1
 const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
   console.log(pg);
 
+  // eslint-disable-next-line no-unused-vars
   const [isHovered, setIsHovered] = useState(false);
 
   const safePG = {
@@ -50,13 +51,13 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
 
   const handleNavigate = (e) => {
     e.stopPropagation();
-    const address = encodeURIComponent(`${safePG.area}, ${safePG.city}`);
     window.open(
       `https://www.google.com/maps/dir/?api=1&destination=${safePG.lat}%2C${safePG.lng}`,
       '_blank'
     );
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleCall = (e) => {
     e.stopPropagation();
     if (safePG.ownerPhone) {

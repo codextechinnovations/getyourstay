@@ -3,6 +3,7 @@ import { bangaloreAreas } from '../data/pgData';
 import './Sitemap.css';
 
 const Sitemap = () => {
+  // eslint-disable-next-line no-unused-vars
   const [downloadMode, setDownloadMode] = useState(false);
 
   const generateSitemap = () => {
