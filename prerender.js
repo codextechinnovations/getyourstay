@@ -27,7 +27,13 @@ const MIME_TYPES = {
 };
 
 async function prerender() {
-  const puppeteer = require('puppeteer-core');
+  let puppeteer;
+  try {
+    puppeteer = require('puppeteer-core');
+  } catch {
+    console.log('puppeteer-core not available. Prerendering skipped.');
+    return;
+  }
   const buildDir = path.resolve(__dirname, 'build');
 
   const server = http.createServer((req, res) => {
@@ -150,5 +156,5 @@ async function prerender() {
 
 prerender().catch(err => {
   console.error('Prerender error:', err);
-  process.exit(1);
+  console.log('Continuing without prerendering.');
 });
