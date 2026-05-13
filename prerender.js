@@ -329,20 +329,27 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
 
-function buildNoscript(pageContent) {
-  const { title, body } = pageContent;
-  return `<noscript>
-    <div style="padding:20px 24px;font-family:system-ui,-apple-system,sans-serif;max-width:1100px;margin:0 auto;color:#1e293b;line-height:1.6">
-      <h1 style="font-size:28px;color:#1a1a4e;margin-bottom:16px">${escapeHtml(title)}</h1>
-      ${body}
-      <hr style="border:none;border-top:1px solid #e2e8f0;margin:32px 0"/>
-      <div style="font-size:13px;color:#94a3b8">
-        <p>This page requires JavaScript for full interactive features including search, filtering, and contact forms. Please enable JavaScript in your browser settings.</p>
-        <p style="margin-top:4px">Contact us: <a href="tel:+919741821179" style="color:#2563eb">+91 97418 21179</a> | <a href="mailto:support@getyourstay.in" style="color:#2563eb">support@getyourstay.in</a></p>
-        <p style="margin-top:4px">&copy; 2026 GetYourStay. All rights reserved.</p>
-      </div>
+function buildSeoHtml(pageContent) {
+  const { title, body, description } = pageContent;
+  const today = new Date().toISOString().split('T')[0];
+  return `<div data-seo="true" style="font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:1100px;margin:0 auto;padding:24px 20px;color:#1e293b;line-height:1.65;background:#fff">
+  <header style="border-bottom:2px solid #0f2744;padding-bottom:16px;margin-bottom:28px">
+    <p style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px">GetYourStay.in</p>
+    <h1 style="font-size:clamp(22px,4vw,30px);color:#0f2744;line-height:1.2;margin:0">${title}</h1>
+    <p style="font-size:14px;color:#475569;margin-top:8px">${description}</p>
+  </header>
+  ${body}
+  <footer style="border-top:1px solid #e2e8f0;margin-top:40px;padding-top:20px">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px">
+      <a href="/" style="color:#2563eb;text-decoration:none;font-weight:500">Home</a>
+      <a href="/list-your-pg" style="color:#2563eb;text-decoration:none;font-weight:500">List Your PG</a>
+      <a href="/pg-management-app" style="color:#2563eb;text-decoration:none;font-weight:500">PG Owner App</a>
+      <a href="/about" style="color:#2563eb;text-decoration:none;font-weight:500">About Us</a>
+      <a href="/contact" style="color:#2563eb;text-decoration:none;font-weight:500">Contact</a>
     </div>
-  </noscript>`;
+    <p style="font-size:13px;color:#94a3b8;margin:0">© 2026 GetYourStay. All rights reserved. Last updated: ${today}</p>
+  </footer>
+</div>`;
 }
 
 function prerender() {
@@ -356,14 +363,14 @@ function prerender() {
 
   let baseHtml = fs.readFileSync(indexPath, 'utf-8');
 
-  const noscriptTagRegex = /\s*<noscript>[\s\S]*?<\/noscript>\s*/;
+  const noscriptTagRegex = /<noscript>[\s\S]*?<\/noscript>/;
   const titleRegex = /<title>[^<]*<\/title>/;
   const descRegex = /<meta name="description"[^>]*\/?>/;
   const metaRegex = /<meta property="og:title"[^>]*\/?>/;
   const ogDescRegex = /<meta property="og:description"[^>]*\/?>/;
   const ogUrlRegex = /<meta property="og:url"[^>]*\/?>/;
   const canonicalRegex = /<link rel="canonical"[^>]*\/?>/;
-  const rootDivRegex = /(<div\s+id="root"\s*>)\s*<\/div>/;
+  const rootDivRegex = /<div\s+id="root"\s*><\/div>/;
 
   for (const [route, content] of Object.entries(PAGES)) {
     let html = baseHtml;
@@ -376,9 +383,9 @@ function prerender() {
     html = html.replace(canonicalRegex, `<link rel="canonical" href="https://www.getyourstay.in${route}" />`);
 
     html = html.replace(noscriptTagRegex, '');
-    html = html.replace(rootDivRegex, (_match, openTag) => {
-      const noscript = buildNoscript(content);
-      return `${openTag}${noscript}</div>`;
+    html = html.replace(rootDivRegex, () => {
+      const seoHtml = buildSeoHtml(content);
+      return `<div id="root">${seoHtml}</div>`;
     });
 
     const outputName = route === '/' ? 'index' : route.slice(1);

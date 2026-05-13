@@ -41,19 +41,19 @@
 
 .pg-detail-dots {
   position: absolute;
-  bottom: 15px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 5px;
+  gap: 4px;
   background: rgba(0,0,0,0.5);
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-radius: 20px;
 }
 
 .pg-detail-dot {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -259,6 +259,28 @@
   text-decoration: none;
 }
 
+.pg-detail-wa-btn {
+  flex: 1;
+  padding: 12px;
+  background: #25D366;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.pg-detail-wa-btn:hover {
+  background: #20bd5a;
+}
+
 .pg-detail-checkin-btn {
   flex: 1;
   padding: 12px;
@@ -439,12 +461,13 @@
     grid-template-columns: 1fr !important;
   }
   .pg-detail-dot {
-    width: 4px !important;
-    height: 4px !important;
+    width: 3px;
+    height: 3px;
   }
   .pg-detail-dots {
     gap: 3px;
-    padding: 4px 8px;
+    padding: 3px 6px;
+    display: none !important;
   }
 }
 

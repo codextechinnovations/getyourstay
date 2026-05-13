@@ -140,6 +140,46 @@
   font-weight: 500;
 }
 
+.pg-card-whatsapp-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(37,211,102,0.25);
+  margin-top: 8px;
+}
+
+.pg-card-whatsapp-cta:hover {
+  background: #20bd5a;
+}
+
+.pg-card-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 8px;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pg-card-wa-btn:hover {
+  background: #20bd5a;
+}
+
 .pg-card-view-btn {
   padding: 8px 16px;
   background: #FF6B2C;
