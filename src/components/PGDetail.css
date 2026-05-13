@@ -45,15 +45,15 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 6px;
+  gap: 5px;
   background: rgba(0,0,0,0.5);
-  padding: 6px 12px;
+  padding: 5px 10px;
   border-radius: 20px;
 }
 
 .pg-detail-dot {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -438,4 +438,80 @@
   .pg-detail-pricing-grid {
     grid-template-columns: 1fr !important;
   }
+  .pg-detail-dot {
+    width: 4px;
+    height: 4px;
+  }
+  .pg-detail-dots {
+    gap: 3px;
+    padding: 4px 8px;
+  }
+}
+
+.pg-detail-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 4010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-detail-lightbox-close {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 4011;
+  line-height: 1;
+  padding: 8px;
+}
+
+.pg-detail-lightbox-content {
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-detail-lightbox-img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.pg-detail-lightbox-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  font-size: 48px;
+  cursor: pointer;
+  padding: 20px 15px;
+  z-index: 4011;
+  transition: background 0.2s;
+  line-height: 1;
+}
+
+.pg-detail-lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.pg-detail-lightbox-prev {
+  left: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.pg-detail-lightbox-next {
+  right: 0;
+  border-radius: 8px 0 0 8px;
 }

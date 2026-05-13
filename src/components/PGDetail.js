@@ -7,6 +7,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
 
   const [currentImage, setCurrentImage] = useState(0);
   const [showEnquireForm, setShowEnquireForm] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -138,7 +139,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
 
         {/* Image Gallery */}
         <div className="pg-detail-gallery" style={{ filter: isVerified ? 'none' : 'blur(8px)' }}>
-          <img src={pg.images[currentImage]} alt={pg.name} className="pg-detail-gallery-img" />
+          <img src={pg.images[currentImage]} alt={pg.name} className="pg-detail-gallery-img" onClick={() => setLightboxOpen(true)} style={{ cursor: 'zoom-in' }} />
 
           {/* Image Navigation */}
           <div className="pg-detail-dots">
@@ -177,6 +178,28 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
             {pg.gender} PG
           </div>
         </div>
+
+        {/* Lightbox */}
+        {lightboxOpen && (
+          <div className="pg-detail-lightbox" onClick={() => setLightboxOpen(false)}>
+            <button className="pg-detail-lightbox-close" onClick={() => setLightboxOpen(false)}>×</button>
+            <div className="pg-detail-lightbox-content" onClick={e => e.stopPropagation()}>
+              <img src={pg.images[currentImage]} alt={pg.name} className="pg-detail-lightbox-img" />
+            </div>
+            <button
+              className="pg-detail-lightbox-nav pg-detail-lightbox-prev"
+              onClick={e => { e.stopPropagation(); setCurrentImage(prev => prev === 0 ? pg.images.length - 1 : prev - 1); }}
+            >
+              ‹
+            </button>
+            <button
+              className="pg-detail-lightbox-nav pg-detail-lightbox-next"
+              onClick={e => { e.stopPropagation(); setCurrentImage(prev => prev === pg.images.length - 1 ? 0 : prev + 1); }}
+            >
+              ›
+            </button>
+          </div>
+        )}
 
         {/* Content */}
         <div className="pg-detail-body">
