@@ -280,6 +280,7 @@ const normalizePG = (pg) => ({
   distance: pg?.distance || null,
   walkTime: pg?.walkTime || null,
   images: Array.isArray(pg?.images) && pg.images.length > 0 ? pg.images : [DEFAULT_IMAGE],
+  videos: Array.isArray(pg?.videos) ? pg.videos : [],
   isVerified: pg?.isVerified ?? true,
   isAvailable: pg?.isAvailable ?? false,
   description: pg?.description || '',
@@ -671,7 +672,7 @@ const Home = () => {
               <span className="stat-label">Verified PGs</span>
             </div>
             <div className="stat">
-              <span className="stat-number">2K+</span>
+              <span className="stat-number">1K+</span>
               <span className="stat-label">Happy Tenants</span>
             </div>
             <div className="stat">
