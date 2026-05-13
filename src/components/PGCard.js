@@ -134,6 +134,14 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
         {/* Rating Badge */}
 
 
+        {/* Video Badge */}
+        {safePG.videos && safePG.videos.length > 0 && (
+          <div className="badge" style={{ position: 'absolute', bottom: '8px', left: '8px', background: 'rgba(0,0,0,0.6)', color: 'white', display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21" /></svg>
+            {safePG.videos.length} Video{safePG.videos.length > 1 ? 's' : ''}
+          </div>
+        )}
+
         {/* Savings Badge */}
         {safePG.savings > 0 && (
           <div className="badge" style={{ position: 'absolute', bottom: '8px', right: '8px', background: '#059669', color: 'white' }}>

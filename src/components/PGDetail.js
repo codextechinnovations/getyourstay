@@ -17,6 +17,11 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
   });
   const [submitted, setSubmitted] = useState(false);
 
+  const allMedia = [
+    ...(pg.images || []).map(src => ({ type: 'image', src })),
+    ...(pg.videos || []).map(src => ({ type: 'video', src })),
+  ];
+
   const isVerified = pg.isVerified !== false;
 
   useEffect(() => {
@@ -149,39 +154,60 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
 
         {/* Image Gallery */}
         <div className="pg-detail-gallery" style={{ filter: isVerified ? 'none' : 'blur(8px)' }}>
-          <img src={pg.images[currentImage]} alt={pg.name} className="pg-detail-gallery-img" onClick={() => setLightboxOpen(true)} style={{ cursor: 'zoom-in' }} />
+          {allMedia[currentImage]?.type === 'image' ? (
+            <img src={allMedia[currentImage].src} alt={pg.name} className="pg-detail-gallery-img" onClick={() => setLightboxOpen(true)} style={{ cursor: 'zoom-in' }} />
+          ) : allMedia[currentImage]?.type === 'video' ? (
+            <video
+              src={allMedia[currentImage].src}
+              className="pg-detail-gallery-img"
+              controls
+              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            />
+          ) : null}
 
-          {/* Image Navigation */}
+          {/* Media Navigation */}
           <div className="pg-detail-dots">
-            {pg.images.map((_, idx) => (
+            {allMedia.map((item, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentImage(idx)}
                 className="pg-detail-dot"
-                style={{ background: currentImage === idx ? 'white' : 'rgba(255,255,255,0.5)' }}
+                style={{ background: currentImage === idx ? 'white' : 'rgba(255,255,255,0.5)', width: item.type === 'video' ? '12px' : '8px' }}
               />
             ))}
           </div>
 
-          {/* Image Navigation Arrows */}
-          <button
-            onClick={() => setCurrentImage(prev => prev === 0 ? pg.images.length - 1 : prev - 1)}
-            className="pg-detail-nav-btn"
-            style={{ left: '10px' }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="2">
-              <polyline points="15,18 9,12 15,6"></polyline>
-            </svg>
-          </button>
-          <button
-            onClick={() => setCurrentImage(prev => prev === pg.images.length - 1 ? 0 : prev + 1)}
-            className="pg-detail-nav-btn"
-            style={{ right: '10px' }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="2">
-              <polyline points="9,18 15,12 9,6"></polyline>
-            </svg>
-          </button>
+          {/* Media Navigation Arrows */}
+          {allMedia.length > 1 && (
+            <>
+              <button
+                onClick={() => setCurrentImage(prev => prev === 0 ? allMedia.length - 1 : prev - 1)}
+                className="pg-detail-nav-btn"
+                style={{ left: '10px' }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="2">
+                  <polyline points="15,18 9,12 15,6"></polyline>
+                </svg>
+              </button>
+              <button
+                onClick={() => setCurrentImage(prev => prev === allMedia.length - 1 ? 0 : prev + 1)}
+                className="pg-detail-nav-btn"
+                style={{ right: '10px' }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="2">
+                  <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+              </button>
+            </>
+          )}
+
+          {/* Video Badge */}
+          {allMedia[currentImage]?.type === 'video' && (
+            <div style={{ position: 'absolute', top: '12px', right: '12px', background: 'rgba(0,0,0,0.6)', color: 'white', borderRadius: '6px', padding: '4px 10px', fontSize: '11px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21" /></svg>
+              VIDEO
+            </div>
+          )}
 
           {/* Gender Badge */}
           <div className="pg-detail-gender-badge" style={{ background: getGenderColor(pg.gender) }}>
@@ -194,20 +220,28 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
           <div className="pg-detail-lightbox" onClick={() => setLightboxOpen(false)}>
             <button className="pg-detail-lightbox-close" onClick={() => setLightboxOpen(false)}>×</button>
             <div className="pg-detail-lightbox-content" onClick={e => e.stopPropagation()}>
-              <img src={pg.images[currentImage]} alt={pg.name} className="pg-detail-lightbox-img" />
+              {allMedia[currentImage]?.type === 'image' ? (
+                <img src={allMedia[currentImage].src} alt={pg.name} className="pg-detail-lightbox-img" />
+              ) : allMedia[currentImage]?.type === 'video' ? (
+                <video src={allMedia[currentImage].src} controls style={{ maxWidth: '100%', maxHeight: '80vh' }} />
+              ) : null}
             </div>
-            <button
-              className="pg-detail-lightbox-nav pg-detail-lightbox-prev"
-              onClick={e => { e.stopPropagation(); setCurrentImage(prev => prev === 0 ? pg.images.length - 1 : prev - 1); }}
-            >
-              ‹
-            </button>
-            <button
-              className="pg-detail-lightbox-nav pg-detail-lightbox-next"
-              onClick={e => { e.stopPropagation(); setCurrentImage(prev => prev === pg.images.length - 1 ? 0 : prev + 1); }}
-            >
-              ›
-            </button>
+            {allMedia.length > 1 && (
+              <>
+                <button
+                  className="pg-detail-lightbox-nav pg-detail-lightbox-prev"
+                  onClick={e => { e.stopPropagation(); setCurrentImage(prev => prev === 0 ? allMedia.length - 1 : prev - 1); }}
+                >
+                  ‹
+                </button>
+                <button
+                  className="pg-detail-lightbox-nav pg-detail-lightbox-next"
+                  onClick={e => { e.stopPropagation(); setCurrentImage(prev => prev === allMedia.length - 1 ? 0 : prev + 1); }}
+                >
+                  ›
+                </button>
+              </>
+            )}
           </div>
         )}
 

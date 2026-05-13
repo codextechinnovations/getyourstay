@@ -1313,20 +1313,12 @@ const Home = () => {
               Find the perfect PG accommodation based on your specific needs and preferences
             </p>
 
-            <div className="types-grid">
+<div className="types-grid">
               <Link to="/?gender=male" className="type-card boys">
                 <span className="type-icon">
-                  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="maleGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#1a365d" />
-                        <stop offset="100%" stopColor="#234681" />
-                      </linearGradient>
-                    </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#maleGrad)" />
-                    <circle cx="32" cy="24" r="10" fill="white" fillOpacity="0.9" />
-                    <path d="M16 52C16 40.954 24.954 32 32 32C39.046 32 48 40.954 48 52" stroke="white" strokeWidth="4" strokeLinecap="round" />
-                    <circle cx="32" cy="24" r="5" fill="#fb923c" />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="7" r="4" />
+                    <path d="M5.5 21C5.5 16.5 8.1 13 12 13C15.9 13 18.5 16.5 18.5 21" />
                   </svg>
                 </span>
                 <span className="type-name">Boys PG</span>
@@ -1334,18 +1326,10 @@ const Home = () => {
               </Link>
               <Link to="/?gender=female" className="type-card girls">
                 <span className="type-icon">
-                  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="femaleGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#1a365d" />
-                        <stop offset="100%" stopColor="#234681" />
-                      </linearGradient>
-                    </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#femaleGrad)" />
-                    <circle cx="32" cy="22" r="10" fill="white" fillOpacity="0.9" />
-                    <path d="M20 54C20 41.85 26.85 32 32 32C37.15 32 44 41.85 44 54" stroke="white" strokeWidth="4" strokeLinecap="round" />
-                    <path d="M28 20C28 20 30 16 32 16C34 16 36 20 36 20" stroke="#fb923c" strokeWidth="2" strokeLinecap="round" />
-                    <circle cx="32" cy="22" r="4" fill="#fb923c" />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="7" r="4" />
+                    <path d="M6.5 21C6.5 17 8.9 13 12 13C15.1 13 17.5 17 17.5 21" />
+                    <path d="M10 4.5C10 4.5 11 2.5 12 2.5C13 2.5 14 4.5 14 4.5" />
                   </svg>
                 </span>
                 <span className="type-name">Girls PG</span>
@@ -1353,18 +1337,11 @@ const Home = () => {
               </Link>
               <Link to="/?type=colive" className="type-card colive">
                 <span className="type-icon">
-                  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="coliveGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#1a365d" />
-                        <stop offset="100%" stopColor="#234681" />
-                      </linearGradient>
-                    </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#coliveGrad)" />
-                    <circle cx="22" cy="26" r="6" fill="white" fillOpacity="0.9" />
-                    <circle cx="42" cy="26" r="6" fill="white" fillOpacity="0.9" />
-                    <circle cx="32" cy="42" r="6" fill="white" fillOpacity="0.9" />
-                    <path d="M22 26L32 42M42 26L32 42M22 26H42" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="9" cy="7" r="3" />
+                    <circle cx="17" cy="7" r="3" />
+                    <circle cx="13" cy="17" r="3" />
+                    <path d="M9 10L13 14M17 10L13 14M9 7H17" />
                   </svg>
                 </span>
                 <span className="type-name">Co-living</span>
@@ -1372,18 +1349,11 @@ const Home = () => {
               </Link>
               <Link to="/?amenity=AC" className="type-card ac">
                 <span className="type-icon">
-                  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="acGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#1a365d" />
-                        <stop offset="100%" stopColor="#234681" />
-                      </linearGradient>
-                    </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#acGrad)" />
-                    <rect x="12" y="20" width="40" height="24" rx="4" fill="white" fillOpacity="0.9" />
-                    <path d="M18 28H46M18 32H38M18 36H30" stroke="#fb923c" strokeWidth="3" strokeLinecap="round" />
-                    <path d="M48 12L52 16M52 12L48 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
-                    <path d="M54 20L58 24M58 20L54 24" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="4" y="6" width="16" height="12" rx="2" />
+                    <path d="M8 10H16M8 13H12M8 16H10" />
+                    <path d="M19 3L21 5M21 3L19 5" />
+                    <path d="M22 6L24 8M24 6L22 8" />
                   </svg>
                 </span>
                 <span className="type-name">AC PG</span>
@@ -1391,17 +1361,11 @@ const Home = () => {
               </Link>
               <Link to="/?amenity=WiFi" className="type-card wifi">
                 <span className="type-icon">
-                  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="wifiGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#1a365d" />
-                        <stop offset="100%" stopColor="#234681" />
-                      </linearGradient>
-                    </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#wifiGrad)" />
-                    <path d="M32 20C40.837 20 48 27.163 48 36H16C16 27.163 23.163 20 32 20Z" fill="white" fillOpacity="0.9" />
-                    <path d="M22 36C22 42.627 27.373 48 32 48C36.627 48 42 42.627 42 36" stroke="white" strokeWidth="4" strokeLinecap="round" />
-                    <circle cx="32" cy="54" r="4" fill="white" />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 13C5 13 8.5 8 12 8C15.5 8 19 13 19 13" />
+                    <path d="M8 16C8 16 9.5 13 12 13C14.5 13 16 16 16 16" />
+                    <path d="M11 19H13" />
+                    <circle cx="12" cy="21" r="1" fill="currentColor" />
                   </svg>
                 </span>
                 <span className="type-name">WiFi PG</span>
@@ -1409,19 +1373,10 @@ const Home = () => {
               </Link>
               <Link to="/?food=true" className="type-card food">
                 <span className="type-icon">
-                  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="foodGrad" x1="0" y1="0" x2="64" y2="64">
-                        <stop offset="0%" stopColor="#1a365d" />
-                        <stop offset="100%" stopColor="#234681" />
-                      </linearGradient>
-                    </defs>
-                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#foodGrad)" />
-                    <ellipse cx="32" cy="42" rx="18" ry="8" fill="white" fillOpacity="0.9" />
-                    <ellipse cx="32" cy="40" rx="18" ry="8" fill="white" />
-                    <path d="M14 42V36C14 30.477 22.059 26 32 26C41.941 26 50 30.477 50 36V42" stroke="white" strokeWidth="3" />
-                    <rect x="28" y="12" width="8" height="14" rx="2" fill="white" />
-                    <path d="M24 12H40V16H24V12Z" fill="white" fillOpacity="0.8" />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 14C18 14 16.5 10 19 8C16.5 6 18 2 12 2C6 2 7.5 6 5 8C7.5 10 6 14 6 14" />
+                    <path d="M12 14V19" />
+                    <path d="M8 19H16" />
                   </svg>
                 </span>
                 <span className="type-name">PG with Food</span>
