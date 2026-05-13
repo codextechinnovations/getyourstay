@@ -439,8 +439,8 @@
     grid-template-columns: 1fr !important;
   }
   .pg-detail-dot {
-    width: 4px;
-    height: 4px;
+    width: 4px !important;
+    height: 4px !important;
   }
   .pg-detail-dots {
     gap: 3px;
