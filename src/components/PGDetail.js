@@ -267,6 +267,11 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
         {lightboxOpen && (
           <div className="pg-detail-lightbox" onClick={() => setLightboxOpen(false)}>
             <button className="pg-detail-lightbox-close" onClick={() => setLightboxOpen(false)}>×</button>
+            {activeCategory !== 'all' && (
+              <div style={{ position: 'absolute', top: '50px', left: '50%', transform: 'translateX(-50%)', background: 'rgba(0,0,0,0.5)', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '600' }}>
+                {categoryLabels[activeCategory]} ({currentImage + 1}/{allMedia.length})
+              </div>
+            )}
             <div className="pg-detail-lightbox-content" onClick={e => e.stopPropagation()}>
               {allMedia[currentImage]?.type === 'image' ? (
                 <img src={allMedia[currentImage].src} alt={pg.name} className="pg-detail-lightbox-img" />
