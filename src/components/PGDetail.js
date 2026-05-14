@@ -8,6 +8,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [showEnquireForm, setShowEnquireForm] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState('all');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -17,10 +18,33 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const allMedia = [
-    ...(pg.images || []).map(src => ({ type: 'image', src })),
-    ...(pg.videos || []).map(src => ({ type: 'video', src })),
-  ];
+  const bannerImage = pg.bannerImage || pg.images?.[0];
+  const imageCategories = pg.imageCategories || {};
+
+  const categoryLabels = {
+    banner: '🏠 Banner',
+    hall: '🏠 Hall',
+    room: '🛏️ Room',
+    kitchen: '🍳 Kitchen',
+    washroom: '🚿 Washroom',
+    corridor: '🚪 Corridor',
+    entrance: '🚧 Entrance',
+    other: '📷 Other',
+    all: '📷 All'
+  };
+
+  const getFilteredMedia = () => {
+    if (activeCategory === 'all') {
+      return [
+        ...(pg.images || []).map(src => ({ type: 'image', src })),
+        ...(pg.videos || []).map(src => ({ type: 'video', src })),
+      ];
+    }
+    const catImages = imageCategories[activeCategory] || [];
+    return catImages.map(src => ({ type: 'image', src }));
+  };
+
+  const allMedia = getFilteredMedia();
 
   const isVerified = pg.isVerified !== false;
 
@@ -131,7 +155,7 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
             </p>
             {pg.images && pg.images.length > 0 && (
               <div style={{ marginTop: '25px', borderRadius: '12px', overflow: 'hidden', width: '100%', maxWidth: '300px' }}>
-                <img src={pg.images[0]} alt={pg.name} className="w-full" style={{ height: '180px', objectFit: 'cover' }} />
+                <img src={bannerImage || pg.images[0]} alt={pg.name} className="w-full" style={{ height: '180px', objectFit: 'cover' }} />
               </div>
             )}
             <h3 className="text-primary" style={{ marginTop: '20px', fontSize: '18px', fontWeight: '700' }}>
@@ -214,6 +238,30 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
             {pg.gender} PG
           </div>
         </div>
+
+        {/* Image Category Filter Tabs */}
+        {Object.keys(imageCategories).length > 0 && (
+          <div className="pg-detail-category-tabs" style={{ display: 'flex', gap: '8px', padding: '12px 16px', overflowX: 'auto', borderBottom: '1px solid #e5e7eb' }}>
+            {['all', ...Object.keys(imageCategories)].map(cat => (
+              <button
+                key={cat}
+                onClick={() => { setActiveCategory(cat); setCurrentImage(0); }}
+                style={{
+                  padding: '6px 14px', borderRadius: '20px', border: 'none', cursor: 'pointer',
+                  fontSize: '12px', fontWeight: '600', whiteSpace: 'nowrap', flexShrink: 0,
+                  background: activeCategory === cat ? '#667eea' : '#f1f5f9',
+                  color: activeCategory === cat ? 'white' : '#64748b',
+                  transition: 'all 0.2s',
+                }}
+              >
+                {categoryLabels[cat] || cat}
+                <span style={{ marginLeft: '4px', opacity: 0.8 }}>
+                  ({cat === 'all' ? (pg.images?.length || 0) : (imageCategories[cat]?.length || 0)})
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Lightbox */}
         {lightboxOpen && (

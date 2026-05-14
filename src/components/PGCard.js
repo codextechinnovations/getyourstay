@@ -25,6 +25,9 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
       )
       : ['WiFi', 'AC', 'Laundry'], gender: pg?.gender || 'Unisex',
     images: Array.isArray(pg?.images) && pg.images.length > 0 ? pg.images : [DEFAULT_IMAGE],
+    bannerImage: pg?.bannerImage || pg?.images?.[0] || DEFAULT_IMAGE,
+    imageCategories: pg?.imageCategories || {},
+    videos: pg?.videos || [],
     isVerified: pg?.isVerified ?? true,
     isTopRated: pg?.isTopRated || false,
     description: pg?.description || 'Comfortable stay with all modern amenities.',
@@ -92,7 +95,7 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
       {/* LEFT IMAGE */}
       <div className="pg-card-image">
         <img
-          src={safePG.images[0] || DEFAULT_IMAGE}
+          src={safePG.bannerImage || safePG.images[0] || DEFAULT_IMAGE}
           alt={safePG.name}
           className="pg-card-img"
         />
