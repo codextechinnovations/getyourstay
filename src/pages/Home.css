@@ -24,11 +24,13 @@
   font-weight: 700;
   color: var(--primary-800);
   margin-bottom: 8px;
+  font-family: 'Lato', sans-serif;
 }
 
 .hiw-title p {
   color: var(--neutral-500);
   font-size: 14px;
+  font-family: 'Lato', sans-serif;
 }
 
 .hiw-grid {
@@ -43,17 +45,37 @@
   padding: 24px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.04);
   transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: hiwCardFadeIn 0.6s ease forwards;
+}
+
+.hiw-card:nth-child(1) { animation-delay: 0.1s; }
+.hiw-card:nth-child(2) { animation-delay: 0.2s; }
+.hiw-card:nth-child(3) { animation-delay: 0.3s; }
+.hiw-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes hiwCardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hiw-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+.hiw-card:hover .hiw-icon {
+  transform: scale(1.1);
 }
 
 .hiw-icon {
   width: 48px;
   height: 48px;
   margin-bottom: 16px;
+  transition: transform 0.3s ease;
 }
 
 .hiw-card h3 {
@@ -61,6 +83,7 @@
   font-weight: 700;
   color: var(--primary-700);
   margin-bottom: 8px;
+  font-family: 'Lato', sans-serif;
 }
 
 .hiw-card p {
@@ -68,6 +91,7 @@
   color: var(--neutral-500);
   line-height: 1.6;
   margin: 0;
+  font-family: 'Lato', sans-serif;
 }
 
 /* Popular Areas */

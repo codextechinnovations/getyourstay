@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import PGCard from '../components/PGCard';
@@ -319,6 +319,8 @@ const Home = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [pagination, setPagination] = useState({ page: 1, pages: 1, total: 0 });
   const [searchQuery, setSearchQuery] = useState('');
+  const hiwSectionRef = useRef(null);
+  const [hiwVisible, setHiwVisible] = useState(false);
 
   // Area page state - PGs fetched via URL query param
   const [areaPagePGs, setAreaPagePGs] = useState([]);
@@ -394,6 +396,24 @@ const Home = () => {
       fetchAreaPGs();
     }
   }, [selectedArea, decodedArea, areaPageGender, areaPagePriceRange, areaPageRentalType, isAreaPage]);
+
+  // Scroll-triggered animation for How It Works section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHiwVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (hiwSectionRef.current) {
+      observer.observe(hiwSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Fetch PG data and areas on mount
   useEffect(() => {
@@ -1082,7 +1102,7 @@ const Home = () => {
         </section>
 
         {/* How It Works Section */}
-        <section className="how-it-works-section">
+        <section className="how-it-works-section" ref={hiwSectionRef}>
           <div className="hiw-container">
             <div className="hiw-header">
               <span className="hiw-badge">Simple Process</span>
@@ -1092,7 +1112,7 @@ const Home = () => {
 
             <div className="hiw-steps">
               {hiwSteps.map((step, index) => (
-                <div key={index} className="hiw-step">
+                <div key={index} className={`hiw-step ${hiwVisible ? 'hiw-animated' : ''}`}>
                   <div className="hiw-step-number">{index + 1}</div>
                   <div className="hiw-step-icon">{step.icon}</div>
                   <h3 className="hiw-step-title">{step.title}</h3>
@@ -1567,7 +1587,7 @@ const Home = () => {
           text-transform: uppercase;
           letter-spacing: 2px;
           margin-bottom: 24px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           border: 2px solid rgba(255, 107, 44, 0.2);
         }
         .tc-title {
@@ -1577,7 +1597,7 @@ const Home = () => {
           margin: 0 0 28px;
           line-height: 1.25;
           letter-spacing: -0.5px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           position: relative;
         }
         .tc-title::after {
@@ -1596,7 +1616,7 @@ const Home = () => {
           color: #64748B;
           line-height: 1.9;
           margin: 0 0 20px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           font-weight: 400;
           max-width: 1200px;
           margin-left: auto;
@@ -1651,7 +1671,7 @@ const Home = () => {
           font-size: 14px;
           font-weight: 600;
           color: #1E293B;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           letter-spacing: 0.3px;
         }
         
@@ -1985,7 +2005,7 @@ const Home = () => {
           text-transform: uppercase;
           letter-spacing: 2px;
           margin-bottom: 20px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           border: 2px solid rgba(255, 107, 44, 0.2);
         }
         .areas-title {
@@ -1995,13 +2015,13 @@ const Home = () => {
           margin: 0 0 16px;
           line-height: 1.25;
           letter-spacing: -0.5px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .areas-subtitle {
           font-size: 17px;
           color: #64748B;
           margin: 0 0 40px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           font-weight: 400;
           max-width: 600px;
         }
@@ -2102,7 +2122,7 @@ const Home = () => {
           font-weight: 700;
           color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .area-rent {
           font-size: 12px;
@@ -2112,14 +2132,14 @@ const Home = () => {
           padding: 4px 12px;
           border-radius: 20px;
           white-space: nowrap;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .area-description {
           font-size: 13px;
           color: #64748B;
           margin: 0 0 14px;
           line-height: 1.6;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .area-highlights {
           display: flex;
@@ -2133,7 +2153,7 @@ const Home = () => {
           background: white;
           padding: 5px 12px;
           border-radius: 20px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
         .area-arrow {
@@ -2214,14 +2234,14 @@ const Home = () => {
           font-weight: 700;
           color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 12px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .tip-card p {
           font-size: 14px;
           color: #64748B;
           margin: 0;
           line-height: 1.7;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
 
         /* FAQ SEO Section */
@@ -2388,7 +2408,7 @@ const Home = () => {
           font-weight: 700;
           color: ${theme.primary[800]};
           margin-bottom: 6px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           transition: color 0.3s ease;
         }
         .type-card:hover .type-name {
@@ -2429,7 +2449,7 @@ const Home = () => {
           margin: 0 0 16px;
           letter-spacing: -0.5px;
           line-height: 1.2;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .vp-highlight {
           background: #f97316;
@@ -2444,7 +2464,7 @@ const Home = () => {
           max-width: 600px;
           margin: 0 auto;
           line-height: 1.6;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           font-weight: 400;
         }
         .vp-grid {
@@ -2544,7 +2564,7 @@ const Home = () => {
           font-weight: 700;
           color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 12px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .vp-card p {
           font-size: 14px;
@@ -2587,14 +2607,14 @@ const Home = () => {
           font-weight: 800;
           color: white;
           letter-spacing: -1px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .vp-stat-label {
           font-size: 14px;
           color: rgba(255, 255, 255, 0.7);
           margin-top: 4px;
           font-weight: 500;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .how-it-works-section::before {
           content: '';
@@ -2624,7 +2644,7 @@ const Home = () => {
           text-transform: uppercase;
           letter-spacing: 1px;
           margin-bottom: 16px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .hiw-title {
           font-size: 40px;
@@ -2633,7 +2653,7 @@ const Home = () => {
           margin: 0 0 12px;
           letter-spacing: -1px;
           line-height: 1.1;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .hiw-subtitle {
           font-size: 16px;
@@ -2641,7 +2661,7 @@ const Home = () => {
           margin: 0;
           max-width: 500px;
           margin: 0 auto;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
           font-weight: 400;
         }
         .hiw-steps {
@@ -2668,23 +2688,18 @@ const Home = () => {
           text-align: center;
           position: relative;
           z-index: 1;
-          animation: fadeInUp 0.6s ease forwards;
           opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.6s ease;
         }
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        .hiw-step.hiw-animated {
+          opacity: 1;
+          transform: translateY(0);
         }
-        .hiw-step:nth-child(1) { animation-delay: 0s; }
-        .hiw-step:nth-child(2) { animation-delay: 0.15s; }
-        .hiw-step:nth-child(3) { animation-delay: 0.3s; }
-        .hiw-step:nth-child(4) { animation-delay: 0.45s; }
+        .hiw-step:nth-child(1) { transition-delay: 0s; }
+        .hiw-step:nth-child(2) { transition-delay: 0.15s; }
+        .hiw-step:nth-child(3) { transition-delay: 0.3s; }
+        .hiw-step:nth-child(4) { transition-delay: 0.45s; }
         .hiw-step-number {
           width: 40px;
           height: 40px;
@@ -2767,7 +2782,7 @@ const Home = () => {
           color: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(15, 39, 68) 40%, rgb(26, 54, 93) 100%);;
           margin: 0 0 10px;
           letter-spacing: -0.3px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .hiw-step-desc {
           font-size: 14px;
@@ -2775,7 +2790,7 @@ const Home = () => {
           margin: 0;
           line-height: 1.6;
           max-width: 200px;
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .hiw-cta {
           text-align: center;
@@ -2795,7 +2810,7 @@ const Home = () => {
           cursor: pointer;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Lato', sans-serif;
         }
         .hiw-start-btn:hover {
           transform: translateY(-2px);
