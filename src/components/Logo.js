@@ -26,12 +26,12 @@ const Logo = ({ size = 'normal', variant = 'full', light = false }) => {
         
         {/* Building 2 - Center (Tallest) */}
         <rect x="18" y="12" width="12" height="32" rx="2" fill={light ? 'rgba(255,255,255,0.95)' : 'white'}/>
-        <rect x="20" y="15" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-        <rect x="26.5" y="15" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-        <rect x="20" y="22" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-        <rect x="26.5" y="22" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-        <rect x="20" y="29" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-        <rect x="26.5" y="29" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+        <rect x="19" y="15" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+        <rect x="25.5" y="15" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+        <rect x="19" y="22" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+        <rect x="25.5" y="22" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+        <rect x="19" y="29" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+        <rect x="25.5" y="29" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
         <rect x="22" y="37" width="4" height="7" fill="var(--accent-500)"/>
         
         {/* Building 3 - Right */}
@@ -67,12 +67,12 @@ export const LogoIcon = ({ size = 40, light = false }) => (
     <rect x="6" y="29" width="3" height="3" fill={light ? 'var(--accent-500)' : 'var(--primary-800)'}/>
     <rect x="11" y="29" width="3" height="3" fill={light ? 'var(--accent-500)' : 'var(--primary-800)'}/>
     <rect x="18" y="12" width="12" height="32" rx="2" fill={light ? 'rgba(255,255,255,0.95)' : 'white'}/>
-    <rect x="20" y="15" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-    <rect x="26.5" y="15" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-    <rect x="20" y="22" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-    <rect x="26.5" y="22" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-    <rect x="20" y="29" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
-    <rect x="26.5" y="29" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+    <rect x="19" y="15" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+    <rect x="25.5" y="15" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+    <rect x="19" y="22" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+    <rect x="25.5" y="22" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+    <rect x="19" y="29" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
+    <rect x="25.5" y="29" width="3.5" height="4" fill={light ? 'var(--accent-500)' : 'var(--primary-700)'}/>
     <rect x="22" y="37" width="4" height="7" fill="var(--accent-500)"/>
     <rect x="32" y="16" width="12" height="28" rx="2" fill="var(--accent-500)"/>
     <rect x="34" y="19" width="3" height="3" fill={light ? 'var(--accent-500)' : 'var(--primary-800)'}/>

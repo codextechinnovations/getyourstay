@@ -5,10 +5,12 @@ import './PGCard.css';
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=300&fit=crop';
 
 const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
-  console.log(pg);
+  console.log("pg:::",pg);
 
   // eslint-disable-next-line no-unused-vars
   const [isHovered, setIsHovered] = useState(false);
+
+  console.log("pg in card:::",pg);
 
   const safePG = {
     id: pg?.id || '',
@@ -25,10 +27,10 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
       )
       : ['WiFi', 'AC', 'Laundry'], gender: pg?.gender || 'Unisex',
     images: Array.isArray(pg?.images) && pg.images.length > 0 ? pg.images : [DEFAULT_IMAGE],
-    bannerImage: pg?.bannerImage || pg?.images?.[0] || DEFAULT_IMAGE,
+    bannerImage: pg?.imageCategories?.banner || pg?.images?.[0] || DEFAULT_IMAGE,
     imageCategories: pg?.imageCategories || {},
     videos: pg?.videos || [],
-    isVerified: pg?.isVerified ?? true,
+    isVerified: pg?.isVerified ?? false,
     isTopRated: pg?.isTopRated || false,
     description: pg?.description || 'Comfortable stay with all modern amenities.',
     totalRooms: pg?.totalRooms || 10,
@@ -39,7 +41,8 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
     lng: pg?.lng || null,
     savings: pg?.savings || 0,
     highDemand: pg?.highDemand ?? true,
-    rentalType: pg?.rentalType || 'long_term'
+    rentalType: pg?.rentalType || 'long_term',
+
   };
 
   const getGenderColor = () => {
@@ -95,7 +98,7 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
       {/* LEFT IMAGE */}
       <div className="pg-card-image">
         <img
-          src={safePG.bannerImage || safePG.images[0] || DEFAULT_IMAGE}
+          src={safePG.bannerImage || safePG.images[0]}
           alt={safePG.name}
           className="pg-card-img"
         />

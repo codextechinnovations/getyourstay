@@ -279,7 +279,7 @@ const normalizePG = (pg) => ({
   lng: pg?.lng || pg?.longitude || null,
   distance: pg?.distance || null,
   walkTime: pg?.walkTime || null,
-  images: Array.isArray(pg?.images) && pg.images.length > 0 ? pg.images : [DEFAULT_IMAGE],
+  images: pg?.images,
   videos: Array.isArray(pg?.videos) ? pg.videos : [],
   isVerified: pg?.isVerified ?? true,
   isAvailable: pg?.isAvailable ?? false,
@@ -292,7 +292,8 @@ const normalizePG = (pg) => ({
   rentalType: pg?.rentalType || 'long_term',
   longTermRent: pg?.longTermRent || { single: 0, double: 0, triple: 0 },
   shortTermRent: pg?.shortTermRent || { single: 0, double: 0, triple: 0 },
-  checkin_url: pg?.checkin_url
+  checkin_url: pg?.checkin_url,
+  bannerImage : pg?.bannerImage || (Array.isArray(pg?.images) && pg.images.length > 0 ? pg.images[0] : DEFAULT_IMAGE),
 });
 
 const Home = () => {
@@ -611,6 +612,12 @@ const Home = () => {
     <div className="app">
       {/* Hero Section */}
       <section className="hero">
+        <div className="hero-shapes">
+          <div className="hero-shape hero-shape-1"></div>
+          <div className="hero-shape hero-shape-2"></div>
+          <div className="hero-shape hero-shape-3"></div>
+          <div className="hero-shape hero-shape-4"></div>
+        </div>
         <div className="hero-content">
           <h1>Find Your Perfect <span className="highlight">PG Accommodation</span> in Bangalore</h1>
           <p>Verified PGs with transparent pricing, real reviews, and modern amenities</p>

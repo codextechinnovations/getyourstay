@@ -233,6 +233,13 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
             </div>
           )}
 
+          {/* Image Category Badge on Gallery */}
+          {activeCategory !== 'all' && (
+            <div style={{ position: 'absolute', bottom: '10px', left: '10px', background: 'rgba(0,0,0,0.6)', color: 'white', borderRadius: '20px', padding: '4px 10px', fontSize: '11px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              {categoryLabels[activeCategory]}
+            </div>
+          )}
+
           {/* Gender Badge */}
           <div className="pg-detail-gender-badge" style={{ background: getGenderColor(pg.gender) }}>
             {pg.gender} PG
