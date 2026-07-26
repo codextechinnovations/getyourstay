@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './PGDetail.css';
 
-const PGDetail = ({ pg, onClose, onEnquire }) => {
+const PGDetail = ({ pg, onClose, onEnquire, mode = 'modal' }) => {
   console.log("PG detail : ", pg);
 
+  const isPage = mode === 'page';
 
   const [currentImage, setCurrentImage] = useState(0);
   const [showEnquireForm, setShowEnquireForm] = useState(false);
@@ -49,19 +50,21 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
   const isVerified = pg.isVerified !== false;
 
   useEffect(() => {
+    if (isPage) return;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, []);
+  }, [isPage]);
 
   useEffect(() => {
+    if (isPage) return;
     const handleEscape = (e) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
-  }, [onClose]);
+  }, [onClose, isPage]);
 
   const getGenderColor = (gender) => {
     switch (gender) {
@@ -137,8 +140,8 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
   };
 
   return (
-    <div className="pg-detail-overlay" onClick={onClose}>
-      <div className="pg-detail-modal" onClick={e => e.stopPropagation()}>
+    <div className={isPage ? 'pg-detail-page' : 'pg-detail-overlay'} onClick={isPage ? undefined : onClose}>
+      <div className={isPage ? 'pg-detail-page__inner' : 'pg-detail-modal'} onClick={isPage ? undefined : e => e.stopPropagation()}>
         {/* Unverified Overlay */}
         {!isVerified && (
           <div className="unverified-overlay">
@@ -172,9 +175,11 @@ const PGDetail = ({ pg, onClose, onEnquire }) => {
         )}
 
         {/* Header with Close Button */}
-        <div className="pg-detail-header-close">
-          <button onClick={onClose} className="pg-detail-close-btn">×</button>
-        </div>
+        {!isPage && (
+          <div className="pg-detail-header-close">
+            <button onClick={onClose} className="pg-detail-close-btn">×</button>
+          </div>
+        )}
 
         {/* Image Gallery */}
         <div className="pg-detail-gallery" style={{ filter: isVerified ? 'none' : 'blur(8px)' }}>

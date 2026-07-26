@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import PGCard from '../components/PGCard';
-import PGDetail from '../components/PGDetail';
 import '../App.css';
 import DefinitionBlock from '../components/DefinitionBlock';
 
@@ -81,7 +80,6 @@ const AreaPage = ({
   availableAreas,
   selectedPG,
   setSelectedPG,
-  handleViewDetails,
   POPULAR_AREAS
 }) => {
   const areaInfo = POPULAR_AREAS.find(a => a.name === decodedArea);
@@ -299,7 +297,6 @@ const AreaPage = ({
                   pg={pg}
                   onSelect={setSelectedPG}
                   isSelected={selectedPG?.id === pg.id}
-                  onViewDetails={handleViewDetails}
                 />
               ))}
             </div>
@@ -396,8 +393,6 @@ const AreaPage = ({
           </div>
         </div>
       )}
-
-      {selectedPG && <PGDetail pg={selectedPG} onClose={() => setSelectedPG(null)} />}
 
       <style>{`
         /* ── Breadcrumb ── */

@@ -181,6 +181,9 @@
 }
 
 .pg-card-view-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 16px;
   background: #FF6B2C;
   color: #fff;
@@ -190,6 +193,7 @@
   font-weight: 700;
   cursor: pointer;
   font-family: 'Lato', sans-serif;
+  text-decoration: none;
   transition: all 0.2s;
   box-shadow: 0 2px 8px rgba(255,107,44,0.2);
 }

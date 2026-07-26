@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import PGCard from '../components/PGCard';
-import PGDetail from '../components/PGDetail';
 import DefinitionBlock from '../components/DefinitionBlock';
 import { theme } from '../theme';
-import { pgApi } from '../services/api';
+import { pgApi, hostelApiClient } from '../services/api';
 import '../App.css';
 import './Home.css';
 import AreaPage from './AboutArea';
 import { generateTitle } from "../utils/seoTitle";
+import { getPGDetailUrl } from "../utils/slugify";
 
 const HOME_SEO_FAQS = [
   {
@@ -46,7 +46,7 @@ const HOME_SEO_FAQS = [
   }
 ];
 
-const hiwSteps = [
+const getHiwSteps = (pLabel, pLabelPlural) => [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@ const hiwSteps = [
       </svg>
     ),
     title: "Search & Filter",
-    description: "Browse through verified PGs. Filter by location, price, gender preference, and amenities."
+    description: `Browse through verified ${pLabelPlural.toLowerCase()}. Filter by location, price, gender preference, and amenities.`
   },
   {
     icon: (
@@ -75,7 +75,7 @@ const hiwSteps = [
       </svg>
     ),
     title: "Explore & Compare",
-    description: "View photos, read reviews, check amenities, and compare prices to find your ideal PG."
+    description: `View photos, read reviews, check amenities, and compare prices to find your ideal ${pLabel.toLowerCase()}.`
   },
   {
     icon: (
@@ -88,7 +88,7 @@ const hiwSteps = [
       </svg>
     ),
     title: "Contact Owner",
-    description: "Connect directly with PG owners. Ask questions, schedule visits, and negotiate prices."
+    description: `Connect directly with ${pLabel.toLowerCase()} owners. Ask questions, schedule visits, and negotiate prices.`
   },
   {
     icon: (
@@ -134,9 +134,9 @@ const POPULAR_AREAS = [
   {
     name: "Koramangala",
     slug: "koramangala",
-    description: "Premium residential area with premium PGs. Close to major offices and entertainment hubs.",
+    description: "Premium residential area with premium stays. Close to major offices and entertainment hubs.",
     rentRange: "₹8,000 - ₹20,000",
-    highlights: ["Premium PGs", "Nightlife", "Central Location"],
+    highlights: ["Premium Stays", "Nightlife", "Central Location"],
     link: "/?area=Koramangala",
     pincode: "560034",
     famousFor: "Premium Lifestyle Hub - Famous for its upscale restaurants, bars, pubs, and being home to major corporate offices.",
@@ -156,18 +156,18 @@ const POPULAR_AREAS = [
   {
     name: "BTM Layout",
     slug: "btm-layout",
-    description: "Budget-friendly area popular among students. Excellent PG options near educational institutions.",
+    description: "Budget-friendly area popular among students. Excellent stay options near educational institutions.",
     rentRange: "₹4,000 - ₹8,000",
     highlights: ["Student Friendly", "Budget Options", "Near Bannerghatta Road"],
     link: "/?area=BTM+Layout",
     pincode: "560068",
-    famousFor: "Student Paradise - Budget-friendly area with numerous PG options, tuition centers, and Bannerghatta National Park nearby.",
+    famousFor: "Student Paradise - Budget-friendly area with numerous stay options, tuition centers, and Bannerghatta National Park nearby.",
     nearbyPlaces: { malls: 2, schools: 20, pubs: 4 }
   },
   {
     name: "Marathahalli",
     slug: "marathahalli",
-    description: "Well-connected residential area with many PG options. Popular among IT professionals.",
+    description: "Well-connected residential area with many stay options. Popular among IT professionals.",
     rentRange: "₹5,000 - ₹12,000",
     highlights: ["Good Connectivity", "Many Amenities", "Vibrant Area"],
     link: "/?area=Marathahalli",
@@ -177,7 +177,7 @@ const POPULAR_AREAS = [
   }
 ];
 
-const PG_HUNTING_TIPS = [
+const getPGHuntingTips = (pLabel, pLabelPlural, pLabelLower) => [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -188,7 +188,7 @@ const PG_HUNTING_TIPS = [
       </svg>
     ),
     title: "Research Before You Visit",
-    description: "Use GetYourStay to filter PGs by area, budget, and amenities. Read genuine reviews from previous tenants to understand the real experience."
+    description: `Use GetYourStay to filter ${pLabelPlural.toLowerCase()} by area, budget, and amenities. Read genuine reviews from previous tenants to understand the real experience.`
   },
   {
     icon: (
@@ -201,7 +201,7 @@ const PG_HUNTING_TIPS = [
       </svg>
     ),
     title: "Understand the Total Cost",
-    description: "Ask about additional charges including food, electricity, maintenance, and security deposit. Some PGs have hidden charges that can significantly increase your monthly expenses."
+    description: `Ask about additional charges including food, electricity, maintenance, and security deposit. Some ${pLabelPlural.toLowerCase()} have hidden charges that can significantly increase your monthly expenses.`
   },
   {
     icon: (
@@ -213,7 +213,7 @@ const PG_HUNTING_TIPS = [
       </svg>
     ),
     title: "Visit During Different Times",
-    description: "Visit the PG at different times to check for noise levels, food quality, and water pressure. Evening visits reveal the true atmosphere of the accommodation."
+    description: `Visit the ${pLabelLower} at different times to check for noise levels, food quality, and water pressure. Evening visits reveal the true atmosphere of the accommodation.`
   },
   {
     icon: (
@@ -227,7 +227,7 @@ const PG_HUNTING_TIPS = [
       </svg>
     ),
     title: "Talk to Current Tenants",
-    description: "If possible, interact with existing tenants to get honest feedback about the PG owner, maintenance response time, and day-to-day living experience."
+    description: `If possible, interact with existing tenants to get honest feedback about the ${pLabelLower} owner, maintenance response time, and day-to-day living experience.`
   },
   {
     icon: (
@@ -254,7 +254,7 @@ const PG_HUNTING_TIPS = [
       </svg>
     ),
     title: "Check Safety Features",
-    description: "Verify the presence of security guards, CCTV cameras, fire exits, and secure entry systems. For girls PG, check if there's a female warden and restricted entry timings."
+    description: `Verify the presence of security guards, CCTV cameras, fire exits, and secure entry systems. For girls ${pLabelLower}, check if there's a female warden and restricted entry timings.`
   }
 ];
 
@@ -265,7 +265,7 @@ const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f1
 const normalizePG = (pg) => ({
   id: pg?.id || pg?._id || `pg-${Date.now()}-${Math.random()}`,
   ownerId: pg?.ownerId || '',
-  name: pg?.name || 'PG Accommodation',
+  name: pg?.name || 'Accommodation',
   area: pg?.area || pg?.city || '',
   address: pg?.address || '',
   city: pg?.city || '',
@@ -293,7 +293,8 @@ const normalizePG = (pg) => ({
   longTermRent: pg?.longTermRent || { single: 0, double: 0, triple: 0 },
   shortTermRent: pg?.shortTermRent || { single: 0, double: 0, triple: 0 },
   checkin_url: pg?.checkin_url,
-  bannerImage : pg?.bannerImage || (Array.isArray(pg?.images) && pg.images.length > 0 ? pg.images[0] : DEFAULT_IMAGE),
+  bannerImage: pg?.bannerImage || (Array.isArray(pg?.images) && pg.images.length > 0 ? pg.images[0] : DEFAULT_IMAGE),
+  category: (pg?.type || '').toLowerCase() === 'hostel' ? 'hostel' : 'pg',
 });
 
 const Home = () => {
@@ -301,13 +302,11 @@ const Home = () => {
   const selectedArea = searchParams.get('area');
 
   const [selectedPG, setSelectedPG] = useState(null);
-  const [detailPG, setDetailPG] = useState(null);
   const [priceRange, setPriceRange] = useState([0, 20000]);
   const [selectedAreas, setSelectedAreas] = useState([]);
   const [selectedGender, setSelectedGender] = useState('all');
   const [selectedRentalType, setSelectedRentalType] = useState('all');
-  // eslint-disable-next-line no-unused-vars
-  const [pgType, setPgType] = useState('all');
+  const [pgType, setPgType] = useState('pg');
   const [sortBy] = useState('recommended');
   const [activeTab, setActiveTab] = useState('pg');
   const [pgs, setPgs] = useState([]);
@@ -319,8 +318,14 @@ const Home = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [pagination, setPagination] = useState({ page: 1, pages: 1, total: 0 });
   const [searchQuery, setSearchQuery] = useState('');
+  const [platformStats, setPlatformStats] = useState({ verifiedPGs: 0, areasCovered: 0, happyTenants: 0 });
   const hiwSectionRef = useRef(null);
   const [hiwVisible, setHiwVisible] = useState(false);
+
+  // Dynamic labels based on active tab (PG vs Hostel)
+  const pLabel = activeTab === 'hostel' ? 'Hostel' : 'PG';
+  const pLabelPlural = activeTab === 'hostel' ? 'Hostels' : 'PGs';
+  const pLabelLower = activeTab === 'hostel' ? 'hostel' : 'PG';
 
   // Area page state - PGs fetched via URL query param
   const [areaPagePGs, setAreaPagePGs] = useState([]);
@@ -387,7 +392,7 @@ const Home = () => {
           setAreaPagePGs(normalizedPGs);
         } catch (err) {
           console.log('Error fetching area PGs:', err);
-          setAreaPageError('Failed to load PGs');
+          setAreaPageError('Failed to load properties');
         }
 
         setAreaPageLoading(false);
@@ -396,6 +401,27 @@ const Home = () => {
       fetchAreaPGs();
     }
   }, [selectedArea, decodedArea, areaPageGender, areaPagePriceRange, areaPageRentalType, isAreaPage]);
+
+  // Fetch platform stats (verified PGs/Hostels, areas covered, happy tenants) - not paginated
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const isHostel = activeTab === 'hostel';
+        const response = isHostel ? await hostelApiClient.getStats() : await pgApi.getStats();
+        if (response?.success && response.data) {
+          setPlatformStats({
+            verifiedPGs: response.data.verifiedPGs || 0,
+            areasCovered: response.data.areasCovered || 0,
+            happyTenants: response.data.happyTenants || 0
+          });
+        }
+      } catch (err) {
+        console.log('Error fetching platform stats:', err);
+      }
+    };
+
+    fetchStats();
+  }, [activeTab]);
 
   // Scroll-triggered animation for How It Works section
   useEffect(() => {
@@ -421,11 +447,20 @@ const Home = () => {
     fetchAreas();
     getUserLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedGender, selectedRentalType, priceRange, searchQuery, sortBy, selectedAreas]);
+  }, [selectedGender, selectedRentalType, priceRange, searchQuery, sortBy, selectedAreas, pgType]);
+
+  // Refetch nearby listings when switching between PG and Hostels tabs
+  useEffect(() => {
+    if (userLocation) {
+      fetchNearbyPGs(userLocation.lat, userLocation.lng);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab]);
 
   const fetchAreas = async () => {
     try {
-      const response = await pgApi.getAreas();
+      const isHostel = activeTab === 'hostel';
+      const response = isHostel ? await hostelApiClient.getAreas() : await pgApi.getAreas();
       if (response?.success && response.data) {
         setAvailableAreas(response.data.areas || []);
       }
@@ -464,11 +499,14 @@ const Home = () => {
         params.area = selectedAreas[0];
       }
 
+      const isHostel = activeTab === 'hostel';
+      if (isHostel) {
+        params.type = 'hostel';
+      }
 
+      const response = isHostel ? await hostelApiClient.getAll(params) : await pgApi.getAll(params);
 
-      const response = await pgApi.getAll(params);
-
-      console.log("fetch all pg :", response);
+      console.log(isHostel ? "fetch all hostels :" : "fetch all pg :", response);
 
       // Handle different response formats
       let pgList = [];
@@ -491,7 +529,7 @@ const Home = () => {
 
     } catch (err) {
       console.log('API Error:', err);
-      setError('Failed to load PGs. Please try again.');
+      setError(`Failed to load ${pLabelPlural.toLowerCase()}. Please try again.`);
     }
 
     setLoading(false);
@@ -520,7 +558,8 @@ const Home = () => {
 
   const fetchNearbyPGs = async (lat, lng) => {
     try {
-      const response = await pgApi.getNearby(lat, lng, 10);
+      const isHostel = activeTab === 'hostel';
+      const response = isHostel ? await hostelApiClient.getNearby(lat, lng, 10) : await pgApi.getNearby(lat, lng, 10);
 
       let pgList = [];
       if (response?.success && Array.isArray(response.data)) {
@@ -528,9 +567,9 @@ const Home = () => {
       } else if (Array.isArray(response)) {
         pgList = response;
       }
-      console.log("pgList :", pgList);
+      console.log(isHostel ? "hostelList :" : "pgList :", pgList);
 
-      // Take top 4 nearest PGs
+      // Take top 4 nearest listings
       const normalizedPGs = pgList.slice(0, 4).map(normalizePG);
       setNearbyPGs(normalizedPGs);
     } catch (err) {
@@ -551,28 +590,20 @@ const Home = () => {
     fetchPGs(1);
   };
 
-  const handleViewDetails = async (pg) => {
-    if (!pg) return;
-
-    try {
-      const response = await pgApi.getById(pg.id);
-      if (response?.success && response.data) {
-        setDetailPG(normalizePG(response.data));
-      } else {
-        setDetailPG(normalizePG(pg));
-      }
-    } catch (err) {
-      console.log('Error fetching PG details:', err);
-      setDetailPG(normalizePG(pg));
+  const handleTabClick = (tabId) => {
+    setActiveTab(tabId);
+    if (tabId === 'pg' || tabId === 'hostel') {
+      setPgType(tabId);
+    } else {
+    setPgType('pg');
     }
   };
 
-  const handleCloseDetail = () => setDetailPG(null);
-
   const tabs = [
-    { id: 'pg', label: 'PG/Hostel', icon: '🏠' },
-    { id: 'hotels', label: 'Hotels', icon: '🏨', comingSoon: true },
-    { id: 'flats', label: 'Flats', icon: '🏢', comingSoon: true }
+    { id: 'pg', label: 'PG', icon: '🏠' },
+    { id: 'hostel', label: 'Hostels', icon: '🏨' },
+    { id: 'hotels', label: 'Hotels', icon: '🏢', comingSoon: true },
+    { id: 'flats', label: 'Flats', icon: '🏘️', comingSoon: true }
   ];
 
   useEffect(() => {
@@ -603,9 +634,7 @@ const Home = () => {
       if (scriptToRemove) scriptToRemove.remove();
     };
   }, []);
-  const verifiedCount = pgs.filter(pg => pg.isVerified).length;
 
-  // Show area page with PGs or Coming Soon
   if (isAreaPage) {
     return (
       <AreaPage
@@ -622,7 +651,6 @@ const Home = () => {
         availableAreas={availableAreas}
         selectedPG={selectedPG}
         setSelectedPG={setSelectedPG}
-        handleViewDetails={handleViewDetails}
         POPULAR_AREAS={POPULAR_AREAS}
       />
     );
@@ -639,8 +667,10 @@ const Home = () => {
           <div className="hero-shape hero-shape-4"></div>
         </div>
         <div className="hero-content">
-          <h1>Find Your Perfect <span className="highlight">PG Accommodation</span> in Bangalore</h1>
-          <p>Verified PGs with transparent pricing, real reviews, and modern amenities</p>
+          <h1>
+            Find Your Perfect <span className="highlight">{activeTab === 'hostel' ? 'Hostel' : 'PG Accommodation'}</span> in Bangalore
+          </h1>
+          <p>Verified {pLabelPlural.toLowerCase()} with transparent pricing, real reviews, and modern amenities</p>
 
           {/* Tabs */}
           <div className="home-tabs">
@@ -648,7 +678,7 @@ const Home = () => {
               <button
                 key={tab.id}
                 className={`home-tab ${activeTab === tab.id ? 'active' : ''} ${tab.comingSoon ? 'coming-soon' : ''}`}
-                onClick={() => !tab.comingSoon && setActiveTab(tab.id)}
+                onClick={() => !tab.comingSoon && handleTabClick(tab.id)}
                 disabled={tab.comingSoon}
               >
                 <span className="tab-icon">{tab.icon}</span>
@@ -667,7 +697,7 @@ const Home = () => {
               </svg>
               <input
                 type="text"
-                placeholder="Search by PG name, area, or city..."
+                placeholder={activeTab === 'hostel' ? 'Search by hostel name, area, or city...' : 'Search by PG name, area, or city...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && fetchPGs(1)}
@@ -695,15 +725,15 @@ const Home = () => {
 
           <div className="hero-stats">
             <div className="stat">
-              <span className="stat-number">{verifiedCount}</span>
-              <span className="stat-label">Verified PGs</span>
+              <span className="stat-number">{platformStats.verifiedPGs.toLocaleString()}</span>
+              <span className="stat-label">Verified {activeTab === 'hostel' ? 'Hostels' : 'PGs'}</span>
             </div>
             <div className="stat">
               <span className="stat-number">1K+</span>
               <span className="stat-label">Happy Tenants</span>
             </div>
             <div className="stat">
-              <span className="stat-number">{availableAreas.length}</span>
+              <span className="stat-number">{platformStats.areasCovered > 0 ? platformStats.areasCovered.toLocaleString() : availableAreas.length.toLocaleString()}</span>
               <span className="stat-label">Areas Covered</span>
             </div>
           </div>
@@ -740,12 +770,12 @@ const Home = () => {
         <div className="tc-container">
           <div className="tc-content">
             <span className="tc-badge">Why Choose Us</span>
-            <h2 className="tc-title">Find your perfect PG stay with confidence</h2>
+            <h2 className="tc-title">Find your perfect {pLabelLower} stay with confidence</h2>
             <p className="tc-text">
               We provide verified listings, smart tenant screening, and a smooth booking experience to make your stay safe and hassle-free. Our platform is built to solve real challenges in shared living by offering transparency, security, and convenience through technology.
             </p>
             <p className="tc-text">
-              Property owners can efficiently manage tenants, while users can discover reliable PG accommodations tailored to their needs. With a focus on trust and innovation, GetYourStay is redefining how people find and manage PG stays in today's fast-paced world.
+              Property owners can efficiently manage tenants, while users can discover reliable {pLabelLower} accommodations tailored to their needs. With a focus on trust and innovation, GetYourStay is redefining how people find and manage {pLabelLower} stays in today's fast-paced world.
             </p>
             <div className="tc-features">
               <div className="tc-feature">
@@ -789,12 +819,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Nearby PGs Section */}
+      {/* Nearby PGs/Hostels Section */}
       {Array.isArray(nearbyPGs) && nearbyPGs.length > 0 && (
         <section className="nearby-section">
           <div className="nearby-header">
             <div>
-              <h2>📍 PGs Near You</h2>
+              <h2>📍 {activeTab === 'hostel' ? 'Hostels Near You' : 'PGs Near You'}</h2>
               <p>Based on your current location</p>
             </div>
           </div>
@@ -804,7 +834,7 @@ const Home = () => {
                 <div className="nearby-card-image">
                   <img
                     src={pg.images?.[0] || DEFAULT_IMAGE}
-                    alt={pg.name || 'PG'}
+                    alt={pg.name || 'Accommodation'}
                     onError={(e) => { e.target.src = DEFAULT_IMAGE; }}
                   />
                   {pg.isVerified && (
@@ -818,7 +848,7 @@ const Home = () => {
                 </div>
                 <div className="nearby-card-content">
                   <div className="nearby-card-header">
-                    <h3>{pg.name || 'PG Accommodation'}</h3>
+                    <h3>{pg.name || 'Accommodation'}</h3>
                     <div className="nearby-rating">
                       <span className="star">★</span>
                       <span>{pg.rating?.toFixed(1) || '0'}</span>
@@ -836,7 +866,7 @@ const Home = () => {
                   <div className="nearby-price-row">
                     {pg.isVerified && (
                       <div className="nearby-price">
-                         <span className="period">Starting From :</span>
+                        <span className="period">Starting From :</span>
                         <span className="price">₹{(pg.longTermRent?.triple || pg.shortTermRent?.double || pg.price || 0).toLocaleString()}</span>
                         <span className="period">{pg.rentalType === 'short_term' ? '/day' : '/month'}</span>
                       </div>
@@ -845,18 +875,18 @@ const Home = () => {
                     <div className="nearby-beds available">Available</div>
                   </div>
                   <div className="nearby-actions">
-                    <button
+                    <Link
+                      to={getPGDetailUrl(pg)}
                       className="checkin-btn"
-                      onClick={() => handleViewDetails(pg)}
                     >
                       🏠 Check In
-                    </button>
-                    <button
+                    </Link>
+                    <Link
+                      to={getPGDetailUrl(pg)}
                       className="details-btn"
-                      onClick={() => handleViewDetails(pg)}
                     >
                       View Details
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -868,10 +898,14 @@ const Home = () => {
       {/* Main Content */}
       <main className="main-content">
         <div className="content-header">
-          <div className="results-info">
-            <h2>{searchQuery ? `Search: "${searchQuery}"` : 'All PGs Available'}</h2>
-            <p>{loading ? 'Loading...' : error ? 'Error loading' : `${pagination.total} properties found`}</p>
-          </div>
+            <div className="results-info">
+              <h2>
+                {searchQuery
+                  ? `Search: "${searchQuery}"`
+                  : `${pLabelPlural} Available`}
+              </h2>
+              <p>{loading ? 'Loading...' : error ? 'Error loading' : `${pagination.total} ${pLabelPlural.toLowerCase()} found`}</p>
+            </div>
 
           <div className="header-controls">
 
@@ -897,38 +931,37 @@ const Home = () => {
 
           <div className={`main-area`}>
             <div >
-                {loading ? (
-                  <div className="loading-state">
-                    <div className="loader"></div>
-                    <p>Loading PG listings...</p>
-                  </div>
-                ) : error ? (
-                  <div className="error-state">
-                    <p>{error}</p>
-                    <button onClick={() => fetchPGs()}>Retry</button>
-                  </div>
-                ) : pgs.length > 0 ? (
-                  pgs.filter(Boolean).map((pg) => (
-                    <PGCard
-                      key={pg.id}
-                      pg={pg}
-                      onSelect={setSelectedPG}
-                      isSelected={selectedPG?.id === pg.id}
-                      onViewDetails={handleViewDetails}
-                    />
-                  ))
-                ) : (
-                  <div className="no-results">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
-                      <circle cx="11" cy="11" r="8" stroke={theme.accent[500]} strokeWidth="2" />
-                      <path d="M21 21l-4.35-4.35" stroke={theme.accent[500]} strokeWidth="2" />
-                    </svg>
-                    <h3>No PGs Found</h3>
-                    <p>Try adjusting your filters</p>
-                    <button onClick={handleClearFilters}>Clear All Filters</button>
-                  </div>
-                )}
-              </div>
+              {loading ? (
+                <div className="loading-state">
+                  <div className="loader"></div>
+                  <p>Loading {pLabelLower} listings...</p>
+                </div>
+              ) : error ? (
+                <div className="error-state">
+                  <p>{error}</p>
+                  <button onClick={() => fetchPGs()}>Retry</button>
+                </div>
+              ) : pgs.length > 0 ? (
+                pgs.filter(Boolean).map((pg) => (
+                  <PGCard
+                    key={pg.id}
+                    pg={pg}
+                    onSelect={setSelectedPG}
+                    isSelected={selectedPG?.id === pg.id}
+                  />
+                ))
+              ) : (
+                <div className="no-results">
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="8" stroke={theme.accent[500]} strokeWidth="2" />
+                    <path d="M21 21l-4.35-4.35" stroke={theme.accent[500]} strokeWidth="2" />
+                  </svg>
+                  <h3>No {pLabelPlural} Found</h3>
+                  <p>Try adjusting your filters</p>
+                  <button onClick={handleClearFilters}>Clear All Filters</button>
+                </div>
+              )}
+            </div>
 
 
             {/* Pagination */}
@@ -981,7 +1014,7 @@ const Home = () => {
           <div className="vp-container">
             <div className="vp-header">
               <h2 className="vp-title">Why Choose <span className="vp-highlight">GetYourStay</span>?</h2>
-              <p className="vp-subtitle">We're not just another PG listing site. We're your trusted partner in finding a home away from home.</p>
+              <p className="vp-subtitle">We're not just another {pLabelLower} listing site. We're your trusted partner in finding a home away from home.</p>
             </div>
 
             <div className="vp-grid">
@@ -994,7 +1027,7 @@ const Home = () => {
                   </svg>
                 </div>
                 <h3>100% Verified Listings</h3>
-                <p>Every PG on our platform is personally verified by our team. We visit each property, check amenities, verify owners, and ensure safety standards before listing.</p>
+                <p>Every {pLabelLower} on our platform is personally verified by our team. We visit each property, check amenities, verify owners, and ensure safety standards before listing.</p>
                 <ul className="vp-features">
                   <li><span className="vp-check">✓</span> In-person property visits</li>
                   <li><span className="vp-check">✓</span> Owner background verification</li>
@@ -1013,7 +1046,7 @@ const Home = () => {
                   </svg>
                 </div>
                 <h3>Zero Brokerage Fees</h3>
-                <p>Directly connect with PG owners. No middlemen, no brokerage charges, no hidden fees. What you see is exactly what you pay.</p>
+                <p>Directly connect with {pLabelLower} owners. No middlemen, no brokerage charges, no hidden fees. What you see is exactly what you pay.</p>
               </div>
 
               <div className="vp-card">
@@ -1029,7 +1062,7 @@ const Home = () => {
                   </svg>
                 </div>
                 <h3>Real Tenant Reviews</h3>
-                <p>Read genuine reviews from real tenants who have lived in these PGs. Make informed decisions based on actual experiences.</p>
+                <p>Read genuine reviews from real tenants who have lived in these {pLabelPlural.toLowerCase()}. Make informed decisions based on actual experiences.</p>
               </div>
 
               <div className="vp-card">
@@ -1060,7 +1093,7 @@ const Home = () => {
                   </svg>
                 </div>
                 <h3>24/7 Support</h3>
-                <p>Have questions? Our support team is available round the clock to help you find the perfect PG and resolve any issues.</p>
+                <p>Have questions? Our support team is available round the clock to help you find the perfect {pLabelLower} and resolve any issues.</p>
               </div>
 
               <div className="vp-card">
@@ -1086,8 +1119,8 @@ const Home = () => {
                 <span className="vp-stat-label">Happy Tenants</span>
               </div>
               <div className="vp-stat">
-                <span className="vp-stat-number">500+</span>
-                <span className="vp-stat-label">Verified PGs</span>
+                <span className="vp-stat-number">{activeTab === 'hostel' ? '100+' : '500+'}</span>
+                <span className="vp-stat-label">Verified {activeTab === 'hostel' ? 'Hostels' : 'PGs'}</span>
               </div>
               <div className="vp-stat">
                 <span className="vp-stat-number">50+</span>
@@ -1107,11 +1140,11 @@ const Home = () => {
             <div className="hiw-header">
               <span className="hiw-badge">Simple Process</span>
               <h2 className="hiw-title">How It Works</h2>
-              <p className="hiw-subtitle">Find and book your perfect PG accommodation in 4 easy steps</p>
+              <p className="hiw-subtitle">Find and book your perfect {pLabelLower} accommodation in 4 easy steps</p>
             </div>
 
             <div className="hiw-steps">
-              {hiwSteps.map((step, index) => (
+              {getHiwSteps(pLabel, pLabelPlural).map((step, index) => (
                 <div key={index} className={`hiw-step ${hiwVisible ? 'hiw-animated' : ''}`}>
                   <div className="hiw-step-number">{index + 1}</div>
                   <div className="hiw-step-icon">{step.icon}</div>
@@ -1135,7 +1168,7 @@ const Home = () => {
         <section className="cta-section">
           <div className="cta-content">
             <h2>Can't find what you're looking for?</h2>
-            <p>Let us know your requirements and we'll help you find the perfect PG</p>
+            <p>Let us know your requirements and we'll help you find the perfect {pLabelLower}</p>
             <Link to="/contact" className="cta-button">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
@@ -1148,9 +1181,9 @@ const Home = () => {
         {/* SEO Content Section */}
         <section className="seo-content-section">
           <div className="seo-container">
-            <h2 className="seo-heading">Why Choose GetYourStay for PG in Bangalore?</h2>
+            <h2 className="seo-heading">Why Choose GetYourStay for {pLabel} in Bangalore?</h2>
             <p className="seo-subheading">
-              India's most trusted platform for finding verified paying guest accommodations in Bangalore
+              India's most trusted platform for finding verified {activeTab === 'hostel' ? 'hostel' : 'paying guest'} accommodations in Bangalore
             </p>
 
             <div className="seo-features-grid">
@@ -1162,8 +1195,8 @@ const Home = () => {
                     <path d="M9 12L11 14L15 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <h3>Verified PG Listings</h3>
-                <p>Every PG accommodation on GetYourStay is verified by our team. We personally visit and verify amenities, safety features, and landlord authenticity before listing.</p>
+                <h3>Verified {pLabelPlural} Listings</h3>
+                <p>Every {pLabelLower} accommodation on GetYourStay is verified by our team. We personally visit and verify amenities, safety features, and landlord authenticity before listing.</p>
               </article>
 
               <article className="seo-feature-card">
@@ -1208,7 +1241,7 @@ const Home = () => {
                   </svg>
                 </div>
                 <h3>Easy Booking Process</h3>
-                <p>Book your PG accommodation online with just a few clicks. Schedule visits, submit documents, and complete payments securely.</p>
+                <p>Book your {pLabelLower} accommodation online with just a few clicks. Schedule visits, submit documents, and complete payments securely.</p>
               </article>
             </div>
           </div>
@@ -1218,9 +1251,9 @@ const Home = () => {
         <section className="areas-section">
           <div className="areas-container">
             <span className="areas-badge">Popular Locations</span>
-            <h2 className="areas-title">Find PG Accommodation in Popular Bangalore Areas</h2>
+            <h2 className="areas-title">Find {pLabel} Accommodation in Popular Bangalore Areas</h2>
             <p className="areas-subtitle">
-              Discover verified PGs near IT parks, colleges, and lifestyle hubs across Bangalore
+              Discover verified {pLabelPlural.toLowerCase()} near IT parks, colleges, and lifestyle hubs across Bangalore
             </p>
 
             <div className="areas-grid">
@@ -1260,13 +1293,13 @@ const Home = () => {
         {/* PG Hunting Tips Section */}
         <section className="tips-section">
           <div className="seo-container">
-            <h2 className="seo-heading">Essential PG Hunting Tips for Bangalore</h2>
+            <h2 className="seo-heading">Essential {pLabel} Hunting Tips for Bangalore</h2>
             <p className="seo-subheading">
-              Expert advice to find the perfect paying guest accommodation without any hassle
+              Expert advice to find the perfect accommodation without any hassle
             </p>
 
             <div className="tips-grid">
-              {PG_HUNTING_TIPS.map((tip, index) => (
+              {getPGHuntingTips(pLabel, pLabelPlural, pLabelLower).map((tip, index) => (
                 <div key={index} className="tip-card">
                   <div className="tip-icon">{tip.icon}</div>
                   <h3>{tip.title}</h3>
@@ -1280,16 +1313,16 @@ const Home = () => {
         {/* FAQ Section */}
         <section className="faq-seo-section">
           <div className="seo-container">
-            <h2 className="seo-heading">Frequently Asked Questions About PG in Bangalore</h2>
+            <h2 className="seo-heading">Frequently Asked Questions About {pLabel} in Bangalore</h2>
             <p className="seo-subheading">
-              Everything you need to know about finding and booking PG accommodation in Bangalore
+              Everything you need to know about finding and booking {pLabelLower} accommodation in Bangalore
             </p>
 
             <div className="faq-list">
               {HOME_SEO_FAQS.map((faq, index) => (
                 <details key={index} className="faq-item">
-                  <summary className="faq-question">{faq.question}</summary>
-                  <div className="faq-answer">{faq.answer}</div>
+                  <summary className="faq-question">{faq.question.replace(/PGs/g, pLabelPlural).replace(/PG/g, pLabel)}</summary>
+                  <div className="faq-answer">{faq.answer.replace(/PGs/g, pLabelPlural).replace(/PG/g, pLabel)}</div>
                 </details>
               ))}
             </div>
@@ -1299,34 +1332,34 @@ const Home = () => {
         {/* Cities Section */}
         <section className="cities-section">
           <div className="seo-container">
-            <h2 className="seo-heading">PG Accommodation Across Major Indian Cities</h2>
+            <h2 className="seo-heading">{pLabel} Accommodation Across Major Indian Cities</h2>
             <p className="seo-subheading">
-              Find verified PGs not just in Bangalore but across all major Indian cities
+              Find verified {pLabelPlural.toLowerCase()} not just in Bangalore but across all major Indian cities
             </p>
 
             <div className="cities-grid">
               <Link to="/?city=Bangalore" className="city-card">
-                <span className="city-name">PG in Bangalore</span>
+                <span className="city-name">{pLabel} in Bangalore</span>
                 <span className="city-count">500+ Listings</span>
               </Link>
               <Link to="/?city=Hyderabad" className="city-card">
-                <span className="city-name">PG in Hyderabad</span>
+                <span className="city-name">{pLabel} in Hyderabad</span>
                 <span className="city-count">300+ Listings</span>
               </Link>
               <Link to="/?city=Chennai" className="city-card">
-                <span className="city-name">PG in Chennai</span>
+                <span className="city-name">{pLabel} in Chennai</span>
                 <span className="city-count">250+ Listings</span>
               </Link>
               <Link to="/?city=Pune" className="city-card">
-                <span className="city-name">PG in Pune</span>
+                <span className="city-name">{pLabel} in Pune</span>
                 <span className="city-count">200+ Listings</span>
               </Link>
               <Link to="/?city=Mumbai" className="city-card">
-                <span className="city-name">PG in Mumbai</span>
+                <span className="city-name">{pLabel} in Mumbai</span>
                 <span className="city-count">180+ Listings</span>
               </Link>
               <Link to="/?city=Delhi" className="city-card">
-                <span className="city-name">PG in Delhi</span>
+                <span className="city-name">{pLabel} in Delhi</span>
                 <span className="city-count">150+ Listings</span>
               </Link>
             </div>
@@ -1336,12 +1369,12 @@ const Home = () => {
         {/* PG Types Section */}
         <section className="types-section">
           <div className="seo-container">
-            <h2 className="seo-heading">Browse PGs by Type</h2>
+            <h2 className="seo-heading">Browse {pLabelPlural} by Type</h2>
             <p className="seo-subheading">
-              Find the perfect PG accommodation based on your specific needs and preferences
+              Find the perfect {pLabelLower} accommodation based on your specific needs and preferences
             </p>
 
-<div className="types-grid">
+            <div className="types-grid">
               <Link to="/?gender=male" className="type-card boys">
                 <span className="type-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -1349,7 +1382,7 @@ const Home = () => {
                     <path d="M5.5 21C5.5 16.5 8.1 13 12 13C15.9 13 18.5 16.5 18.5 21" />
                   </svg>
                 </span>
-                <span className="type-name">Boys PG</span>
+                <span className="type-name">Boys {pLabel}</span>
                 <span className="type-desc">Safe accommodation for male tenants</span>
               </Link>
               <Link to="/?gender=female" className="type-card girls">
@@ -1360,8 +1393,8 @@ const Home = () => {
                     <path d="M10 4.5C10 4.5 11 2.5 12 2.5C13 2.5 14 4.5 14 4.5" />
                   </svg>
                 </span>
-                <span className="type-name">Girls PG</span>
-                <span className="type-desc">Secure PGs for female tenants</span>
+                <span className="type-name">Girls {pLabel}</span>
+                <span className="type-desc">Secure {pLabelPlural.toLowerCase()} for female tenants</span>
               </Link>
               <Link to="/?type=colive" className="type-card colive">
                 <span className="type-icon">
@@ -1384,7 +1417,7 @@ const Home = () => {
                     <path d="M22 6L24 8M24 6L22 8" />
                   </svg>
                 </span>
-                <span className="type-name">AC PG</span>
+                <span className="type-name">AC {pLabel}</span>
                 <span className="type-desc">Air-conditioned rooms</span>
               </Link>
               <Link to="/?amenity=WiFi" className="type-card wifi">
@@ -1396,7 +1429,7 @@ const Home = () => {
                     <circle cx="12" cy="21" r="1" fill="currentColor" />
                   </svg>
                 </span>
-                <span className="type-name">WiFi PG</span>
+                <span className="type-name">WiFi {pLabel}</span>
                 <span className="type-desc">High-speed internet access</span>
               </Link>
               <Link to="/?food=true" className="type-card food">
@@ -1407,7 +1440,7 @@ const Home = () => {
                     <path d="M8 19H16" />
                   </svg>
                 </span>
-                <span className="type-name">PG with Food</span>
+                <span className="type-name">{pLabel} with Food</span>
                 <span className="type-desc">Meals included accommodation</span>
               </Link>
             </div>
@@ -1417,27 +1450,18 @@ const Home = () => {
         {/* Definitions Section */}
         <section className="definitions-section">
           <div className="seo-container">
-            <h2 className="seo-heading">Understanding PG Accommodation Terms</h2>
+            <h2 className="seo-heading">Understanding {pLabel} Accommodation Terms</h2>
             <p className="seo-subheading">
-              Clear definitions of common terms used in the PG accommodation industry
+              Clear definitions of common terms used in the {pLabelLower} accommodation industry
             </p>
             <div className="definitions-grid">
-              <DefinitionBlock term="PG Accommodation" compact />
+              <DefinitionBlock term={`${pLabel} Accommodation`} compact />
               <DefinitionBlock term="Co-living Spaces" compact />
               <DefinitionBlock term="Single Occupancy Rooms" compact />
             </div>
           </div>
         </section>
       </main>
-
-      {/* PG Detail Modal */}
-      {detailPG && (
-        <PGDetail
-          pg={detailPG}
-          onClose={handleCloseDetail}
-          onEnquire={() => { }}
-        />
-      )}
 
       <style>{`
         .home-tabs {
@@ -1805,6 +1829,9 @@ const Home = () => {
         }
         .checkin-btn {
           flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           padding: 10px;
           background: ${theme.accent[500]};
           color: white;
@@ -1812,6 +1839,7 @@ const Home = () => {
           border-radius: 8px;
           font-size: 12px;
           font-weight: 600;
+          text-decoration: none;
           cursor: pointer;
           transition: all 0.2s;
         }
@@ -1821,6 +1849,9 @@ const Home = () => {
           box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
         }
         .details-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           padding: 10px 14px;
           background: white;
           border: 1px solid ${theme.neutral[200]};
@@ -1828,6 +1859,7 @@ const Home = () => {
           font-size: 12px;
           font-weight: 500;
           color: ${theme.neutral[600]};
+          text-decoration: none;
           cursor: pointer;
         }
         .loading-state, .error-state {

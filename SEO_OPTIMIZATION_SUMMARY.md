@@ -199,9 +199,41 @@ Filterable categories:
 | File | Changes |
 |------|---------|
 | `public/index.html` | Enhanced meta tags, Open Graph, structured data |
-| `public/robots.txt` | Comprehensive crawl directives |
+| `public/robots.txt` | Comprehensive crawl directives, added `/pg/` allow rule |
 | `src/hooks/useSEO.js` | New file - SEO hook for dynamic meta |
 | `src/pages/Home.js` | Added comprehensive SEO sections, FAQ schema |
+| `src/pages/PGDetailPage.js` | New file - dedicated SEO-friendly PG detail page |
+| `src/components/PGDetail.js` | Added `mode` prop to support page vs modal rendering |
+| `src/components/PGCard.js` | "View Details" now links to dedicated detail page |
+| `src/App.js` | Added `/pg/:id/:slug` route |
+| `src/utils/slugify.js` | New file - SEO-friendly URL slug utilities |
+| `prerender.js` | Generates static HTML for every PG detail page |
+| `src/pages/Sitemap.js` | Includes individual PG detail page URLs |
+| `src/pages/AboutArea.js` | Removed PG detail modal, uses detail page links |
+
+## PG Detail Page SEO Implementation
+
+### URL Structure
+Each PG now has a dedicated, crawlable URL:
+- Format: `/pg/{id}/{pg-name}-{area}`
+- Example: `/pg/1/green-valley-pg-koramangala-1`
+
+### On-Page SEO
+- Dynamic `<title>` with PG name, area, and rent
+- Dynamic `<meta name="description">` with PG amenities and pricing
+- Dynamic `<meta name="keywords">` targeting long-tail keywords
+- Dynamic Open Graph and Twitter Card tags
+- Canonical URL pointing to the detail page
+- JSON-LD structured data:
+  - `RealEstateListing` schema for the PG
+  - `BreadcrumbList` schema for navigation
+
+### Static Prerendering
+`prerender.js` generates a static HTML file for every PG in `src/data/pgData.js` so search engine crawlers can index the content without executing JavaScript.
+
+### Sitemap & Robots
+- `robots.txt` allows crawling of `/pg/` pages
+- `Sitemap.js` includes all individual PG detail URLs with high priority
 
 ---
 

@@ -329,6 +329,63 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
 
+function slugify(text) {
+  return String(text || '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function generatePGSlug(pg) {
+  return `${slugify(pg.name)}-${slugify(pg.area)}`;
+}
+
+function generatePGDetailPages(pgData) {
+  const pages = {};
+  pgData.forEach(pg => {
+    const slug = generatePGSlug(pg);
+    const route = `/pg/${pg.id}/${slug}`;
+    const canonical = `https://www.getyourstay.in${route}`;
+    const title = `${pg.name} in ${pg.area} Bangalore | Rent ₹${pg.price.toLocaleString()}/month | GetYourStay`;
+    const description = `Book ${pg.name} in ${pg.area}, Bangalore. ${pg.gender} PG with ${pg.amenities.slice(0, 6).join(', ')}. Starting ₹${pg.price.toLocaleString()}/month. Verified listing with photos, pricing and owner contact on GetYourStay.`;
+    const keywords = `${pg.name} ${pg.area}, PG in ${pg.area} Bangalore, ${pg.gender} PG ${pg.area}, paying guest ${pg.area}, PG near ${pg.area}, ${pg.amenities.slice(0, 4).join(' ')}`;
+
+    const amenityItems = pg.amenities.map(a => `<li>${a}</li>`).join('');
+
+    pages[route] = {
+      title,
+      description,
+      keywords,
+      canonical,
+      body: `
+      <section>
+        <h2>${escapeHtml(pg.name)} - PG in ${escapeHtml(pg.area)}, Bangalore</h2>
+        <p>${escapeHtml(pg.description)} Located in ${escapeHtml(pg.area)}, Bangalore, this ${pg.gender.toLowerCase()} PG offers comfortable accommodation with modern amenities including ${pg.amenities.slice(0, 8).join(', ')}. Monthly rent starts from ₹${pg.price.toLocaleString()} with transparent pricing and no hidden charges. Contact the owner directly through GetYourStay to schedule a visit and book your room.</p>
+      </section>
+      <section>
+        <h2>Amenities at ${escapeHtml(pg.name)}</h2>
+        <ul>${amenityItems}</ul>
+        <p>This PG in ${escapeHtml(pg.area)} provides all essential facilities for students and working professionals. High-speed WiFi, furnished rooms, regular housekeeping, and 24/7 security ensure a comfortable and safe stay. The property is well-connected to nearby IT parks, colleges, and public transport.</p>
+      </section>
+      <section>
+        <h2>Why Choose ${escapeHtml(pg.name)} in ${escapeHtml(pg.area)}?</h2>
+        <p>${escapeHtml(pg.area)} is one of Bangalore's most popular residential areas for PG accommodation. This property offers a rating of ${pg.rating} based on ${pg.reviews} reviews, making it a trusted choice among tenants. The PG is suitable for ${pg.gender === 'Unisex' ? 'both male and female' : pg.gender.toLowerCase()} tenants looking for quality shared accommodation near offices and educational institutions.</p>
+      </section>
+      <section>
+        <h2>PG Rent and Room Options in ${escapeHtml(pg.area)}</h2>
+        <p>PG rent in ${escapeHtml(pg.area)} varies based on room type, occupancy, and amenities. ${escapeHtml(pg.name)} offers competitive pricing starting at ₹${pg.price.toLocaleString()} per month. Single occupancy, double sharing, and triple sharing options may be available. Security deposit typically equals one to two months of rent. Food and laundry services may be included or available at additional charges depending on the package.</p>
+      </section>
+      <section>
+        <h2>How to Book ${escapeHtml(pg.name)} on GetYourStay</h2>
+        <p>Booking this PG is simple. View the complete listing with photos, pricing, amenities, and location. Contact the owner directly via phone or WhatsApp to schedule a visit. Visit the property to verify the rooms and facilities. Complete the booking by paying the first month's rent and security deposit. GetYourStay charges zero brokerage to tenants.</p>
+      </section>`
+    };
+  });
+  return pages;
+}
+
 function buildSeoHtml(pageContent) {
   const { title, body, description } = pageContent;
   const today = new Date().toISOString().split('T')[0];
@@ -352,7 +409,7 @@ function buildSeoHtml(pageContent) {
 </div>`;
 }
 
-function prerender() {
+async function prerender() {
   const buildDir = path.resolve(__dirname, 'build');
   const indexPath = path.join(buildDir, 'index.html');
 
@@ -363,6 +420,19 @@ function prerender() {
 
   let baseHtml = fs.readFileSync(indexPath, 'utf-8');
 
+  // Load PG data to generate individual PG detail pages
+  let pgDetailPages = {};
+  try {
+    const pgDataModule = await import('./src/data/pgData.js');
+    const pgData = pgDataModule.default || [];
+    pgDetailPages = generatePGDetailPages(pgData);
+    console.log(`  Loaded ${pgData.length} PG listings for prerendering.`);
+  } catch (err) {
+    console.log('  Could not load PG data for detail prerendering:', err.message);
+  }
+
+  const allPages = { ...PAGES, ...pgDetailPages };
+
   const noscriptTagRegex = /<noscript>[\s\S]*?<\/noscript>/;
   const titleRegex = /<title>[^<]*<\/title>/;
   const descRegex = /<meta name="description"[^>]*\/?>/;
@@ -371,16 +441,20 @@ function prerender() {
   const ogUrlRegex = /<meta property="og:url"[^>]*\/?>/;
   const canonicalRegex = /<link rel="canonical"[^>]*\/?>/;
   const rootDivRegex = /<div\s+id="root"\s*><\/div>/;
+  const keywordsRegex = /<meta name="keywords"[^>]*\/?>/;
 
-  for (const [route, content] of Object.entries(PAGES)) {
+  for (const [route, content] of Object.entries(allPages)) {
     let html = baseHtml;
 
     html = html.replace(titleRegex, `<title>${content.title}</title>`);
     html = html.replace(descRegex, `<meta name="description" content="${content.description}" />`);
+    if (content.keywords) {
+      html = html.replace(keywordsRegex, `<meta name="keywords" content="${content.keywords}" />`);
+    }
     html = html.replace(metaRegex, `<meta property="og:title" content="${content.title}" />`);
     html = html.replace(ogDescRegex, `<meta property="og:description" content="${content.description}" />`);
-    html = html.replace(ogUrlRegex, `<meta property="og:url" content="https://www.getyourstay.in${route}" />`);
-    html = html.replace(canonicalRegex, `<link rel="canonical" href="https://www.getyourstay.in${route}" />`);
+    html = html.replace(ogUrlRegex, `<meta property="og:url" content="${content.canonical || `https://www.getyourstay.in${route}`}" />`);
+    html = html.replace(canonicalRegex, `<link rel="canonical" href="${content.canonical || `https://www.getyourstay.in${route}`}" />`);
 
     html = html.replace(noscriptTagRegex, '');
     html = html.replace(rootDivRegex, () => {
@@ -395,7 +469,7 @@ function prerender() {
     console.log(`  Prerendered: /${outputName} (${(html.length / 1024).toFixed(1)} KB)`);
   }
 
-  console.log('Prerendering complete.');
+  console.log(`Prerendering complete. Total pages: ${Object.keys(allPages).length}`);
 }
 
 prerender();

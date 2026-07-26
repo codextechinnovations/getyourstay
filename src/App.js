@@ -30,6 +30,7 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const Sitemap = lazy(() => import('./pages/Sitemap'));
 const ListYourPG = lazy(() => import('./pages/ListYourPG'));
 const PGManagementApp = lazy(() => import('./pages/PGManagementApp'));
+const PGDetailPage = lazy(() => import('./pages/PGDetailPage'));
 
 // Loading component
 const PageLoader = () => (
@@ -145,6 +146,11 @@ function App() {
             <Route path="/pg-app" element={
               <MainLayout>
                 <PGManagementApp />
+              </MainLayout>
+            } />
+            <Route path="/pg/:id/:slug" element={
+              <MainLayout>
+                <PGDetailPage />
               </MainLayout>
             } />
 

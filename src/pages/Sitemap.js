@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { bangaloreAreas } from '../data/pgData';
+import pgData, { bangaloreAreas } from '../data/pgData';
 import './Sitemap.css';
+
+function slugify(text) {
+  return String(text || '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function generatePGSlug(pg) {
+  return `${slugify(pg.name)}-${slugify(pg.area)}`;
+}
 
 const Sitemap = () => {
   // eslint-disable-next-line no-unused-vars
@@ -139,6 +152,15 @@ const Sitemap = () => {
     <priority>0.9</priority>
   </url>`).join('')}
   
+  <!-- Individual PG Detail Pages -->
+  ${pgData.map(pg => `
+  <url>
+    <loc>https://www.getyourstay.in/pg/${pg.id}/${generatePGSlug(pg)}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>`).join('')}
+  
   <!-- Gender-based PG Pages -->
   <url>
     <loc>https://www.getyourstay.in/?gender=male</loc>
@@ -272,7 +294,8 @@ const Sitemap = () => {
             <li>Location pages: {bangaloreAreas.length}</li>
             <li>Gender filters: 3</li>
             <li>City pages: 6</li>
-            <li><strong>Total URLs: {25 + bangaloreAreas.length + 3 + 6}</strong></li>
+            <li>Individual PG pages: {pgData.length}</li>
+            <li><strong>Total URLs: {25 + bangaloreAreas.length + 3 + 6 + pgData.length}</strong></li>
           </ul>
         </div>
       </div>

@@ -68,6 +68,7 @@ Allow: /hotels
 Allow: /flats
 Allow: /list-your-pg
 Allow: /pg-management-app
+Allow: /pg/
 Allow: /sitemap.xml
 
 # -----------------------------------------------------------------------------

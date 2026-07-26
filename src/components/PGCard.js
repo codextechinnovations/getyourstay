@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { theme } from '../theme';
+import { getPGDetailUrl } from '../utils/slugify';
 import './PGCard.css';
 
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=300&fit=crop';
@@ -84,6 +86,8 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
     e.stopPropagation();
     if (onViewDetails) onViewDetails(safePG);
   };
+
+  const detailUrl = getPGDetailUrl(safePG);
 
   return (
     <div
@@ -236,9 +240,9 @@ const PGCard = ({ pg, onSelect, isSelected, onViewDetails }) => {
               {safePG.rating.toFixed(1)}
               <span className="pg-card-rating-reviews">({safePG.reviews})</span>
             </div>
-            <button onClick={handleViewDetails} className="pg-card-view-btn">
+            <Link to={detailUrl} onClick={handleViewDetails} className="pg-card-view-btn">
               View Details
-            </button>
+            </Link>
           </div>
         </div>
       </div>
